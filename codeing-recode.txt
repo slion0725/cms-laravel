@@ -1,0 +1,4 @@
+cmd -> composer update
+cmd -> npm install
+cmd -> npm update
+.env -> host, port, database, username, password
