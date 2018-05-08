@@ -5,6 +5,7 @@ cmd -> composer require barryvdh/laravel-debugbar --dev
 .env -> APP_DEBUG=true
 config/app.php -> 
     Providers -> Barryvdh\Debugbar\ServiceProvider::class,
+    (laravel5.5+ auto-discovery)
 cmd -> php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
 ----------------------------------------------------------------------------------------------------
 
