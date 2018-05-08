@@ -8,10 +8,6 @@ config/app.php ->
     (laravel5.5+ auto-discovery)
 cmd -> php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
 ----------------------------------------------------------------------------------------------------
-
-
-
-
 caouecs/laravel-lang -> 多國語
 ----------------------------------------------------------------------------------------------------
 davejamesmiller/laravel-breadcrumbs -> 麵包屑
