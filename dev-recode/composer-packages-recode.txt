@@ -18,6 +18,14 @@ caouecs/laravel-lang -> 多國語
 davejamesmiller/laravel-breadcrumbs -> 麵包屑
 ----------------------------------------------------------------------------------------------------
 garygreen/pretty-routes -> 路由清單
+
+cmd -> composer require garygreen/pretty-routes --dev
+
+cmd -> php artisan vendor:publish --provider="PrettyRoutes\ServiceProvider"
+
+.env -> APP_DEBUG=true
+
+chrome -> /routes
 ----------------------------------------------------------------------------------------------------
 intervention/image -> 圖片操作庫
 ----------------------------------------------------------------------------------------------------

@@ -18,3 +18,6 @@ packages -> barryvdh/laravel-debugbar
 packages -> prettus/l5-repository
 
 packages -> spatie/laravel-activitylog
+
+packages -> garygreen/pretty-routes
+
