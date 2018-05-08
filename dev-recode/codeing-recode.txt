@@ -6,3 +6,6 @@ cmd -> npm update
 .env -> host, port, database, username, password
 cmd -> php artisan make:auth
 cmd -> php artisan migrate
+config/hashing.php -> 'driver' => 'argon',
+packages -> barryvdh/laravel-debugbar
+packages -> prettus/l5-repository

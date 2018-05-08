@@ -23,6 +23,8 @@ league/glide -> 圖片操作庫
 league/glide-laravel -> 
 ----------------------------------------------------------------------------------------------------
 prettus/l5-repository -> Repositories to the database layer
+cmd -> composer require prettus/l5-repository
+cmd -> php artisan vendor:publish --provider "Prettus\Repository\Providers\RepositoryServiceProvider"
 ----------------------------------------------------------------------------------------------------
 spatie/laravel-activitylog -> 資料庫修改記錄
 ----------------------------------------------------------------------------------------------------
