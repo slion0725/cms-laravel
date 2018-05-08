@@ -27,4 +27,5 @@ packages -> league/glide + league/glide-laravel
 
 packages -> intervention/image
 
+packages -> caouecs/laravel-lang
 

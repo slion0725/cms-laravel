@@ -14,6 +14,11 @@ cmd -> php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
 
 ----------------------------------------------------------------------------------------------------
 caouecs/laravel-lang -> 多國語
+
+cmd -> composer require caouecs/laravel-lang
+
+vendor/caouecs/laravel-lang/src/zh-TW (copy) resources/lang/zh-TW
+
 ----------------------------------------------------------------------------------------------------
 davejamesmiller/laravel-breadcrumbs -> 麵包屑
 ----------------------------------------------------------------------------------------------------
