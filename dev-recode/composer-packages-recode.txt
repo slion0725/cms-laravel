@@ -1,12 +1,17 @@
 composer packages recode
 ----------------------------------------------------------------------------------------------------
 barryvdh/laravel-debugbar -> 開發除錯
+
 cmd -> composer require barryvdh/laravel-debugbar --dev
+
 .env -> APP_DEBUG=true
+
 config/app.php -> 
     Providers -> Barryvdh\Debugbar\ServiceProvider::class,
     (laravel5.5+ auto-discovery)
+
 cmd -> php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
+
 ----------------------------------------------------------------------------------------------------
 caouecs/laravel-lang -> 多國語
 ----------------------------------------------------------------------------------------------------
@@ -23,10 +28,28 @@ league/glide -> 圖片操作庫
 league/glide-laravel -> 
 ----------------------------------------------------------------------------------------------------
 prettus/l5-repository -> Repositories to the database layer
+
 cmd -> composer require prettus/l5-repository
+
 cmd -> php artisan vendor:publish --provider "Prettus\Repository\Providers\RepositoryServiceProvider"
+
 ----------------------------------------------------------------------------------------------------
 spatie/laravel-activitylog -> 資料庫修改記錄
+
+cmd -> composer require spatie/laravel-activitylog
+
+cmd -> php artisan vendor:publish --provider="Spatie\Activitylog\ActivitylogServiceProvider" --tag="migrations"
+
+cmd -> php artisan migrate
+
+cmd -> php artisan vendor:publish --provider="Spatie\Activitylog\ActivitylogServiceProvider" --tag="config"
+
+model -> use Spatie\Activitylog\Traits\LogsActivity;
+
+model -> use LogsActivity;
+
+model -> protected static $logAttributes = ['id' ,'name', 'text', ... , 'created_at', 'updated_at'];
+
 ----------------------------------------------------------------------------------------------------
 spatie/laravel-permission -> 用戶權限管理
 ----------------------------------------------------------------------------------------------------
