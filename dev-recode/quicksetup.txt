@@ -3,3 +3,17 @@ quicksetup
 Hashing:Bcrypt/Argon2
 config/hashing.php -> 'driver' => 'argon',
 ----------------------------------------------------------------------------------------------------
+app/Providers/AppServiceProvider.php ->
+    use Schema;
+    boot() ->
+        // for MySQL <= 5.7.7, MariaDB <= 10.2.2
+        Schema::defaultStringLength(191);
+----------------------------------------------------------------------------------------------------
+app/Providers/AppServiceProvider.php ->
+    use URL;
+    boot() ->
+        // for Https
+        // URL::forceScheme('https');
+----------------------------------------------------------------------------------------------------
+storage/app/public/ (link) public/storage -> php artisan storage:link
+----------------------------------------------------------------------------------------------------

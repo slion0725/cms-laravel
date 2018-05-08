@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// league/glide + league/glide-laravel
+Route::get('i/{path}', function (League\Glide\Server $server, $path, Illuminate\Http\Request $request) {
+    $server->outputImage($path, $request->all());
+    exit;
+})->where('path', '.*');

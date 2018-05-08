@@ -31,15 +31,51 @@ intervention/image -> 圖片操作庫
 ----------------------------------------------------------------------------------------------------
 league/fractal -> 複雜資料操作及API輸出
 ----------------------------------------------------------------------------------------------------
-league/glide -> 圖片操作庫
-----------------------------------------------------------------------------------------------------
-league/glide-laravel -> 
+league/glide + league/glide-laravel -> 圖片操作庫 + 縮圖API
+
+cmd -> composer require league/glide
+
+cmd -> composer require league/glide-laravel
+
+routes/web.php ->
+// league/glide + league/glide-laravel
+Route::get('i/{path}', function (League\Glide\Server $server, $path, Illuminate\Http\Request $request) {
+    $server->outputImage($path, $request->all());
+    exit;
+})->where('path', '.*');
+
+app/Providers/AppServiceProvider.php ->
+    // league/glide + league/glide-laravel
+    use League\Glide\ServerFactory;
+    use League\Glide\Responses\LaravelResponseFactory;
+    register() ->
+        // league/glide + league/glide-laravel
+        $this->app->singleton('League\Glide\Server', function ($app) {
+            $filesystem = $app->make('Illuminate\Contracts\Filesystem\Filesystem');
+            return ServerFactory::create([
+                'response' => new LaravelResponseFactory(app('request')),
+                'source' => $filesystem->getDriver(),
+                'cache' => $filesystem->getDriver(),
+                'cache_path_prefix' => '.cache',
+                'base_url' => 'i',
+            ]);
+        });
+
+test -> storage/app/kayaks.jpg
+
+chrome -> /i/kayaks.jpg
+
 ----------------------------------------------------------------------------------------------------
 prettus/l5-repository -> Repositories to the database layer
 
 cmd -> composer require prettus/l5-repository
 
 cmd -> php artisan vendor:publish --provider "Prettus\Repository\Providers\RepositoryServiceProvider"
+
+app/Providers/AppServiceProvider.php ->
+    register() ->
+        // prettus/l5-repository
+        $this->app->register(RepositoryServiceProvider::class);
 
 ----------------------------------------------------------------------------------------------------
 spatie/laravel-activitylog -> 資料庫修改記錄
