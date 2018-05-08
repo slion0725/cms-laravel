@@ -28,6 +28,14 @@ cmd -> php artisan vendor:publish --provider="PrettyRoutes\ServiceProvider"
 chrome -> /routes
 ----------------------------------------------------------------------------------------------------
 intervention/image -> 圖片操作庫
+
+cmd -> composer require intervention/image
+
+/Users/miles/Desktop/work/cms-laravel/config/app.php ->
+    aliases ->
+        // intervention/image
+        'Image' => Intervention\Image\Facades\Image::class,
+        
 ----------------------------------------------------------------------------------------------------
 league/fractal -> 複雜資料操作及API輸出
 ----------------------------------------------------------------------------------------------------
@@ -38,11 +46,11 @@ cmd -> composer require league/glide
 cmd -> composer require league/glide-laravel
 
 routes/web.php ->
-// league/glide + league/glide-laravel
-Route::get('i/{path}', function (League\Glide\Server $server, $path, Illuminate\Http\Request $request) {
-    $server->outputImage($path, $request->all());
-    exit;
-})->where('path', '.*');
+    // league/glide + league/glide-laravel
+    Route::get('i/{path}', function (League\Glide\Server $server, $path, Illuminate\Http\Request $request) {
+        $server->outputImage($path, $request->all());
+        exit;
+    })->where('path', '.*');
 
 app/Providers/AppServiceProvider.php ->
     // league/glide + league/glide-laravel

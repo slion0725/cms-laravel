@@ -21,3 +21,10 @@ packages -> spatie/laravel-activitylog
 
 packages -> garygreen/pretty-routes
 
+packages -> garygreen/pretty-routes
+
+packages -> league/glide + league/glide-laravel
+
+packages -> intervention/image
+
+
