@@ -4,12 +4,18 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+// spatie/laravel-activitylog
 use Spatie\Activitylog\Traits\LogsActivity;
+// spatie/laravel-permission
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    // spatie/laravel-activitylog
     use LogsActivity;
+    // spatie/laravel-permission
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.

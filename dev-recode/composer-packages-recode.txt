@@ -109,8 +109,21 @@ model -> protected static $logAttributes = ['id' ,'name', 'text', ... , 'created
 
 ----------------------------------------------------------------------------------------------------
 spatie/laravel-permission -> 用戶權限管理
+
+cmd -> composer require spatie/laravel-permission
+
+cmd -> php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="migrations"
+
+cmd -> php artisan migrate
+
+cmd -> php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="config"
+
 ----------------------------------------------------------------------------------------------------
-yajra/laravel-datatables-fractal -> Datatables套件的API輸出擴充
-----------------------------------------------------------------------------------------------------
-yajra/laravel-datatables-oracle -> Datatables套件的API輸出
+yajra/laravel-datatables-oracle + yajra/laravel-datatables-fractal -> Datatables套件的API輸出 + 擴充
+
+cmd -> composer require yajra/laravel-datatables-oracle
+
+cmd -> composer require yajra/laravel-datatables-fractal
+
+
 ----------------------------------------------------------------------------------------------------

@@ -210,7 +210,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         // intervention/image
         'Image' => Intervention\Image\Facades\Image::class,
-
+        // yajra/laravel-datatables-oracle + yajra/laravel-datatables-fractal
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];
