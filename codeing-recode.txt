@@ -2,3 +2,5 @@ cmd -> composer update
 cmd -> npm install
 cmd -> npm update
 .env -> host, port, database, username, password
+cmd -> php artisan make:auth
+cmd -> php artisan migrate
