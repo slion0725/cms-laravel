@@ -21,4 +21,4 @@ timezone
 config/app.php -> 'timezone' => 'UTC',
 ----------------------------------------------------------------------------------------------------
 lang
-config/app.php -> 'locale' => 'en',
+config/app.php -> 'locale' => 'zh-TW',
