@@ -1,0 +1,1 @@
+<footer class="mt-5 text-muted text-center">Copyright &copy; 2018 CMS</footer>

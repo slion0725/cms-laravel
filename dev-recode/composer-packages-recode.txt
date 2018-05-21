@@ -125,5 +125,4 @@ cmd -> composer require yajra/laravel-datatables-oracle
 
 cmd -> composer require yajra/laravel-datatables-fractal
 
-
 ----------------------------------------------------------------------------------------------------

@@ -1,10 +1,16 @@
 codeing recode
 ----------------------------------------------------------------------------------------------------
+.gitignore -> .DS_Store
+
 cmd -> composer update
 
 cmd -> npm install
 
 cmd -> npm update
+
+cmd -> cp .env.example .env
+
+cmd -> php artisan key:generate
 
 .env -> host, port, database, username, password
 
