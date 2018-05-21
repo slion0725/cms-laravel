@@ -1,4 +1,4 @@
-composer packages recode
+packages-recode
 ----------------------------------------------------------------------------------------------------
 barryvdh/laravel-debugbar -> 開發除錯
 
@@ -21,6 +21,12 @@ vendor/caouecs/laravel-lang/src/zh-TW (copy) resources/lang/zh-TW
 
 ----------------------------------------------------------------------------------------------------
 davejamesmiller/laravel-breadcrumbs -> 麵包屑
+
+cmd -> routes/breadcrumbs.php
+
+
+
+
 ----------------------------------------------------------------------------------------------------
 garygreen/pretty-routes -> 路由清單
 

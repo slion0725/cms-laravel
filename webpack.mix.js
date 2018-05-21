@@ -15,15 +15,27 @@ let mix = require("laravel-mix");
 //    .sass('resources/assets/sass/app.scss', 'public/css');
 
 mix
+  // index
+  .js("resources/assets/js/index.js", "public/js")
+  .sass("resources/assets/sass/index.scss", "public/css")
+  // login
   .js("resources/assets/js/login.js", "public/js")
   .sass("resources/assets/sass/login.scss", "public/css")
+  // dashboard
+  .js("resources/assets/js/dashboard.js", "public/js")
+  .sass("resources/assets/sass/dashboard.scss", "public/css")
+  // autoload
+  .autoload({
+    jquery: ['$','jQuery'],
+  })
+  // extract
   .extract([
     "lodash",
     "moment",
     "jquery",
     "popper.js",
     "bootstrap",
-    "vue",
+    "vue/dist/vue",
     "vee-validate",
     "vee-validate/dist/locale/zh_TW",
     "flatpickr",
@@ -31,7 +43,6 @@ mix
     "flatpickr/dist/l10n/zh",
     "@ckeditor/ckeditor5-build-classic",
     "select2",
-    // "urijs",
     "holderjs"
   ]);
 

@@ -19,23 +19,23 @@ cmd -> php artisan migrate
 
 config/hashing.php -> 'driver' => 'argon',
 
-packages -> barryvdh/laravel-debugbar
+packages-recode -> barryvdh/laravel-debugbar
 
-packages -> prettus/l5-repository
+packages-recode -> prettus/l5-repository
 
-packages -> spatie/laravel-activitylog
+packages-recode -> spatie/laravel-activitylog
 
-packages -> garygreen/pretty-routes
+packages-recode -> garygreen/pretty-routes
 
-packages -> garygreen/pretty-routes
+packages-recode -> garygreen/pretty-routes
 
-packages -> league/glide + league/glide-laravel
+packages-recode -> league/glide + league/glide-laravel
 
-packages -> intervention/image
+packages-recode -> intervention/image
 
-packages -> caouecs/laravel-lang
+packages-recode -> caouecs/laravel-lang
 
-packages -> spatie/laravel-permission
+packages-recode -> spatie/laravel-permission
 
-packages -> yajra/laravel-datatables-oracle + yajra/laravel-datatables-fractal
+packages-recode -> yajra/laravel-datatables-oracle + yajra/laravel-datatables-fractal
 

@@ -4,6 +4,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <title>Title</title>
 <!-- link -->
 <link rel="icon" href="">

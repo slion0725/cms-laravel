@@ -1,6 +1,10 @@
 {
     "/js/vendor.js": "/js/vendor.js",
-    "/js/login.js": "/js/login.js",
+    "/js/index.js": "/js/index.js",
+    "/css/index.css": "/css/index.css",
     "/css/login.css": "/css/login.css",
+    "/css/dashboard.css": "/css/dashboard.css",
+    "/js/dashboard.js": "/js/dashboard.js",
+    "/js/login.js": "/js/login.js",
     "/js/manifest.js": "/js/manifest.js"
 }

@@ -11,15 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('index');
 
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::view('/', 'index')->name('index');
+Route::view('/dashboard', 'dashboard')->name('dashboard');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
+
+// Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+// Route::post('login', 'Auth\LoginController@login');
+// Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Route::get('/home', 'HomeController@index')->name('home');
 
 // league/glide + league/glide-laravel
 Route::get('i/{path}', function (League\Glide\Server $server, $path, Illuminate\Http\Request $request) {

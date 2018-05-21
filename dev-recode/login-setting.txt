@@ -1,4 +1,34 @@
+login-setting
+----------------------------------------------------------------------------------------------------
+login
+app/Http/Controllers/Auth/LoginController.php
+    
+    (from : Illuminate\Foundation\Auth\AuthenticatesUsers)
+
+    use Illuminate\Http\Request;
+
+    登入後換頁位置
+    protected $redirectTo = '/dashboard';
+
     public function showLoginForm()
     {
-        return view('auth.login');
+        登入表單的blade view位置
+        return view('login');
+    }
+
+    protected function attemptLogin(Request $request)
+    {
+        原本的方式
+        return $this->guard()->attempt(
+            $this->credentials($request), $request->filled('remember')
+        );
+        
+        依自己規則登入
+        $credentials = $request->only('email', 'password');
+
+        $credentials = array_add($credentials, 'status', 1);
+
+        return $this->guard()->attempt(
+            $credentials, $request->filled('remember')
+        );
     }

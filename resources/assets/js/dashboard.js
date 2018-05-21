@@ -4,7 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 /**
  * style
  */
-// import "../scss/login.scss";
+// import "../scss/dashboard.scss";
 /**
  * plugin
  */
@@ -15,19 +15,15 @@ import { Vue } from "../plugins/vue";
 /**
  * script
  */
+// vue
 new Vue({
   el: "#app",
   data: {
-    form: {}
-  },
-  methods: {
-    onSubmit() {
-      this.$validator.validate().then(result => {
-        if (!result) {
-          return;
-        }
-        this.$refs.login.submit();
-      });
-    }
+    search: {},
+    datatables: {}
   }
 });
+
+// layout
+import layout from "./components/layout";
+layout();

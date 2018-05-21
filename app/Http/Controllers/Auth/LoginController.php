@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -45,9 +45,9 @@ class LoginController extends Controller
 
     protected function attemptLogin(Request $request)
     {
-        $credentials = $this->credentials($request);
+        $credentials = $request->only('email', 'password');
 
-        $credentials = add_array($credentials, 'statue', 1);
+        // $credentials = array_add($credentials, 'status', 1);
 
         return $this->guard()->attempt(
             $credentials,

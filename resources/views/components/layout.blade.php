@@ -11,8 +11,16 @@
     <div id="app">
         <!-- nav -->
         @include('components.nav')
+        @auth
+            <!-- off-canvas-left + menu -->
+            @include('components.menu')
+            <!-- off-canvas-right + profile + search + show + add + edit -->
+            @yield('off-canvas-right')
+        @endauth
         <!-- content -->
         @yield('content')
+        <!-- loading -->
+        @include('components.loading')
         <!-- footer -->
         @include('components.footer')
     </div>

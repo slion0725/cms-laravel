@@ -4,6 +4,7 @@
 <div class="d-flex justify-content-center">
     <div style="max-width: 327px;width: 327px;" class="m-4">
         <form action="login" autocomplete="off" method="POST" novalidate ref="login" @submit.prevent="onSubmit">
+            @csrf
             <div class="text-center mb-4">
                 <img class="rounded mb-4" src="" alt="" width="72" height="72">
                 <h3 class="h3 mb-3 font-weight-normal">Floating labels</h3>
