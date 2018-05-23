@@ -1,4 +1,4 @@
-import Vue from "vue/dist/vue";
+import Vue from "vue";
 import VeeValidate, { Validator } from "vee-validate";
 // import zhTW from "vee-validate/dist/locale/zh_TW";
 
@@ -6,4 +6,4 @@ import VeeValidate, { Validator } from "vee-validate";
 
 Vue.use(VeeValidate);
 
-export { Vue };
+export default Vue;

@@ -1,3 +1,4 @@
+import $ from "jquery";
 import "datatables.net";
 import "datatables.net-bs4";
 import "datatables.net-colreorder";
@@ -6,7 +7,7 @@ import "datatables.net-select";
 $.fn.dataTableExt.oStdClasses.sWrapper = "dataTables_wrapper dt-bootstrap4";
 $.fn.dataTableExt.oStdClasses.sPageButton = "page-item";
 
-const datatables_config = {
+const datatablesConfig = {
   dom: `
     <'row'<'col-md-12'tr>>
     <'navbar px-0'<i><p>>
@@ -35,14 +36,14 @@ const datatables_config = {
   scrollX: true,
   scrollY: "calc(100vh - 300px)",
   scrollCollapse: true,
-  order: [[0, "desc"]]
-  //   serverSide: true,
-  //   processing: true,
-  //   ajax: {
-  //     url: "/datatables",
-  //     type: "GET"
-  //   },
-  //   stateSave: false
+  order: [[0, "desc"]],
+  // serverSide: true,
+  // processing: true,
+  // ajax: {
+  //   url: "/datatables",
+  //   type: "GET"
+  // },
+  // stateSave: false
 };
 
-export { datatables_config };
+export { datatablesConfig };

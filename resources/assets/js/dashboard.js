@@ -11,7 +11,8 @@ if (process.env.NODE_ENV !== "production") {
 import $ from "jquery";
 import "popper.js";
 import "bootstrap";
-import { Vue } from "../plugins/vue";
+import "holderjs";
+import Vue from "../plugins/vue";
 /**
  * script
  */
@@ -19,11 +20,10 @@ import { Vue } from "../plugins/vue";
 new Vue({
   el: "#app",
   data: {
-    search: {},
-    datatables: {}
   }
 });
 
 // layout
-import layout from "./components/layout";
-layout();
+import { offCanvas, navtabsScroll } from "./components/layout";
+offCanvas();
+navtabsScroll();

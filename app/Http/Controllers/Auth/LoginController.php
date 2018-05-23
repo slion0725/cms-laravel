@@ -47,7 +47,7 @@ class LoginController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        // $credentials = array_add($credentials, 'status', 1);
+        $credentials = array_add($credentials, 'status', 1);
 
         return $this->guard()->attempt(
             $credentials,

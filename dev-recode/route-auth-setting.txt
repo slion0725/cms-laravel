@@ -1,6 +1,7 @@
-// vendor/laravel/framework/src/Illuminate/Routing/Router.php
-
-// Auth::routes();
+route-auth-setting
+----------------------------------------------------------------------------------------------------
+Auth Routes
+Auth::routes(); 等於vendor/laravel/framework/src/Illuminate/Routing/Router.php
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -16,3 +17,13 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+----------------------------------------------------------------------------------------------------
+Redirect If Authenticated
+更改預設返回位置
+app/Http/Middleware/RedirectIfAuthenticated.php ->
+    if (Auth::guard($guard)->check()) {
+        return redirect('/');
+    }
+
+----------------------------------------------------------------------------------------------------

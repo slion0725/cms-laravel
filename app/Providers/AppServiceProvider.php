@@ -26,6 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // prettus/l5-repository
+        $this->app->register(RepositoryServiceProvider::class);
+
         // league/glide + league/glide-laravel
         $this->app->singleton('League\Glide\Server', function ($app) {
             $filesystem = $app->make('Illuminate\Contracts\Filesystem\Filesystem');

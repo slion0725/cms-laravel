@@ -16,7 +16,7 @@
         @else
             <div class="dropdown d-inline">
                 <a href="#" data-toggle="dropdown">
-                    <img src="" class="rounded-circle" width="32" height="32">
+                    <img src="#" data-src="holder.js/32x32?theme=sky&text=32" class="rounded-circle" width="32" height="32">
                     <span>{{ Auth::user()->name }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">

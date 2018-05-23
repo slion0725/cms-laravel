@@ -26,6 +26,16 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('accounts/datatables', 'AccountsController@datatables')->name('accounts.datatables');
+    Route::resource('accounts', 'AccountsController');
+    // Route::get('accounts/datatables', 'AccountsController@datatables')->name('accounts.datatables')->middleware('role:admin');
+    // Route::resource('accounts', 'AccountsController')->middleware('role:admin');
+});
+
+
+
+
 // league/glide + league/glide-laravel
 Route::get('i/{path}', function (League\Glide\Server $server, $path, Illuminate\Http\Request $request) {
     $server->outputImage($path, $request->all());

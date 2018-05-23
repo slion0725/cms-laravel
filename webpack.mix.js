@@ -24,10 +24,13 @@ mix
   // dashboard
   .js("resources/assets/js/dashboard.js", "public/js")
   .sass("resources/assets/sass/dashboard.scss", "public/css")
+  // accounts
+  .js("resources/assets/js/accounts.js", "public/js")
+  .sass("resources/assets/sass/accounts.scss", "public/css")
   // autoload
-  .autoload({
-    jquery: ['$','jQuery'],
-  })
+  // .autoload({
+  //   jquery: ['$','jQuery'],
+  // })
   // extract
   .extract([
     "lodash",
@@ -35,7 +38,8 @@ mix
     "jquery",
     "popper.js",
     "bootstrap",
-    "vue/dist/vue",
+    "vue",
+    "vuex",
     "vee-validate",
     "vee-validate/dist/locale/zh_TW",
     "flatpickr",

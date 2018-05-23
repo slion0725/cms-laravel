@@ -9,10 +9,8 @@
                     <label for="profile-name" class="col-form-label col-form-label-sm">Name</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control form-control-sm is-invalid" id="profile-name" placeholder="text">
-                    <div class="invalid-feedback">
-                        error
-                    </div>
+                    <input type="text" class="form-control form-control-sm is-invalid" id="profile-name" name="profile-name" placeholder="text">
+                    <div class="invalid-feedback" v-text="errors.first('profile-name')"></div>
                 </div>
             </div>
             <div class="form-group row">
@@ -20,10 +18,8 @@
                     <label for="profile-email" class="col-form-label col-form-label-sm">Email</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control form-control-sm" id="profile-email" placeholder="text">
-                    <div class="invalid-feedback">
-                        error
-                    </div>
+                    <input type="text" class="form-control form-control-sm" id="profile-email" name="profile-email" placeholder="text">
+                    <div class="invalid-feedback" v-text="errors.first('profile-email')"></div>
                 </div>
             </div>
             <div class="form-group row">
@@ -31,10 +27,8 @@
                     <label for="profile-password" class="col-form-label col-form-label-sm">Password</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control form-control-sm" id="profile-password" placeholder="text">
-                    <div class="invalid-feedback">
-                        error
-                    </div>
+                    <input type="password" class="form-control form-control-sm" id="profile-password" name="profile-password" placeholder="text">
+                    <div class="invalid-feedback" v-text="errors.first('profile-password')"></div>
                 </div>
             </div>
             <div class="form-group row">

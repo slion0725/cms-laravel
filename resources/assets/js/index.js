@@ -11,3 +11,4 @@ if (process.env.NODE_ENV !== "production") {
 import $ from "jquery";
 import "popper.js";
 import "bootstrap";
+import "holderjs";

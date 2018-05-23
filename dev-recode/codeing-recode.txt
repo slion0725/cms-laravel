@@ -39,3 +39,9 @@ packages-recode -> spatie/laravel-permission
 
 packages-recode -> yajra/laravel-datatables-oracle + yajra/laravel-datatables-fractal
 
+route-auth-setting -> Auth Routes
+
+route-auth-setting -> Redirect If Authenticated
+
+php artisan make:migration add_status_to_users_table --table=users
+
