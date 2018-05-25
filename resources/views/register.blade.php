@@ -1,0 +1,49 @@
+@extends('components.layout') 
+@section('content')
+<div class="d-flex justify-content-center">
+    <div style="max-width: 327px;width: 327px;" class="m-4">
+        <form action="register" autocomplete="off" method="POST" novalidate ref="register" @submit.prevent="onSubmit">
+            @csrf
+
+            <div class="text-center mb-4">
+                <h3 class="h3 mb-3 font-weight-normal">Register</h3>
+            </div>
+
+            <div class="form-group">
+                <label for="name" class="col-form-label col-form-label-sm">Name</label>
+                <input type="name" id="name" name="name" placeholder="" value="{{ old('name') }}" class="form-control form-control-sm{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                    :class="{'is-invalid': errors.has('name')}" data-vv-as="Name" v-validate="'required'" v-model="form.name">
+                <div class="invalid-feedback" v-text="errors.first('name')"></div>
+                <div class="invalid-feedback" v-show="!errors.has('name')">{{ $errors->first('name') }}</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="col-form-label col-form-label-sm">Email</label>
+                <input type="email" id="email" name="email" placeholder="" value="{{ old('email') }}" class="form-control form-control-sm{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                    :class="{'is-invalid': errors.has('email')}" data-vv-as="Email" v-validate="'required|email'" v-model="form.email">
+                <div class="invalid-feedback" v-text="errors.first('email')"></div>
+                <div class="invalid-feedback" v-show="!errors.has('email')">{{ $errors->first('email') }}</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="col-form-label col-form-label-sm">Password</label>
+                <input type="password" id="password" name="password" placeholder="" class="form-control form-control-sm{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                    :class="{'is-invalid': errors.has('password')}" data-vv-as="Password" v-validate="'required'" v-model="form.password">
+                <div class="invalid-feedback" v-text="errors.first('password')"></div>
+                <div class="invalid-feedback" v-show="!errors.has('password')">{{ $errors->first('password') }}</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password_confirmation" class="col-form-label col-form-label-sm">Confirm Password</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" placeholder="" class="form-control form-control-sm{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}"
+                    :class="{'is-invalid': errors.has('password_confirmation')}" data-vv-as="Confirm Password" v-validate="'required|confirmed:password'"
+                    v-model="form.password_confirmation">
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-sm btn-primary btn-block" type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+@endsection

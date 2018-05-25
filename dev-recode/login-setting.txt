@@ -1,18 +1,18 @@
-login-setting
+auth-setting
 ----------------------------------------------------------------------------------------------------
 login
-app/Http/Controllers/Auth/LoginController.php
+app/Http/Controllers/Auth/LoginController.php ->
     
     (from : Illuminate\Foundation\Auth\AuthenticatesUsers)
 
     use Illuminate\Http\Request;
 
-    登入後換頁位置
+    換頁位置
     protected $redirectTo = '/dashboard';
 
     public function showLoginForm()
     {
-        登入表單的blade view位置
+        view位置
         return view('login');
     }
 
@@ -31,4 +31,17 @@ app/Http/Controllers/Auth/LoginController.php
         return $this->guard()->attempt(
             $credentials, $request->filled('remember')
         );
+    }
+
+----------------------------------------------------------------------------------------------------
+register
+app/Http/Controllers/Auth/RegisterController.php ->
+
+    換頁位置
+    protected $redirectTo = '/dashboard';
+
+    view位置
+    public function showRegistrationForm()
+    {
+        return view('register');
     }

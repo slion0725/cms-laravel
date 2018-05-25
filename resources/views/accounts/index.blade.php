@@ -12,17 +12,7 @@
     @include('components.breadcrumb')
     <!-- button -->
     <div class="scroll-btn">
-        <div class="btn-item">
-            <a href="#" data-toggle="dropdown">
-                <i class="mdi mdi-format-line-spacing mr-1"></i>10
-            </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">10</a>
-                <a class="dropdown-item" href="#">25</a>
-                <a class="dropdown-item" href="#">50</a>
-                <a class="dropdown-item" href="#">100</a>
-            </div>
-        </div>
+        <v-datatables-page-length-btn></v-datatables-page-length-btn>
         <v-datatables-select-btn></v-datatables-select-btn>
         <a href="#" class="btn-item offcanvas-toggle" data-offcanvas="offcanvas-search">
             <i class="mdi mdi-magnify mr-1"></i>Search

@@ -21,6 +21,9 @@ mix
   // login
   .js("resources/assets/js/login.js", "public/js")
   .sass("resources/assets/sass/login.scss", "public/css")
+  // register
+  .js("resources/assets/js/register.js", "public/js")
+  .sass("resources/assets/sass/register.scss", "public/css")
   // dashboard
   .js("resources/assets/js/dashboard.js", "public/js")
   .sass("resources/assets/sass/dashboard.scss", "public/css")
