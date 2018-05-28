@@ -17,19 +17,31 @@ import "holderjs";
  */
 // vue + vuex + components
 import Vue from "../plugins/vue";
-import store from './components/store';
-Vue.component(
-  "v-datatables",
-  require("./components/Datatables.vue")
-);
+import store from "./components/store";
+import { mapGetters, mapActions } from "vuex";
+Vue.component("v-datatables", require("./components/Datatables.vue"));
 Vue.component(
   "v-datatables-select-btn",
   require("./components/DatatablesSelectBtn.vue")
 );
+Vue.component(
+  "v-datatables-page-length-btn",
+  require("./components/DatatablesPageLengthBtn.vue")
+);
+
 new Vue({
   el: "#app",
   store,
   data: {
+    search: {
+      all: "",
+      id: {},
+      name: {},
+      email: {},
+      status: {},
+      created_at: {},
+      updated_at: {}
+    },
     datatablesSetting: {
       ajax: {
         url: "accounts/datatables",
@@ -74,6 +86,9 @@ new Vue({
         }
       ]
     }
+  },
+  methods: {
+    ...mapActions(["search_emit", "search_clear"])
   }
 });
 

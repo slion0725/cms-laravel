@@ -6,14 +6,39 @@
         <div class="card-body align-self-stretch">
             <div class="form-group row">
                 <div class="col-sm-3">
+                    <label for="search-all" class="col-form-label col-form-label-sm">All</label>
+                </div>
+                <div class="col-sm-9">
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="search-all" placeholder="" v-model="search.all">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    <label for="search-id" class="col-form-label col-form-label-sm">ID</label>
+                </div>
+                <div class="col-sm-9">
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="search-id" placeholder="" v-model="search.id.value">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" v-model="search.id.regex">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-3">
                     <label for="search-name" class="col-form-label col-form-label-sm">Name</label>
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-name" placeholder="text">
+                        <input type="text" class="form-control form-control-sm" id="search-name" placeholder="" v-model="search.name.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
-                                <input type="checkbox">
+                                <input type="checkbox" v-model="search.name.regex">
                             </div>
                         </div>
                     </div>
@@ -25,55 +50,10 @@
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-email" placeholder="text">
+                        <input type="text" class="form-control form-control-sm" id="search-email" placeholder="" v-model="search.email.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
-                                <input type="checkbox">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-3">
-                    <label for="search-phone" class="col-form-label col-form-label-sm">Phone</label>
-                </div>
-                <div class="col-sm-9">
-                    <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-phone" placeholder="text">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <input type="checkbox">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-3">
-                    <label for="search-address" class="col-form-label col-form-label-sm">Address</label>
-                </div>
-                <div class="col-sm-9">
-                    <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-address" placeholder="text">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <input type="checkbox">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-3">
-                    <label for="search-birthday" class="col-form-label col-form-label-sm">Birthday</label>
-                </div>
-                <div class="col-sm-9">
-                    <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-birthday" placeholder="text">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <input type="checkbox">
+                                <input type="checkbox" v-model="search.email.regex">
                             </div>
                         </div>
                     </div>
@@ -85,10 +65,10 @@
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-status" placeholder="text">
+                        <input type="text" class="form-control form-control-sm" id="search-status" placeholder="" v-model="search.status.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
-                                <input type="checkbox">
+                                <input type="checkbox" v-model="search.status.regex">
                             </div>
                         </div>
                     </div>
@@ -100,10 +80,10 @@
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-created_at" placeholder="text">
+                        <input type="text" class="form-control form-control-sm" id="search-created_at" placeholder="" v-model="search.created_at.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
-                                <input type="checkbox">
+                                <input type="checkbox" v-model="search.created_at.regex">
                             </div>
                         </div>
                     </div>
@@ -115,68 +95,20 @@
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-updated_at" placeholder="text">
+                        <input type="text" class="form-control form-control-sm" id="search-updated_at" placeholder="" v-model="search.updated_at.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
-                                <input type="checkbox">
+                                <input type="checkbox" v-model="search.updated_at.regex">
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <legend class="col-sm-3 col-form-label col-form-label-sm pt-0">Radios</legend>
-                <div class="col-sm-9">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="search-radios" id="search-radio1-radios" value="option1" checked>
-                        <label class="form-check-label" for="search-radio1-radios">
-                            First radio
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="search-radios" id="search-radio2-radios" value="option2">
-                        <label class="form-check-label" for="search-radio2-radios">
-                            Second radio
-                        </label>
-                    </div>
-                    <div class="form-check disabled">
-                        <input class="form-check-input" type="radio" name="search-radios" id="search-radio3-radios" value="option3" disabled>
-                        <label class="form-check-label" for="search-radio3-radios">
-                            Third disabled radio
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <legend class="col-sm-3 col-form-label col-form-label-sm pt-0">Checkboxes</legend>
-                <div class="col-sm-9">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="search-checkboxes" id="search-checkbox1-checkboxes" value="option1"
-                            checked>
-                        <label class="form-check-label" for="search-checkbox1-checkboxes">
-                            First checkbox
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="search-checkboxes" id="search-checkbox2-checkboxes" value="option2">
-                        <label class="form-check-label" for="search-checkbox2-checkboxes">
-                            Second checkbox
-                        </label>
-                    </div>
-                    <div class="form-check disabled">
-                        <input class="form-check-input" type="checkbox" name="search-checkboxes" id="search-checkbox3-checkboxes" value="option3"
-                            disabled>
-                        <label class="form-check-label" for="search-checkbox3-checkboxes">
-                            Third disabled checkbox
-                        </label>
                     </div>
                 </div>
             </div>
         </div>
         <div class="card-footer">
             <a href="#" class="text-secondary mr-4 btn-offcanvas-close">Close</a>
-            <a href="#" class="text-primary mr-4">Search</a>
-            <a href="#" class="text-info mr-4">Clear</a>
+            <a href="#" class="text-primary mr-4" @click="search_emit(search)">Search</a>
+            <a href="#" class="text-info mr-4" @click="search_clear(search)">Clear</a>
         </div>
     </div>
 </div>
