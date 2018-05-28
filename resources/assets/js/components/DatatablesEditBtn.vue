@@ -7,16 +7,34 @@
 <script>
 import $ from "jquery";
 import { mapGetters, mapActions } from "vuex";
+import axios from "axios";
+
 export default {
+  props: {
+    edit: {
+      type: Object,
+      required: true
+    }
+  },
   computed: mapGetters(["selectRowsLength", "selectRows"]),
   methods: {
     edit_emit() {
       if (this.selectRowsLength != 1) {
         return;
       }
+
       let id = this.selectRows[0].id;
 
-      console.log(id);
+      axios
+        .get(`accounts/${id}/edit`)
+        .then(response => {
+          Object.keys(response.data.data).forEach(d => {
+            this.edit[d] = response.data.data[d];
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
 
       $(".off-canvas").removeClass("off-canvas-open");
       $("#offcanvas-edit").toggleClass("off-canvas-open");

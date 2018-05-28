@@ -26,7 +26,7 @@ export default {
       let id = this.selectRows[0].id;
 
       axios
-        .get("accounts/" + id)
+        .get(`accounts/${id}`)
         .then(response => {
           Object.keys(response.data.data).forEach(d => {
             this.show[d] = response.data.data[d];
@@ -38,7 +38,6 @@ export default {
 
       $(".off-canvas").removeClass("off-canvas-open");
       $("#offcanvas-show").toggleClass("off-canvas-open");
-      return;
     }
   }
 };

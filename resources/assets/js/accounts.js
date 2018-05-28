@@ -34,9 +34,9 @@ new Vue({
       created_at: { value: "", regex: false },
       updated_at: { value: "", regex: false }
     },
-    show: {id:1},
+    show: {id:"",name:"",email:""},
     add: {},
-    edit: {},
+    edit: {id:"",name:"",email:""},
     datatablesSetting: {
       ajax: {
         url: "accounts/datatables",

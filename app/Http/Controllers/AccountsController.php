@@ -134,6 +134,13 @@ class AccountsController extends Controller
     public function edit($id)
     {
         $account = $this->repository->find($id);
+        
+        if (request()->wantsJson()) {
+
+            return response()->json([
+                'data' => $account,
+            ]);
+        }
 
         return view('accounts.edit', compact('account'));
     }
