@@ -42,6 +42,8 @@ new Vue({
       created_at: {},
       updated_at: {}
     },
+    add:{},
+    edit:{},
     datatablesSetting: {
       ajax: {
         url: "accounts/datatables",
@@ -88,7 +90,23 @@ new Vue({
     }
   },
   methods: {
-    ...mapActions(["search_emit", "search_clear"])
+    ...mapActions(["search_emit", "search_clear"]),
+    add_onSubmit(scope) {
+      this.$validator.validateAll(scope).then(result => {
+        if (!result) {
+          return;
+        }
+
+      });
+    },
+    edit_onSubmit(scope) {
+      this.$validator.validateAll(scope).then(result => {
+        if (!result) {
+          return;
+        }
+
+      });
+    }
   }
 });
 

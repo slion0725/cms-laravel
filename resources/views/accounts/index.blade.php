@@ -4,7 +4,7 @@
     @include('accounts.search')
     @include('accounts.show')
     @include('accounts.add')
-    {{-- @include('accounts.edit') --}}
+    @include('accounts.edit')
 @endsection
 
 @section('content')
