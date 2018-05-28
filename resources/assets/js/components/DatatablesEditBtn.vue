@@ -28,9 +28,7 @@ export default {
       axios
         .get(`accounts/${id}/edit`)
         .then(response => {
-          Object.keys(response.data.data).forEach(d => {
-            this.edit[d] = response.data.data[d];
-          });
+          Object.assign(this.show, response.data.data);
         })
         .catch(error => {
           console.log(error);
