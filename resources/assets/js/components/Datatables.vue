@@ -68,14 +68,17 @@ export default {
     );
     
     this.dt.on("select", (e, dt, type, indexes) => {
+      $(".off-canvas").removeClass("off-canvas-open");
       this.$store.dispatch("select_check");
     });
 
     this.dt.on("deselect", (e, dt, type, indexes) => {
+      $(".off-canvas").removeClass("off-canvas-open");
       this.$store.dispatch("select_check");
     });
 
     this.dt.on("draw", () => {
+      $(".off-canvas").removeClass("off-canvas-open");
       this.$store.dispatch("select_check");
     });
 

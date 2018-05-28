@@ -5,41 +5,28 @@
         </div>
         <div class="card-body align-self-stretch">
             <dl>
-                <dt>Description lists</dt>
-                <dd>A description list is perfect for defining terms.</dd>
+                <dt>ID</dt>
+                <dd v-text="show.id"></dd>
                 <hr>
-                <dt>Euismod</dt>
-                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem.</dd>
+
+                <dt>Name</dt>
+                <dd v-text="show.name"></dd>
                 <hr>
-                <dt>Malesuada porta</dt>
-                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+
+                <dt>Email</dt>
+                <dd v-text="show.email"></dd>
                 <hr>
-                <dt>Description lists</dt>
-                <dd>A description list is perfect for defining terms.</dd>
+
+                <dt>Status</dt>
+                <dd v-text="show.status"></dd>
                 <hr>
-                <dt>Euismod</dt>
-                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem.</dd>
+
+                <dt>Created At</dt>
+                <dd v-text="show.created_at"></dd>
                 <hr>
-                <dt>Malesuada porta</dt>
-                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-                <hr>
-                <dt>Description lists</dt>
-                <dd>A description list is perfect for defining terms.</dd>
-                <hr>
-                <dt>Euismod</dt>
-                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem.</dd>
-                <hr>
-                <dt>Malesuada porta</dt>
-                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-                <hr>
-                <dt>Description lists</dt>
-                <dd>A description list is perfect for defining terms.</dd>
-                <hr>
-                <dt>Euismod</dt>
-                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem.</dd>
-                <hr>
-                <dt>Malesuada porta</dt>
-                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+
+                <dt>Updated At</dt>
+                <dd v-text="show.updated_at"></dd>
                 <hr>
             </dl>
         </div>

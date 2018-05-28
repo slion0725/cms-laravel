@@ -4,7 +4,8 @@ const state = {
   dt: {},
   selectStatus: 0,
   selectRowsLength: 0,
-  pageLength: 10
+  pageLength: 10,
+  selectRows: {}
 };
 
 const getters = {
@@ -16,6 +17,9 @@ const getters = {
   },
   pageLength: state => {
     return state.pageLength;
+  },
+  selectRows: state => {
+    return state.selectRows;
   }
 };
 
@@ -55,6 +59,11 @@ const mutations = {
     } else {
       state.selectStatus = 0;
     }
+
+    state.selectRows = state.dt
+      .rows({ selected: true })
+      .data()
+      .toArray();
   },
   [types.PAGE_LENGTH_CHANGE](state, payload) {
     state.dt.page.len(payload).draw();
@@ -89,7 +98,7 @@ const mutations = {
       if (d == "all") {
         payload.all = "";
       } else {
-        payload[d] = {};
+        payload[d] = { value: "", regex: false };
       }
     });
 

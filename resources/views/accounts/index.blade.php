@@ -14,21 +14,11 @@
     <div class="scroll-btn">
         <v-datatables-page-length-btn></v-datatables-page-length-btn>
         <v-datatables-select-btn></v-datatables-select-btn>
-        <a href="#" class="btn-item offcanvas-toggle" data-offcanvas="offcanvas-search">
-            <i class="mdi mdi-magnify mr-1"></i>Search
-        </a>
-        <a href="#" class="btn-item offcanvas-toggle" data-offcanvas="offcanvas-show">
-            <i class="mdi mdi-view-list mr-1"></i>Show
-        </a>
-        <a href="#" class="btn-item offcanvas-toggle" data-offcanvas="offcanvas-add">
-            <i class="mdi mdi-plus mr-1"></i>Add
-        </a>
-        <a href="#" class="btn-item offcanvas-toggle" data-offcanvas="offcanvas-edit">
-            <i class="mdi mdi-pencil mr-1"></i>Edit
-        </a>
-        <a href="#" class="btn-item" id="del-btn">
-            <i class="mdi mdi-delete mr-1"></i>Del
-        </a>
+        <v-datatables-search-btn></v-datatables-search-btn>
+        <v-datatables-show-btn :show="show"></v-datatables-show-btn>
+        <v-datatables-add-btn></v-datatables-add-btn>
+        <v-datatables-edit-btn></v-datatables-edit-btn>
+        <v-datatables-delete-btn></v-datatables-delete-btn>
         <a href="#" class="btn-item" id="download-btn">
             <i class="mdi mdi-download mr-1"></i>Download
         </a>

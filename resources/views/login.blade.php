@@ -6,7 +6,7 @@
             @csrf
 
             <div class="text-center mb-4">
-                <img class="rounded mb-4" width="72" height="72">
+                <img src="#" data-src="holder.js/72x72?theme=sky&text=72"  class="rounded mb-4" width="72" height="72">
                 <h3 class="h3 mb-3 font-weight-normal">Login</h3>
             </div>
 

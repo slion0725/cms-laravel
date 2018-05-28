@@ -65,12 +65,11 @@
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-status" placeholder="" v-model="search.status.value">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <input type="checkbox" v-model="search.status.regex">
-                            </div>
-                        </div>
+                        <select class="form-control form-control-sm" v-model="search.status.value">
+                            <option disabled value="">Not selected</option>
+                            <option value="0">Off</option>
+                            <option value="1">On</option>
+                        </select>
                     </div>
                 </div>
             </div>

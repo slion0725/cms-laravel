@@ -10,11 +10,7 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 export default {
-  computed: mapGetters([
-    'selectStatus'
-  ]),
-  methods: mapActions([
-    'select_toggle',
-  ])
+  computed: mapGetters(["selectStatus"]),
+  methods: mapActions(["select_toggle"])
 };
 </script>

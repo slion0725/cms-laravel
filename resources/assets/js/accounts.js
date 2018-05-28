@@ -17,17 +17,9 @@ import "holderjs";
  */
 // vue + vuex + components
 import Vue from "../plugins/vue";
+import "./components";
 import store from "./components/store";
 import { mapGetters, mapActions } from "vuex";
-Vue.component("v-datatables", require("./components/Datatables.vue"));
-Vue.component(
-  "v-datatables-select-btn",
-  require("./components/DatatablesSelectBtn.vue")
-);
-Vue.component(
-  "v-datatables-page-length-btn",
-  require("./components/DatatablesPageLengthBtn.vue")
-);
 
 new Vue({
   el: "#app",
@@ -35,15 +27,16 @@ new Vue({
   data: {
     search: {
       all: "",
-      id: {},
-      name: {},
-      email: {},
-      status: {},
-      created_at: {},
-      updated_at: {}
+      id: { value: "", regex: false },
+      name: { value: "", regex: false },
+      email: { value: "", regex: false },
+      status: { value: "", regex: false },
+      created_at: { value: "", regex: false },
+      updated_at: { value: "", regex: false }
     },
-    add:{},
-    edit:{},
+    show: {id:1},
+    add: {},
+    edit: {},
     datatablesSetting: {
       ajax: {
         url: "accounts/datatables",
@@ -89,6 +82,7 @@ new Vue({
       ]
     }
   },
+  computed: { ...mapGetters(["selectRowsLength"]) },
   methods: {
     ...mapActions(["search_emit", "search_clear"]),
     add_onSubmit(scope) {
@@ -96,7 +90,6 @@ new Vue({
         if (!result) {
           return;
         }
-
       });
     },
     edit_onSubmit(scope) {
@@ -104,7 +97,6 @@ new Vue({
         if (!result) {
           return;
         }
-
       });
     }
   }
