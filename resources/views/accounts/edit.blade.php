@@ -40,10 +40,22 @@
                     <label for="edit-password" class="col-form-label col-form-label-sm">Password</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="password" id="edit-password" name="password" placeholder="" data-vv-as="Password" data-vv-scope="edit" class="form-control form-control-sm"
+                    <input type="password" id="edit-password" name="edit_password" placeholder="" data-vv-as="Password" data-vv-scope="edit" class="form-control form-control-sm"
                         :class="{'is-invalid': errors.has('edit.password')}" v-validate="'required|min:6|max:20'" v-model="edit.password"
                         @focus="$validator.errors.removeById('res-edit-password')">
                     <div class="invalid-feedback" v-text="errors.first('edit.password')"></div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    <label for="edit-password_confirmation" class="col-form-label col-form-label-sm">Password Confirmation</label>
+                </div>
+                <div class="col-sm-9">
+                    <input type="password" id="edit-password_confirmation" name="password_confirmation" placeholder="" data-vv-as="Password Confirmation" data-vv-scope="edit" class="form-control form-control-sm"
+                        :class="{'is-invalid': errors.has('edit.password_confirmation')}" v-validate="'required|min:6|max:20|confirmed:edit_password'" v-model="edit.password_confirmation"
+                        @focus="$validator.errors.removeById('res-edit-password_confirmation')">
+                    <div class="invalid-feedback" v-text="errors.first('edit.password_confirmation')"></div>
                 </div>
             </div>
 

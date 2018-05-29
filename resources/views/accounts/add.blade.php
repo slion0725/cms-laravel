@@ -32,10 +32,22 @@
                     <label for="add-password" class="col-form-label col-form-label-sm">Password</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="password" id="add-password" name="password" placeholder="" data-vv-as="Password" data-vv-scope="add" class="form-control form-control-sm"
+                    <input type="password" id="add-password" name="add_password" placeholder="" data-vv-as="Password" data-vv-scope="add" class="form-control form-control-sm"
                         :class="{'is-invalid': errors.has('add.password')}" v-validate="'required|min:6|max:20'" v-model="add.password"
                         @focus="$validator.errors.removeById('res-add-password')">
                     <div class="invalid-feedback" v-text="errors.first('add.password')"></div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    <label for="add-password_confirmation" class="col-form-label col-form-label-sm">Password Confirmation</label>
+                </div>
+                <div class="col-sm-9">
+                    <input type="password" id="add-password_confirmation" name="password_confirmation" placeholder="" data-vv-as="Password Confirmation" data-vv-scope="add" class="form-control form-control-sm"
+                        :class="{'is-invalid': errors.has('add.password_confirmation')}" v-validate="'required|min:6|max:20|confirmed:add_password'" v-model="add.password_confirmation"
+                        @focus="$validator.errors.removeById('res-add-password_confirmation')">
+                    <div class="invalid-feedback" v-text="errors.first('add.password_confirmation')"></div>
                 </div>
             </div>
 
