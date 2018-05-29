@@ -27,7 +27,7 @@ new Vue({
         if (!result) {
           return;
         }
-        this.$refs.login.submit();
+        this.$refs.register.submit();
       });
     }
   }

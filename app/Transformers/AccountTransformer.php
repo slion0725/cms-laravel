@@ -25,7 +25,7 @@ class AccountTransformer extends TransformerAbstract
             'id' => (int)$model->id,
             'name' => $model->name,
             'email' => $model->email,
-            'status' => $model->status == 1 ? 'on' : 'off',
+            'status' => $model->status == 1 ? 'On' : 'Off',
             'created_at' => (string)$model->created_at,
             'updated_at' => (string)$model->updated_at
         ];

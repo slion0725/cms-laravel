@@ -12,6 +12,9 @@ import $ from "jquery";
 import "popper.js";
 import "bootstrap";
 import "holderjs";
+import swal from "sweetalert2";
+import axios from "axios";
+axios.defaults.headers["Accept"] = "application/json";
 /**
  * script
  */
@@ -34,9 +37,9 @@ new Vue({
       created_at: { value: "", regex: false },
       updated_at: { value: "", regex: false }
     },
-    show: { id: "", name: "", email: "" },
-    add: { id: "", name: "", email: "" },
-    edit: { id: "", name: "", email: "" },
+    show: { id: null, name: null, email: null, status: null },
+    add: { name: null, email: null, status: 0 },
+    edit: { id: null, name: null, email: null, status: null },
     datatablesSetting: {
       ajax: {
         url: "accounts/datatables",
@@ -90,6 +93,25 @@ new Vue({
         if (!result) {
           return;
         }
+
+        axios
+          .post(`accounts`, this.add)
+          .then(response => {
+            this.$store.dispatch("draw");
+            swal("Success!", "", "success");
+          })
+          .catch(error => {
+            Object.keys(error.response.data.errors).forEach(e => {
+              this.$validator.errors.add({
+                field: e,
+                msg: error.response.data.errors[e][0],
+                scope: scope,
+                id: `res-${scope}-${e}`
+              });
+            });
+
+            swal("Warning!", error.response.data.message, "warning");
+          });
       });
     },
     edit_onSubmit(scope) {
@@ -97,6 +119,25 @@ new Vue({
         if (!result) {
           return;
         }
+
+        axios
+          .post(`accounts`, this.add)
+          .then(response => {
+            this.$store.dispatch("draw");
+            swal("Success!", "", "success");
+          })
+          .catch(error => {
+            Object.keys(error.response.data.errors).forEach(e => {
+              this.$validator.errors.add({
+                field: e,
+                msg: error.response.data.errors[e][0],
+                scope: scope,
+                id: `res-${scope}-${e}`
+              });
+            });
+
+            swal("Warning!", error.response.data.message, "warning");
+          });
       });
     }
   }

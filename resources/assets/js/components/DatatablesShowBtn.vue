@@ -8,6 +8,7 @@
 import $ from "jquery";
 import { mapGetters, mapActions } from "vuex";
 import axios from "axios";
+axios.defaults.headers["Accept"] = "application/json";
 
 export default {
   props: {
@@ -28,6 +29,7 @@ export default {
       axios
         .get(`accounts/${id}`)
         .then(response => {
+          console.log(response);
           Object.assign(this.show, response.data.data);
         })
         .catch(error => {

@@ -66,7 +66,7 @@ export default {
     this.dt = $("table.table").DataTable(
       Object.assign(this.config, this.setting)
     );
-    
+
     this.dt.on("select", (e, dt, type, indexes) => {
       $(".off-canvas").removeClass("off-canvas-open");
       this.$store.dispatch("select_check");

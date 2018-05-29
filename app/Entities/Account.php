@@ -24,6 +24,10 @@ class Account extends Model implements Transformable
      */
     protected $fillable = ['name', 'email', 'password', 'status'];
 
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
     protected static $logAttributes = ['id', 'name', 'email', 'password', 'status', 'created_at', 'updated_at'];
 
     protected $table = 'users';

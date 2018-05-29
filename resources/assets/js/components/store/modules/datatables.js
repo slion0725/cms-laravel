@@ -1,4 +1,6 @@
 import * as types from "../mutation-types";
+import Papa from "papaparse";
+import FileSaver from "file-saver";
 
 const state = {
   dt: {},
@@ -31,7 +33,9 @@ const actions = {
   page_length_change: ({ commit }, payload) =>
     commit(types.PAGE_LENGTH_CHANGE, payload),
   search_emit: ({ commit }, payload) => commit(types.SEARCH_EMIT, payload),
-  search_clear: ({ commit }, payload) => commit(types.SEARCH_CLEAR, payload)
+  search_clear: ({ commit }, payload) => commit(types.SEARCH_CLEAR, payload),
+  download: ({ commit }) => commit(types.DOWNLOAD),
+  draw: ({ commit }) => commit(types.DRAW)
 };
 
 const mutations = {
@@ -107,6 +111,18 @@ const mutations = {
       .columns()
       .search("")
       .draw();
+  },
+  [types.DOWNLOAD](state) {
+    let data = state.dt
+      .rows({ selected: true })
+      .data()
+      .toArray();
+    let json = JSON.stringify(data);
+    let csv = Papa.unparse(json);
+    FileSaver.saveAs(new Blob([csv]), "export.csv");
+  },
+  [types.DRAW](state) {
+    state.dt.draw();
   }
 };
 

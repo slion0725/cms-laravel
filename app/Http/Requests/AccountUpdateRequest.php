@@ -13,7 +13,7 @@ class AccountUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class AccountUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|max:255',
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+                Rule::unique('users')->ignore($this->id),
+            ],
+            'password' => 'required|min:6|max:255|confirmed',
+            'status' => 'required|boolean',
         ];
     }
 }

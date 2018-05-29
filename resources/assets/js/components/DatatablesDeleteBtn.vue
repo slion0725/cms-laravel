@@ -8,6 +8,13 @@
 import $ from "jquery";
 import { mapGetters, mapActions } from "vuex";
 import swal from "sweetalert2";
+import axios from "axios";
+
+axios.defaults.headers.common = {
+  "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+  "X-Requested-With": "XMLHttpRequest"
+};
+
 export default {
   computed: mapGetters(["selectRowsLength", "selectRows"]),
   methods: {

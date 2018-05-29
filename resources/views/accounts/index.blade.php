@@ -19,9 +19,7 @@
         <v-datatables-add-btn :add="add"></v-datatables-add-btn>
         <v-datatables-edit-btn :edit="edit"></v-datatables-edit-btn>
         <v-datatables-delete-btn></v-datatables-delete-btn>
-        <a href="#" class="btn-item" id="download-btn">
-            <i class="mdi mdi-download mr-1"></i>Download
-        </a>
+        <v-datatables-download-btn></v-datatables-download-btn>
     </div>
     <v-datatables :setting="datatablesSetting"></v-datatables>
 </div>
