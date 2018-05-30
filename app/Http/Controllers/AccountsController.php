@@ -167,7 +167,7 @@ class AccountsController extends Controller
 
                 $account = $this->repository->update($request->all(), $id);
             } else {
-                
+
                 $account = $this->repository->update($request->except('password'), $id);
             }
 
