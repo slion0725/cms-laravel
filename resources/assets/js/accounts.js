@@ -12,79 +12,95 @@ import $ from "jquery";
 import "popper.js";
 import "bootstrap";
 import "holderjs";
-import swal from "sweetalert2";
+import _ from "lodash";
 import axios from "axios";
-axios.defaults.headers["Accept"] = "application/json";
-/**
- * script
- */
-// vue + vuex + components
+import swal from "sweetalert2";
 import Vue from "../plugins/vue";
 import "./components";
 import store from "./components/store";
 import { mapGetters, mapActions } from "vuex";
+/**
+ * script
+ */
+axios.defaults.headers["Accept"] = "application/json";
+
+const data = {
+  search: {
+    all: "",
+    id: { value: "", regex: false },
+    name: { value: "", regex: false },
+    email: { value: "", regex: false },
+    status: { value: "", regex: false },
+    created_at: { value: "", regex: false },
+    updated_at: { value: "", regex: false }
+  },
+  show: { id: null, name: null, email: null, status: null },
+  add: {
+    name: null,
+    email: null,
+    status: 0,
+    password: null,
+    password_confirmation: null
+  },
+  edit: {
+    id: null,
+    name: null,
+    email: null,
+    status: null,
+    password: "",
+    password_confirmation: "",
+    _method: "PUT"
+  },
+  datatablesSetting: {
+    ajax: {
+      url: "accounts/datatables",
+      type: "GET"
+    },
+    columns: [
+      {
+        data: "id",
+        name: "id",
+        title: "ID",
+        searchable: true
+      },
+      {
+        data: "name",
+        name: "name",
+        title: "NAME",
+        searchable: true
+      },
+      {
+        data: "email",
+        name: "email",
+        title: "EMAIL",
+        searchable: true
+      },
+      {
+        data: "status",
+        name: "status",
+        title: "STATUS",
+        searchable: true
+      },
+      {
+        data: "created_at",
+        name: "created_at",
+        title: "CREATED AT",
+        searchable: true
+      },
+      {
+        data: "updated_at",
+        name: "updated_at",
+        title: "UPDATED AT",
+        searchable: true
+      }
+    ]
+  }
+};
 
 new Vue({
   el: "#app",
   store,
-  data: {
-    search: {
-      all: "",
-      id: { value: "", regex: false },
-      name: { value: "", regex: false },
-      email: { value: "", regex: false },
-      status: { value: "", regex: false },
-      created_at: { value: "", regex: false },
-      updated_at: { value: "", regex: false }
-    },
-    show: { id: null, name: null, email: null, status: null },
-    add: { name: null, email: null, status: 0 },
-    edit: { id: null, name: null, email: null, status: null },
-    datatablesSetting: {
-      ajax: {
-        url: "accounts/datatables",
-        type: "GET"
-      },
-      columns: [
-        {
-          data: "id",
-          name: "id",
-          title: "id",
-          searchable: true
-        },
-        {
-          data: "name",
-          name: "name",
-          title: "name",
-          searchable: true
-        },
-        {
-          data: "email",
-          name: "email",
-          title: "email",
-          searchable: true
-        },
-        {
-          data: "status",
-          name: "status",
-          title: "status",
-          searchable: true
-        },
-        {
-          data: "created_at",
-          name: "created_at",
-          title: "created at",
-          searchable: true
-        },
-        {
-          data: "updated_at",
-          name: "updated_at",
-          title: "updated at",
-          searchable: true
-        }
-      ]
-    }
-  },
+  data: _.cloneDeep(data),
   computed: { ...mapGetters(["selectRowsLength"]) },
   methods: {
     ...mapActions(["search_emit", "search_clear"]),
@@ -99,6 +115,13 @@ new Vue({
           .then(response => {
             this.$store.dispatch("draw");
             swal("Success!", "", "success");
+
+            this.add = _.cloneDeep(data.add);
+
+            this.$nextTick(() => {
+              this.$validator.reset({ scope: scope });
+              this.$validator.errors.clear(scope);
+            });
           })
           .catch(error => {
             Object.keys(error.response.data.errors).forEach(e => {
@@ -121,10 +144,18 @@ new Vue({
         }
 
         axios
-          .post(`accounts`, this.add)
+          .post(`accounts/${this.edit.id}`, this.edit)
           .then(response => {
             this.$store.dispatch("draw");
+
             swal("Success!", "", "success");
+
+            this.edit = _.cloneDeep(data.edit);
+
+            this.$nextTick(() => {
+              this.$validator.reset({ scope: scope });
+              this.$validator.errors.clear(scope);
+            });
           })
           .catch(error => {
             Object.keys(error.response.data.errors).forEach(e => {

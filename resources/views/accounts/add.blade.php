@@ -32,8 +32,8 @@
                     <label for="add-password" class="col-form-label col-form-label-sm">Password</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="password" id="add-password" name="add_password" placeholder="" data-vv-as="Password" data-vv-scope="add" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('add.password')}" v-validate="'required|min:6|max:20'" v-model="add.password"
+                    <input type="password" id="add-password" name="password" placeholder="" data-vv-as="Password" data-vv-scope="add" class="form-control form-control-sm"
+                        :class="{'is-invalid': errors.has('add.password')}" v-validate="'required|min:6|max:20|confirmed:add-password_confirmation'" v-model="add.password"
                         @focus="$validator.errors.removeById('res-add-password')">
                     <div class="invalid-feedback" v-text="errors.first('add.password')"></div>
                 </div>
@@ -44,10 +44,7 @@
                     <label for="add-password_confirmation" class="col-form-label col-form-label-sm">Password Confirmation</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="password" id="add-password_confirmation" name="password_confirmation" placeholder="" data-vv-as="Password Confirmation"
-                        data-vv-scope="add" class="form-control form-control-sm" :class="{'is-invalid': errors.has('add.password_confirmation')}"
-                        v-validate="'required|min:6|max:20|confirmed:add_password'" v-model="add.password_confirmation" @focus="$validator.errors.removeById('res-add-password_confirmation')">
-                    <div class="invalid-feedback" v-text="errors.first('add.password_confirmation')"></div>
+                    <input type="password" id="add-password_confirmation" name="add-password_confirmation" placeholder="" class="form-control form-control-sm" v-model="add.password_confirmation">
                 </div>
             </div>
 
@@ -64,8 +61,8 @@
             </div>
         </div>
         <div class="card-footer">
-            <a href="#" class="text-secondary mr-4 btn-offcanvas-close">Close</a>
-            <a href="#" class="text-primary mr-4" @click="add_onSubmit('add')">Save</a>
+            <a href="javascript:;" class="text-secondary mr-4 btn-offcanvas-close">Close</a>
+            <a href="javascript:;" class="text-primary mr-4" @click="add_onSubmit('add')">Save</a>
         </div>
     </div>
 </div>

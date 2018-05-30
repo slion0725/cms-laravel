@@ -40,8 +40,8 @@
                     <label for="edit-password" class="col-form-label col-form-label-sm">Password</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="password" id="edit-password" name="edit_password" placeholder="" data-vv-as="Password" data-vv-scope="edit"
-                        class="form-control form-control-sm" :class="{'is-invalid': errors.has('edit.password')}" v-validate="'required|min:6|max:20'"
+                    <input type="password" id="edit-password" name="password" placeholder="" data-vv-as="Password" data-vv-scope="edit"
+                        class="form-control form-control-sm" :class="{'is-invalid': errors.has('edit.password')}" v-validate="'min:6|max:20|confirmed:edit-password_confirmation'"
                         v-model="edit.password" @focus="$validator.errors.removeById('res-edit-password')">
                     <div class="invalid-feedback" v-text="errors.first('edit.password')"></div>
                 </div>
@@ -52,10 +52,7 @@
                     <label for="edit-password_confirmation" class="col-form-label col-form-label-sm">Password Confirmation</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="password" id="edit-password_confirmation" name="password_confirmation" placeholder="" data-vv-as="Password Confirmation"
-                        data-vv-scope="edit" class="form-control form-control-sm" :class="{'is-invalid': errors.has('edit.password_confirmation')}"
-                        v-validate="'required|min:6|max:20|confirmed:edit_password'" v-model="edit.password_confirmation" @focus="$validator.errors.removeById('res-edit-password_confirmation')">
-                    <div class="invalid-feedback" v-text="errors.first('edit.password_confirmation')"></div>
+                    <input type="password" id="edit-password_confirmation" name="edit-password_confirmation" placeholder="" class="form-control form-control-sm" v-model="edit.password_confirmation">
                 </div>
             </div>
 
@@ -72,8 +69,8 @@
             </div>
         </div>
         <div class="card-footer">
-            <a href="#" class="text-secondary mr-4 btn-offcanvas-close">Close</a>
-            <a href="#" class="text-primary mr-4" @click="edit_onSubmit('edit')">Save</a>
+            <a href="javascript:;" class="text-secondary mr-4 btn-offcanvas-close">Close</a>
+            <a href="javascript:;" class="text-primary mr-4" @click="edit_onSubmit('edit')">Save</a>
         </div>
     </div>
 </div>

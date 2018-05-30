@@ -40,7 +40,7 @@ class AccountsController extends Controller
     public function __construct(AccountRepository $repository, AccountValidator $validator)
     {
         $this->repository = $repository;
-        $this->validator  = $validator;
+        $this->validator = $validator;
     }
 
     /**
@@ -82,7 +82,7 @@ class AccountsController extends Controller
 
             $response = [
                 'message' => 'Account created.',
-                'data'    => $account->toArray(),
+                'data' => $account->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -94,7 +94,7 @@ class AccountsController extends Controller
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
-                    'error'   => true,
+                    'error' => true,
                     'message' => $e->getMessageBag()
                 ]);
             }
@@ -134,7 +134,7 @@ class AccountsController extends Controller
     public function edit($id)
     {
         $account = $this->repository->find($id);
-        
+
         if (request()->wantsJson()) {
 
             return response()->json([
@@ -159,13 +159,21 @@ class AccountsController extends Controller
     {
         try {
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
+            $this->validator->with($request->all())->setId($id)->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-            $account = $this->repository->update($request->all(), $id);
+            if ($request->password != null) {
+
+                $request->merge(['password' => bcrypt($request->password)]);
+
+                $account = $this->repository->update($request->all(), $id);
+            } else {
+                
+                $account = $this->repository->update($request->except('password'), $id);
+            }
 
             $response = [
                 'message' => 'Account updated.',
-                'data'    => $account->toArray(),
+                'data' => $account->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -179,7 +187,7 @@ class AccountsController extends Controller
             if ($request->wantsJson()) {
 
                 return response()->json([
-                    'error'   => true,
+                    'error' => true,
                     'message' => $e->getMessageBag()
                 ]);
             }
@@ -215,7 +223,7 @@ class AccountsController extends Controller
     {
         $model = Account::query();
         return Datatables::eloquent($model)
-        ->setTransformer(new AccountTransformer)
-        ->make(true);
+            ->setTransformer(new AccountTransformer)
+            ->make(true);
     }
 }

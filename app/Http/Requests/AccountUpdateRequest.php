@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AccountUpdateRequest extends FormRequest
 {
@@ -31,7 +32,7 @@ class AccountUpdateRequest extends FormRequest
                 'max:255',
                 Rule::unique('users')->ignore($this->id),
             ],
-            'password' => 'required|min:6|max:255|confirmed',
+            'password' => 'nullable|min:6|max:255|confirmed',
             'status' => 'required|boolean',
         ];
     }

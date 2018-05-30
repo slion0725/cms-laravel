@@ -29,7 +29,6 @@ export default {
       axios
         .get(`accounts/${id}`)
         .then(response => {
-          console.log(response);
           Object.assign(this.show, response.data.data);
         })
         .catch(error => {

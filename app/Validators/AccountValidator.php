@@ -18,7 +18,17 @@ class AccountValidator extends LaravelValidator
      * @var array
      */
     protected $rules = [
-        ValidatorInterface::RULE_CREATE => [],
-        ValidatorInterface::RULE_UPDATE => [],
+        ValidatorInterface::RULE_CREATE => [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users,email',
+            'password' => 'required',
+            'status' => 'required|boolean',
+        ],
+        ValidatorInterface::RULE_UPDATE => [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users,email',
+            'password' => 'nullable',
+            'status' => 'required|boolean',
+        ],
     ];
 }
