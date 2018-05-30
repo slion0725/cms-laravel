@@ -25,7 +25,7 @@
                     <div class="collapse layer-color collapse-management{{in_array(Route::currentRouteName(),['accounts.index']) ? ' show' : ''}}" data-parent=".collapse-parent">
                         <ul class="nav flex-column">
                             <li>
-                                <a href="accounts" class="nav-link{{Route::currentRouteName() == 'accounts.index' ? ' active' : ''}}">Accounts</a>
+                                <a href="{{ route('accounts.index') }}" class="nav-link{{Route::currentRouteName() == 'accounts.index' ? ' active' : ''}}">Accounts</a>
                             </li>
                             <li>
                                 <a href="javascript:;" class="nav-link">Assign Roles</a>
