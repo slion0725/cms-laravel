@@ -22,10 +22,17 @@ vendor/caouecs/laravel-lang/src/zh-TW (copy) resources/lang/zh-TW
 ----------------------------------------------------------------------------------------------------
 davejamesmiller/laravel-breadcrumbs -> 麵包屑
 
+cmd -> composer require davejamesmiller/laravel-breadcrumbs
+
+cmd -> php artisan vendor:publish --provider="DaveJamesMiller\Breadcrumbs\BreadcrumbsServiceProvider"
+
+config/breadcrumbs.php -> 'view' => 'components.breadcrumb',
+
 cmd -> routes/breadcrumbs.php
 
+blade -> {{ Breadcrumbs::render(Route::currentRouteName()) }}
 
-
+seo -> {{ Breadcrumbs::view('breadcrumbs::json-ld', Route::currentRouteName()) }}
 
 ----------------------------------------------------------------------------------------------------
 garygreen/pretty-routes -> 路由清單
@@ -42,7 +49,7 @@ intervention/image -> 圖片操作庫
 
 cmd -> composer require intervention/image
 
-/Users/miles/Desktop/work/cms-laravel/config/app.php ->
+config/app.php ->
     aliases ->
         // intervention/image
         'Image' => Intervention\Image\Facades\Image::class,

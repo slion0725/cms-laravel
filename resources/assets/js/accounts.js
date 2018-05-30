@@ -133,7 +133,7 @@ new Vue({
               });
             });
 
-            swal("Warning!", error.response.data.message, "warning");
+            // swal("Warning!", error.response.data.message, "warning");
           });
       });
     },
@@ -167,7 +167,7 @@ new Vue({
               });
             });
 
-            swal("Warning!", error.response.data.message, "warning");
+            // swal("Warning!", error.response.data.message, "warning");
           });
       });
     }

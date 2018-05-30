@@ -9,7 +9,7 @@
 
 @section('content')
 <div class="container-fluid">
-    @include('components.breadcrumb')
+    {{ Breadcrumbs::render(Route::currentRouteName()) }}
     <!-- button -->
     <div class="scroll-btn">
         <v-datatables-page-length-btn></v-datatables-page-length-btn>

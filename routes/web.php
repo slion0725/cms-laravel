@@ -16,7 +16,7 @@
 // })->name('index');
 
 Route::view('/', 'index')->name('index');
-Route::view('/dashboard', 'dashboard')->name('dashboard');
+Route::view('/dashboard', 'dashboard')->name('dashboard.index');
 
 Auth::routes();
 

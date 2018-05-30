@@ -5,6 +5,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<!-- seo -->
+{{ Breadcrumbs::view('breadcrumbs::json-ld', Route::currentRouteName()) }}
 <title>Title</title>
 <!-- link -->
 <link rel="icon" href="">
