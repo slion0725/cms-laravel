@@ -13,7 +13,7 @@ app/Providers/AppServiceProvider.php ->
     use URL;
     boot() ->
         // for Https
-        // URL::forceScheme('https');
+        URL::forceScheme('https');
 ----------------------------------------------------------------------------------------------------
 storage/app/public/ (link) public/storage -> php artisan storage:link
 ----------------------------------------------------------------------------------------------------

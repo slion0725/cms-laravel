@@ -12,7 +12,7 @@
             <div class="form-group">
                 <label for="name" class="col-form-label col-form-label-sm">Name</label>
                 <input type="name" id="name" name="name" placeholder="" value="{{ old('name') }}" class="form-control form-control-sm{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                    :class="{'is-invalid': errors.has('name')}" data-vv-as="Name" v-validate="'required'" v-model="form.name">
+                    :class="{'is-invalid': errors.has('name')}" data-vv-as="Name" v-validate="'required'">
                 <div class="invalid-feedback" v-text="errors.first('name')"></div>
                 <div class="invalid-feedback" v-show="!errors.has('name')">{{ $errors->first('name') }}</div>
             </div>
@@ -20,7 +20,7 @@
             <div class="form-group">
                 <label for="email" class="col-form-label col-form-label-sm">Email</label>
                 <input type="email" id="email" name="email" placeholder="" value="{{ old('email') }}" class="form-control form-control-sm{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                    :class="{'is-invalid': errors.has('email')}" data-vv-as="Email" v-validate="'required|email'" v-model="form.email">
+                    :class="{'is-invalid': errors.has('email')}" data-vv-as="Email" v-validate="'required|email'">
                 <div class="invalid-feedback" v-text="errors.first('email')"></div>
                 <div class="invalid-feedback" v-show="!errors.has('email')">{{ $errors->first('email') }}</div>
             </div>
@@ -28,16 +28,14 @@
             <div class="form-group">
                 <label for="password" class="col-form-label col-form-label-sm">Password</label>
                 <input type="password" id="password" name="password" placeholder="" class="form-control form-control-sm{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                    :class="{'is-invalid': errors.has('password')}" data-vv-as="Password" v-validate="'required'" v-model="form.password">
+                    :class="{'is-invalid': errors.has('password')}" data-vv-as="Password" v-validate="'required|min:6|max:20|confirmed:password_confirmation'">
                 <div class="invalid-feedback" v-text="errors.first('password')"></div>
                 <div class="invalid-feedback" v-show="!errors.has('password')">{{ $errors->first('password') }}</div>
             </div>
 
             <div class="form-group">
                 <label for="password_confirmation" class="col-form-label col-form-label-sm">Confirm Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation" placeholder="" class="form-control form-control-sm{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}"
-                    :class="{'is-invalid': errors.has('password_confirmation')}" data-vv-as="Confirm Password" v-validate="'required|confirmed:password'"
-                    v-model="form.password_confirmation">
+                <input type="password" id="password_confirmation" name="password_confirmation" placeholder="" class="form-control form-control-sm">
             </div>
 
             <div class="form-group">

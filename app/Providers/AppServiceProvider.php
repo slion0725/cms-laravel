@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 // league/glide + league/glide-laravel
 use League\Glide\ServerFactory;
 use League\Glide\Responses\LaravelResponseFactory;
+use URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +17,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // for Https
+        URL::forceScheme('https');
     }
 
     /**

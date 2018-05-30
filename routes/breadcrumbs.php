@@ -4,6 +4,16 @@ Breadcrumbs::for('index', function ($trail) {
     $trail->push('Index', route('index'));
 });
 
+Breadcrumbs::for('login', function ($trail) {
+    $trail->parent('index');
+    $trail->push('Login', route('login'));
+});
+
+Breadcrumbs::for('register', function ($trail) {
+    $trail->parent('index');
+    $trail->push('Register', route('register'));
+});
+
 Breadcrumbs::for('dashboard.index', function ($trail) {
     $trail->push('Dashboard', route('dashboard.index'));
 });

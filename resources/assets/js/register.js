@@ -18,9 +18,6 @@ import Vue from "../plugins/vue";
  */
 new Vue({
   el: "#app",
-  data: {
-    form: {}
-  },
   methods: {
     onSubmit() {
       this.$validator.validate().then(result => {

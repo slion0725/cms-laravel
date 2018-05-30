@@ -1,7 +1,9 @@
 <nav class="navbar">
     <!-- nav left -->
     <div>
-        <a href="javascript:;" class="mdi mdi-menu mr-1 offcanvas-toggle" data-offcanvas="offcanvas-menu"></a>
+        @auth
+            <a href="javascript:;" class="mdi mdi-menu mr-1 offcanvas-toggle" data-offcanvas="offcanvas-menu"></a>
+        @endauth
         <a href="{{ route('index') }}" class="font-weight-bold">CMS</a>
     </div>
     <!-- nav right -->
