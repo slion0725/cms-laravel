@@ -105,9 +105,9 @@
             </div>
         </div>
         <div class="card-footer">
-            <a href="#" class="text-secondary mr-4 btn-offcanvas-close">Close</a>
-            <a href="#" class="text-primary mr-4" @click="search_emit(search)">Search</a>
-            <a href="#" class="text-info mr-4" @click="search_clear(search)">Clear</a>
+            <a href="javascript:;" class="text-secondary mr-4 btn-offcanvas-close">Close</a>
+            <a href="javascript:;" class="text-primary mr-4" @click="search_emit(search)">Search</a>
+            <a href="javascript:;" class="text-info mr-4" @click="search_clear(search)">Clear</a>
         </div>
     </div>
 </div>

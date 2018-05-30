@@ -47,8 +47,8 @@
             </div>
         </div>
         <div class="card-footer">
-            <a href="#" class="text-secondary mr-4 btn-offcanvas-close">Close</a>
-            <a href="#" class="text-primary mr-4">Save</a>
+            <a href="javascript:;" class="text-secondary mr-4 btn-offcanvas-close">Close</a>
+            <a href="javascript:;" class="text-primary mr-4">Save</a>
         </div>
     </div>
 </div>

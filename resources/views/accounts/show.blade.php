@@ -18,7 +18,7 @@
                 <hr>
 
                 <dt>Status</dt>
-                <dd v-text="show.status"></dd>
+                <dd v-text="show.status == 1 ? 'On' : 'Off'"></dd>
                 <hr>
 
                 <dt>Created At</dt>
@@ -31,7 +31,7 @@
             </dl>
         </div>
         <div class="card-footer">
-            <a href="#" class="text-secondary mr-4 btn-offcanvas-close">Close</a>
+            <a href="javascript:;" class="text-secondary mr-4 btn-offcanvas-close">Close</a>
         </div>
     </div>
 </div>
