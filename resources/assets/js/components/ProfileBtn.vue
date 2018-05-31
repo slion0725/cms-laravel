@@ -6,15 +6,18 @@
 
 <script>
 import $ from "jquery";
+import axios from "axios";
 export default {
   methods: {
     profile_emit() {
-      this.$store.dispatch("profile/profile", {
-        name: "a",
-        email: "b",
-        password: null,
-        password_confirmation: null
-      });
+      axios
+        .get(`accounts/1/edit`)
+        .then(response => {
+          this.$store.dispatch("profile/profile", response.data.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
       $(".off-canvas").removeClass("off-canvas-open");
       $("#offcanvas-profile").toggleClass("off-canvas-open");
     }
