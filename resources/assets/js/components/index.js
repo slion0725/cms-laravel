@@ -11,4 +11,9 @@ Vue.component("v-datatables-show-btn", require("./DatatablesShowBtn.vue"));
 Vue.component("v-datatables-add-btn", require("./DatatablesAddBtn.vue"));
 Vue.component("v-datatables-edit-btn", require("./DatatablesEditBtn.vue"));
 Vue.component("v-datatables-delete-btn", require("./DatatablesDeleteBtn.vue"));
-Vue.component("v-datatables-download-btn", require("./DatatablesDownloadBtn.vue"));
+Vue.component(
+  "v-datatables-download-btn",
+  require("./DatatablesDownloadBtn.vue")
+);
+Vue.component("v-profile-btn", require("./ProfileBtn.vue"));
+Vue.component("v-profile", require("./Profile.vue"));

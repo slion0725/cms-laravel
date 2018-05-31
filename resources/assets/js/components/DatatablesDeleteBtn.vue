@@ -13,7 +13,7 @@ import swal from "sweetalert2";
 axios.defaults.headers["Accept"] = "application/json";
 
 export default {
-  computed: mapGetters(["selectRowsLength", "selectRows"]),
+  computed: mapGetters("datatables", ["selectRowsLength", "selectRows"]),
   methods: {
     delete_emit() {
       if (this.selectRowsLength != 1) {
@@ -39,7 +39,7 @@ export default {
               _method: "DELETE"
             })
             .then(response => {
-              this.$store.dispatch("draw");
+              this.$store.dispatch("datatables/draw");
               swal("Deleted!", "Your file has been deleted.", "success");
             })
             .catch(error => {

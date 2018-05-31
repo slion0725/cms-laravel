@@ -11,7 +11,7 @@ const state = {
 };
 
 const getters = {
-  selectStatus: state => {
+  selectStatus: (state, getters, rootState, rootGetters) => {
     return state.selectStatus;
   },
   selectRowsLength: state => {
@@ -26,7 +26,7 @@ const getters = {
 };
 
 const actions = {
-  datatables_init: ({ commit }, payload) =>
+  datatables_init: ({ dispatch, commit, getters, rootGetters }, payload) =>
     commit(types.DATATABLES_INIT, payload),
   select_toggle: ({ commit }) => commit(types.SELECT_TOGGLE),
   select_check: ({ commit }) => commit(types.SELECT_CHECK),
@@ -71,6 +71,7 @@ const mutations = {
   },
   [types.PAGE_LENGTH_CHANGE](state, payload) {
     state.dt.page.len(payload).draw();
+    state.pageLength = payload;
   },
   [types.SEARCH_EMIT](state, payload) {
     let data = JSON.parse(JSON.stringify(payload));
@@ -127,6 +128,7 @@ const mutations = {
 };
 
 export default {
+  namespaced: true,
   state,
   getters,
   actions,

@@ -7,3 +7,5 @@ export const SEARCH_EMIT = 'search_emit'
 export const SEARCH_CLEAR = 'search_clear'
 export const DOWNLOAD = 'download'
 export const DRAW = 'draw'
+// proifle
+export const PROFILE = 'profile'

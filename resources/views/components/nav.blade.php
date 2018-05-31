@@ -22,9 +22,10 @@
                     <span>{{ Auth::user()->name }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a href="javascript:;" class="dropdown-item offcanvas-toggle" data-offcanvas="offcanvas-profile">
+                    {{-- <a href="javascript:;" class="dropdown-item offcanvas-toggle" data-offcanvas="offcanvas-profile">
                         <i class="mdi mdi-account mr-1"></i>Profile
-                    </a>
+                    </a> --}}
+                    <v-profile-btn></v-profile-btn>
                     <div class="dropdown-divider"></div>
                     <a href="javascript:;" class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                         <i class="mdi mdi-logout-variant mr-1"></i>Logout

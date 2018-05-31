@@ -1,5 +1,5 @@
 <template>
-  <a href="#" class="btn-item" @click="search_emit">
+  <a href="javascript:;" class="btn-item" @click="search_emit">
       <i class="mdi mdi-magnify mr-1"></i>Search
   </a>
 </template>

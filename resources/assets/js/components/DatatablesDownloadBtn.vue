@@ -9,7 +9,7 @@ import $ from "jquery";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-  computed: mapGetters(["selectRowsLength"]),
-  methods: mapActions(["download"]),
+  computed: mapGetters("datatables", ["selectRowsLength"]),
+  methods: mapActions("datatables", ["download"]),
 };
 </script>

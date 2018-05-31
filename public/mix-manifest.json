@@ -1,8 +1,8 @@
 {
     "/js/vendor.js": "/js/vendor.js?id=64a0b07394807dff9ce8",
     "/js/vendor.js.map": "/js/vendor.js.map?id=7202b7053571a151d3eb",
-    "/js/accounts.js": "/js/accounts.js?id=809a81cc96fb2fb9c050",
-    "/js/accounts.js.map": "/js/accounts.js.map?id=d831016d5fd309e32151",
+    "/js/accounts.js": "/js/accounts.js?id=251d07aa332ad7ca80c0",
+    "/js/accounts.js.map": "/js/accounts.js.map?id=1c9a06821befb5c3e224",
     "/js/index.js": "/js/index.js?id=b8c01fcc6a07864a41cb",
     "/css/index.css": "/css/index.css?id=34e197c8d486782b721e",
     "/css/login.css": "/css/login.css?id=abde0a3f5c0f5e4c75a1",
@@ -17,10 +17,10 @@
     "/css/accounts.css.map": "/css/accounts.css.map?id=7ef68afdcaf3eb0b2e1e",
     "/js/dashboard.js": "/js/dashboard.js?id=83545bd8da58462d963c",
     "/js/dashboard.js.map": "/js/dashboard.js.map?id=1be38c5ed48b9adc90b1",
-    "/js/register.js": "/js/register.js?id=09a86268be5e83a6345e",
-    "/js/register.js.map": "/js/register.js.map?id=0a932fc8ff8a64f6073e",
-    "/js/login.js": "/js/login.js?id=8f8121b86eae5c532dd4",
-    "/js/login.js.map": "/js/login.js.map?id=5a488210d1b5c4392ed3",
+    "/js/register.js": "/js/register.js?id=0ea6904afd3a4cd56bb9",
+    "/js/register.js.map": "/js/register.js.map?id=a09b7d56d861e61f3247",
+    "/js/login.js": "/js/login.js?id=3c10f976858be21b8916",
+    "/js/login.js.map": "/js/login.js.map?id=a04a437b0766359ec21b",
     "/js/manifest.js": "/js/manifest.js?id=5fdd852f719d07682b00",
-    "/js/manifest.js.map": "/js/manifest.js.map?id=1273e55f3a6c2357d732"
+    "/js/manifest.js.map": "/js/manifest.js.map?id=20ce6c6c6b7c1ca909cd"
 }

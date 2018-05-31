@@ -17,7 +17,7 @@ export default {
       required: true
     }
   },
-  computed: mapGetters(["selectRowsLength", "selectRows"]),
+  computed: mapGetters("datatables", ["selectRowsLength", "selectRows"]),
   methods: {
     edit_emit() {
       if (this.selectRowsLength != 1) {
