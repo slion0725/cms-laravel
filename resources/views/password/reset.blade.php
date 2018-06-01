@@ -9,6 +9,8 @@
                 <h3 class="h3 mb-3 font-weight-normal">Reset Password</h3>
             </div>
 
+            <input type="hidden" name="token" value="{{ $token }}">
+
             <div class="form-group">
                 <label for="email" class="col-form-label col-form-label-sm">Email</label>
                 <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control form-control-sm{{ $errors->has('email') ? ' is-invalid' : '' }}"
@@ -29,7 +31,7 @@
                 <label for="password_confirmation" class="col-form-label col-form-label-sm">Confirm Password</label>
                 <input type="password" id="password_confirmation" name="password_confirmation" class="form-control form-control-sm">
             </div>
-            
+
             <div class="form-group">
                 <button class="btn btn-sm btn-primary btn-block" type="submit">Reset Password</button>
             </div>

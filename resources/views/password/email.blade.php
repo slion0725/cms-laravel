@@ -20,6 +20,12 @@
             <div class="form-group">
                 <button class="btn btn-sm btn-primary btn-block" type="submit">Send Password Reset Link</button>
             </div>
+
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
         </form>
     </div>
 </div>
