@@ -49,7 +49,24 @@ app/Http/Controllers/Auth/RegisterController.php ->
 ----------------------------------------------------------------------------------------------------
 password/reset
 app/Http/Controllers/Auth/ForgotPasswordController.php ->
+
     public function showLinkRequestForm()
     {
-        return view('auth.passwords.email');
+        return view('password.email');
+    }
+
+----------------------------------------------------------------------------------------------------
+password/reset/{token?}
+
+Route::get('password/reset/{token?}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+
+app/Http/Controllers/Auth/ResetPasswordController.php ->
+
+    protected $redirectTo = '/dashboard';
+
+    public function showResetForm(Request $request, $token = null)
+    {
+        return view('password.reset')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
     }
