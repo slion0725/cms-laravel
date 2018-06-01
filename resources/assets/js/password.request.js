@@ -4,7 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 /**
  * style
  */
-// import "../scss/dashboard.scss";
+// import "../scss/password.request.scss";
 /**
  * plugin
  */
@@ -16,14 +16,16 @@ import Vue from "../plugins/vue";
 /**
  * script
  */
-// vue
 new Vue({
   el: "#app",
-  data: {
+  methods: {
+    onSubmit() {
+      this.$validator.validate().then(result => {
+        if (!result) {
+          return;
+        }
+        this.$refs.reset.submit();
+      });
+    }
   }
 });
-
-// layout
-import { offCanvas, navtabsScroll } from "./components/layout";
-offCanvas();
-navtabsScroll();

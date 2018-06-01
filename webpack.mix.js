@@ -24,12 +24,15 @@ mix
   // register
   .js("resources/assets/js/register.js", "public/js")
   .sass("resources/assets/sass/register.scss", "public/css")
+  // password.request
+  .js("resources/assets/js/password.request.js", "public/js")
+  .sass("resources/assets/sass/password.request.scss", "public/css")
   // dashboard
-  .js("resources/assets/js/dashboard.js", "public/js")
-  .sass("resources/assets/sass/dashboard.scss", "public/css")
+  .js("resources/assets/js/dashboard.index.js", "public/js")
+  .sass("resources/assets/sass/dashboard.index.scss", "public/css")
   // accounts
-  .js("resources/assets/js/accounts.js", "public/js")
-  .sass("resources/assets/sass/accounts.scss", "public/css")
+  .js("resources/assets/js/accounts.index.js", "public/js")
+  .sass("resources/assets/sass/accounts.index.scss", "public/css")
   // autoload
   // .autoload({
   //   jquery: ['$','jQuery'],

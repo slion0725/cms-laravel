@@ -45,3 +45,11 @@ app/Http/Controllers/Auth/RegisterController.php ->
     {
         return view('register');
     }
+
+----------------------------------------------------------------------------------------------------
+password/reset
+app/Http/Controllers/Auth/ForgotPasswordController.php ->
+    public function showLinkRequestForm()
+    {
+        return view('auth.passwords.email');
+    }

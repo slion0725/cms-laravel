@@ -4,7 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 /**
  * style
  */
-// import "../scss/accounts.scss";
+// import "../scss/accounts.index.scss";
 /**
  * plugin
  */

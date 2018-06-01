@@ -14,6 +14,11 @@ Breadcrumbs::for('register', function ($trail) {
     $trail->push('Register', route('register'));
 });
 
+Breadcrumbs::for('password.request', function ($trail) {
+    $trail->parent('index');
+    $trail->push('Reset', route('password.request'));
+});
+
 Breadcrumbs::for('dashboard.index', function ($trail) {
     $trail->push('Dashboard', route('dashboard.index'));
 });

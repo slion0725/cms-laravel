@@ -1,7 +1,10 @@
 route-auth-setting
 ----------------------------------------------------------------------------------------------------
 Auth Routes
-Auth::routes(); 等於vendor/laravel/framework/src/Illuminate/Routing/Router.php
+routes/web.php ->
+//Auth::routes();
+
+vendor/laravel/framework/src/Illuminate/Routing/Router.php -> copy
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
