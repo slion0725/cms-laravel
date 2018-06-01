@@ -6,15 +6,13 @@
     "/css/login.css": "/css/login.css",
     "/css/register.css": "/css/register.css",
     "/css/password.request.css": "/css/password.request.css",
+    "/css/password.reset.css": "/css/password.reset.css",
     "/css/dashboard.index.css": "/css/dashboard.index.css",
     "/css/accounts.index.css": "/css/accounts.index.css",
     "/js/dashboard.index.js": "/js/dashboard.index.js",
     "/js/register.js": "/js/register.js",
+    "/js/password.reset.js": "/js/password.reset.js",
     "/js/password.request.js": "/js/password.request.js",
     "/js/login.js": "/js/login.js",
-    "/js/manifest.js": "/js/manifest.js",
-    "/5.8036d098ab80643f1751.hot-update.js": "/5.8036d098ab80643f1751.hot-update.js",
-    "/5.a293a8bd6952b6651e84.hot-update.js": "/5.a293a8bd6952b6651e84.hot-update.js",
-    "/3.9731e98a812e629f9752.hot-update.js": "/3.9731e98a812e629f9752.hot-update.js",
-    "/1.0deabf7110c80349a798.hot-update.js": "/1.0deabf7110c80349a798.hot-update.js"
+    "/js/manifest.js": "/js/manifest.js"
 }

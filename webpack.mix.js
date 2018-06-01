@@ -27,6 +27,9 @@ mix
   // password.request
   .js("resources/assets/js/password.request.js", "public/js")
   .sass("resources/assets/sass/password.request.scss", "public/css")
+  // password.reset
+  .js("resources/assets/js/password.reset.js", "public/js")
+  .sass("resources/assets/sass/password.reset.scss", "public/css")
   // dashboard
   .js("resources/assets/js/dashboard.index.js", "public/js")
   .sass("resources/assets/sass/dashboard.index.scss", "public/css")

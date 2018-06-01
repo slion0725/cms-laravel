@@ -2,16 +2,16 @@
 @section('content')
 <div class="d-flex justify-content-center">
     <div style="max-width: 327px;width: 327px;" class="m-4">
-        <form action="login" autocomplete="off" method="POST" novalidate ref="reset" @submit.prevent="onSubmit">
+        <form action="{{ route('password.email') }}" autocomplete="off" method="POST" novalidate ref="request" @submit.prevent="onSubmit">
             @csrf
-            
+
             <div class="text-center mb-4">
                 <h3 class="h3 mb-3 font-weight-normal">Reset Password</h3>
             </div>
 
             <div class="form-group">
                 <label for="email" class="col-form-label col-form-label-sm">Email</label>
-                <input type="email" id="email" name="email" placeholder="" class="form-control form-control-sm{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control form-control-sm{{ $errors->has('email') ? ' is-invalid' : '' }}"
                     :class="{'is-invalid': errors.has('email')}" data-vv-as="Email" v-validate="'required|email'">
                 <div class="invalid-feedback" v-text="errors.first('email')"></div>
                 <div class="invalid-feedback" v-show="!errors.has('email')">{{ $errors->first('email') }}</div>

@@ -4,7 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 /**
  * style
  */
-// import "../scss/password.request.scss";
+// import "../scss/password.reset.scss";
 /**
  * plugin
  */
@@ -24,7 +24,7 @@ new Vue({
         if (!result) {
           return;
         }
-        this.$refs.request.submit();
+        this.$refs.reset.submit();
       });
     }
   }

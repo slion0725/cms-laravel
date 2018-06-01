@@ -15,8 +15,13 @@ Breadcrumbs::for('register', function ($trail) {
 });
 
 Breadcrumbs::for('password.request', function ($trail) {
-    $trail->parent('index');
+    $trail->parent('login');
     $trail->push('Reset', route('password.request'));
+});
+
+Breadcrumbs::for('password.reset', function ($trail) {
+    $trail->parent('password.request');
+    $trail->push('Reset', route('password.reset'));
 });
 
 Breadcrumbs::for('dashboard.index', function ($trail) {
