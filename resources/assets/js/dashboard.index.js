@@ -13,14 +13,15 @@ import "popper.js";
 import "bootstrap";
 import "holderjs";
 import Vue from "../plugins/vue";
+import "./components";
+import store from "./components/store";
 /**
  * script
  */
 // vue
 new Vue({
   el: "#app",
-  data: {
-  }
+  store
 });
 
 // layout

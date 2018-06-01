@@ -1,27 +1,27 @@
 <script>
-import { mapGetters, mapState } from "vuex";
+// import { mapGetters, mapState } from "vuex";
+import axios from "axios";
+import swal from "sweetalert2";
+axios.defaults.headers["Accept"] = "application/json";
 export default {
-  computed: mapGetters("profile", ["profile"]),
+  props: {
+    profile: {
+      type: Object,
+      required: true
+    }
+  },
+  // computed: mapGetters("profile", ["profile"]),
   methods: {
     onSubmit(scope) {
       this.$validator.validateAll(scope).then(result => {
         if (!result) {
           return;
         }
-
+        
         axios
-          .post(`accounts/${this.edit.id}`, this.edit)
+          .post(`accounts/${this.profile.id}`, {...this.profile, _method: "PUT"})
           .then(response => {
-            this.$store.dispatch("draw");
-
             swal("Success!", "", "success");
-
-            this.edit = _.cloneDeep(data.edit);
-
-            this.$nextTick(() => {
-              this.$validator.reset({ scope: scope });
-              this.$validator.errors.clear(scope);
-            });
           })
           .catch(error => {
             Object.keys(error.response.data.errors).forEach(e => {
