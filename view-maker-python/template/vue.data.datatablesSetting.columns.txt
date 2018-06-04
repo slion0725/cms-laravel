@@ -1,0 +1,6 @@
+{
+    data: "$id",
+    name: "$id",
+    title: "$name",
+    searchable: true
+},

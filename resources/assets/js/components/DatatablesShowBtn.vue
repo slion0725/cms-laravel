@@ -15,9 +15,13 @@ export default {
     show: {
       type: Object,
       required: true
+    },
+    path: {
+      type: String,
+      required: true
     }
   },
-  computed: mapGetters('datatables',["selectRowsLength", "selectRows"]),
+  computed: mapGetters("datatables", ["selectRowsLength", "selectRows"]),
   methods: {
     show_emit() {
       if (this.selectRowsLength != 1) {
@@ -27,7 +31,7 @@ export default {
       let id = this.selectRows[0].id;
 
       axios
-        .get(`accounts/${id}`)
+        .get(`${this.path}/${id}`)
         .then(response => {
           Object.assign(this.show, response.data.data);
         })

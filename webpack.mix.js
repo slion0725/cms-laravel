@@ -36,17 +36,34 @@ mix
   // accounts
   .js("resources/assets/js/accounts.index.js", "public/js")
   .sass("resources/assets/sass/accounts.index.scss", "public/css")
+  // activity_log
+  .js("resources/assets/js/activity-log.index.js", "public/js")
+  .sass("resources/assets/sass/activity-log.index.scss", "public/css")
   // autoload
   // .autoload({
   //   jquery: ['$','jQuery'],
   // })
   // extract
   .extract([
+    "axios",
+    "bootstrap",
+    "datatables.net",
+    "datatables.net-bs4",
+    "datatables.net-colreorder",
+    "datatables.net-colreorder-bs4",
+    "datatables.net-fixedcolumns",
+    "datatables.net-fixedcolumns-bs4",
+    "datatables.net-select",
+    "datatables.net-select-bs4",
+    "file-saver",
+    "holderjs",
+    "jquery",
+    "jquery-mousewheel",
     "lodash",
     "moment",
-    "jquery",
+    "papaparse",
     "popper.js",
-    "bootstrap",
+
     "vue",
     "vuex",
     "vee-validate",

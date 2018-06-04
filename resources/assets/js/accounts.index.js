@@ -101,9 +101,9 @@ new Vue({
   el: "#app",
   store,
   data: _.cloneDeep(data),
-  computed: { ...mapGetters(["selectRowsLength"]) },
+  computed: { ...mapGetters("datatables", ["selectRowsLength"]) },
   methods: {
-    ...mapActions(["search_emit", "search_clear"]),
+    ...mapActions("datatables", ["search_emit", "search_clear"]),
     add_onSubmit(scope) {
       this.$validator.validateAll(scope).then(result => {
         if (!result) {
@@ -114,6 +114,7 @@ new Vue({
           .post(`accounts`, this.add)
           .then(response => {
             this.$store.dispatch("draw");
+
             swal("Success!", "", "success");
 
             this.add = _.cloneDeep(data.add);

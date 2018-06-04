@@ -14,6 +14,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="form-group row">
                 <div class="col-sm-3">
                     <label for="search-id" class="col-form-label col-form-label-sm">ID</label>
@@ -29,6 +30,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="form-group row">
                 <div class="col-sm-3">
                     <label for="search-name" class="col-form-label col-form-label-sm">Name</label>
@@ -44,6 +46,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="form-group row">
                 <div class="col-sm-3">
                     <label for="search-email" class="col-form-label col-form-label-sm">Email</label>
@@ -59,6 +62,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="form-group row">
                 <div class="col-sm-3">
                     <label for="search-status" class="col-form-label col-form-label-sm">Status</label>
@@ -73,6 +77,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="form-group row">
                 <div class="col-sm-3">
                     <label for="search-created_at" class="col-form-label col-form-label-sm">Created At</label>
@@ -88,6 +93,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="form-group row">
                 <div class="col-sm-3">
                     <label for="search-updated_at" class="col-form-label col-form-label-sm">Updated At</label>

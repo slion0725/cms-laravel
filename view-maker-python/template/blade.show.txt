@@ -1,0 +1,3 @@
+<dt>$name</dt>
+<dd v-text="show.$id"></dd>
+<hr>

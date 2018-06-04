@@ -1,0 +1,296 @@
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-id" class="col-form-label col-form-label-sm">ID</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input type="text" class="form-control form-control-sm" id="search-id" v-model="search.id.value">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" v-model="search.id.regex">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-log_name" class="col-form-label col-form-label-sm">Log Name</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input type="text" class="form-control form-control-sm" id="search-log_name" v-model="search.log_name.value">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" v-model="search.log_name.regex">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-description" class="col-form-label col-form-label-sm">Description</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input type="text" class="form-control form-control-sm" id="search-description" v-model="search.description.value">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" v-model="search.description.regex">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-subject_id" class="col-form-label col-form-label-sm">Subject ID</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input type="text" class="form-control form-control-sm" id="search-subject_id" v-model="search.subject_id.value">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" v-model="search.subject_id.regex">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-subject_type" class="col-form-label col-form-label-sm">Subject Type</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input type="text" class="form-control form-control-sm" id="search-subject_type" v-model="search.subject_type.value">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" v-model="search.subject_type.regex">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-causer_id" class="col-form-label col-form-label-sm">Causer ID</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input type="text" class="form-control form-control-sm" id="search-causer_id" v-model="search.causer_id.value">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" v-model="search.causer_id.regex">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-causer_type" class="col-form-label col-form-label-sm">Causer Type</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input type="text" class="form-control form-control-sm" id="search-causer_type" v-model="search.causer_type.value">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" v-model="search.causer_type.regex">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-properties" class="col-form-label col-form-label-sm">Properties</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input type="text" class="form-control form-control-sm" id="search-properties" v-model="search.properties.value">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" v-model="search.properties.regex">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-created_at" class="col-form-label col-form-label-sm">Created At</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input type="text" class="form-control form-control-sm" id="search-created_at" v-model="search.created_at.value">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" v-model="search.created_at.regex">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-updated_at" class="col-form-label col-form-label-sm">Updated At</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <input type="text" class="form-control form-control-sm" id="search-updated_at" v-model="search.updated_at.value">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" v-model="search.updated_at.regex">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+----------------------------------------------------------------------------------------------------
+<dt>ID</dt>
+<dd v-text="show.id"></dd>
+<hr>
+
+<dt>Log Name</dt>
+<dd v-text="show.log_name"></dd>
+<hr>
+
+<dt>Description</dt>
+<dd v-text="show.description"></dd>
+<hr>
+
+<dt>Subject ID</dt>
+<dd v-text="show.subject_id"></dd>
+<hr>
+
+<dt>Subject Type</dt>
+<dd v-text="show.subject_type"></dd>
+<hr>
+
+<dt>Causer ID</dt>
+<dd v-text="show.causer_id"></dd>
+<hr>
+
+<dt>Causer Type</dt>
+<dd v-text="show.causer_type"></dd>
+<hr>
+
+<dt>Properties</dt>
+<dd v-text="show.properties"></dd>
+<hr>
+
+<dt>Created At</dt>
+<dd v-text="show.created_at"></dd>
+<hr>
+
+<dt>Updated At</dt>
+<dd v-text="show.updated_at"></dd>
+<hr>
+
+----------------------------------------------------------------------------------------------------
+'id' => null,
+'log_name' => null,
+'description' => null,
+'subject_id' => null,
+'subject_type' => null,
+'causer_id' => null,
+'causer_type' => null,
+'properties' => null,
+'created_at' => null,
+'updated_at' => null,
+----------------------------------------------------------------------------------------------------
+{
+    data: "id",
+    name: "id",
+    title: "ID",
+    searchable: true
+},
+{
+    data: "log_name",
+    name: "log_name",
+    title: "Log Name",
+    searchable: true
+},
+{
+    data: "description",
+    name: "description",
+    title: "Description",
+    searchable: true
+},
+{
+    data: "subject_id",
+    name: "subject_id",
+    title: "Subject ID",
+    searchable: true
+},
+{
+    data: "subject_type",
+    name: "subject_type",
+    title: "Subject Type",
+    searchable: true
+},
+{
+    data: "causer_id",
+    name: "causer_id",
+    title: "Causer ID",
+    searchable: true
+},
+{
+    data: "causer_type",
+    name: "causer_type",
+    title: "Causer Type",
+    searchable: true
+},
+{
+    data: "properties",
+    name: "properties",
+    title: "Properties",
+    searchable: true
+},
+{
+    data: "created_at",
+    name: "created_at",
+    title: "Created At",
+    searchable: true
+},
+{
+    data: "updated_at",
+    name: "updated_at",
+    title: "Updated At",
+    searchable: true
+},
+----------------------------------------------------------------------------------------------------
+id: { value: "", regex: false },
+log_name: { value: "", regex: false },
+description: { value: "", regex: false },
+subject_id: { value: "", regex: false },
+subject_type: { value: "", regex: false },
+causer_id: { value: "", regex: false },
+causer_type: { value: "", regex: false },
+properties: { value: "", regex: false },
+created_at: { value: "", regex: false },
+updated_at: { value: "", regex: false },
+----------------------------------------------------------------------------------------------------
+id: null,
+log_name: null,
+description: null,
+subject_id: null,
+subject_type: null,
+causer_id: null,
+causer_type: null,
+properties: null,
+created_at: null,
+updated_at: null,
+----------------------------------------------------------------------------------------------------

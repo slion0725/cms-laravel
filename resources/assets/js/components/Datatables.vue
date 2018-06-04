@@ -8,6 +8,7 @@ import "datatables.net";
 import "datatables.net-bs4";
 import "datatables.net-colreorder";
 import "datatables.net-select";
+import "datatables.net-fixedcolumns";
 
 $.fn.dataTableExt.oStdClasses.sWrapper = "dataTables_wrapper dt-bootstrap4";
 $.fn.dataTableExt.oStdClasses.sPageButton = "page-item";
@@ -47,7 +48,12 @@ export default {
           style: "os",
           className: "bg-dark text-white"
         },
-        colReorder: true,
+        colReorder: {
+          fixedColumnsLeft: 1
+        },
+        fixedColumns: {
+          leftColumns: 1
+        },
         scrollX: true,
         scrollY: "calc(100vh - 300px)",
         scrollCollapse: true,

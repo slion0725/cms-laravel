@@ -26,6 +26,8 @@
         "datatables.net-bs4": "^1.10.16",
         "datatables.net-colreorder": "^1.4.1",
         "datatables.net-colreorder-bs4": "^1.4.1",
+        "datatables.net-fixedcolumns": "^3.2.4",
+        "datatables.net-fixedcolumns-bs4": "^3.2.4",
         "datatables.net-select": "^1.2.5",
         "datatables.net-select-bs4": "^1.2.5",
         "file-loader": "^1.1.11",

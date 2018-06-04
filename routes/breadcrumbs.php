@@ -25,10 +25,16 @@ Breadcrumbs::for('password.reset', function ($trail) {
 });
 
 Breadcrumbs::for('dashboard.index', function ($trail) {
+    $trail->parent('index');
     $trail->push('Dashboard', route('dashboard.index'));
 });
 
 Breadcrumbs::for('accounts.index', function ($trail) {
-    $trail->parent('dashboard.index');
+    $trail->parent('index');
     $trail->push('Accounts', route('accounts.index'));
+});
+
+Breadcrumbs::for('activity-log.index', function ($trail) {
+    $trail->parent('index');
+    $trail->push('Activity Log', route('activity-log.index'));
 });
