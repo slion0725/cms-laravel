@@ -8,7 +8,7 @@ class SqlToColumnsClass():
         self.getSql()
 
     def getSql(self):
-        with open('db.sql', 'r') as file:
+        with open('db_in.sql', 'r') as file:
             sqlString = file.read()
         
         sqlList = sqlString.split('`')
@@ -21,7 +21,7 @@ class SqlToColumnsClass():
         self.saveFile()
 
     def saveFile(self):
-        with open('columns.txt', 'w') as file:
+        with open('db_out.txt', 'w') as file:
             file.write(self.output)
 
 tryit = SqlToColumnsClass()

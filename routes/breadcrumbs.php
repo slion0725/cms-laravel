@@ -38,3 +38,8 @@ Breadcrumbs::for('activity-log.index', function ($trail) {
     $trail->parent('index');
     $trail->push('Activity Log', route('activity-log.index'));
 });
+
+Breadcrumbs::for('roles.index', function ($trail) {
+    $trail->parent('index');
+    $trail->push('Roles', route('roles.index'));
+});

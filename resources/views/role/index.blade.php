@@ -1,10 +1,10 @@
 @extends('components.layout')
 
 @section('off-canvas-right')
-    @include('accounts.search')
-    @include('accounts.show')
-    @include('accounts.add')
-    @include('accounts.edit')
+    @include('role.search')
+    @include('role.show')
+    @include('role.add')
+    @include('role.edit')
 @endsection
 
 @section('content')
@@ -15,9 +15,9 @@
         <v-datatables-page-length-btn></v-datatables-page-length-btn>
         <v-datatables-select-btn></v-datatables-select-btn>
         <v-datatables-search-btn></v-datatables-search-btn>
-        <v-datatables-show-btn :show="show" path="accounts"></v-datatables-show-btn>
+        <v-datatables-show-btn :show="show" path="roles"></v-datatables-show-btn>
         <v-datatables-add-btn :add="add"></v-datatables-add-btn>
-        <v-datatables-edit-btn :edit="edit" path="accounts"></v-datatables-edit-btn>
+        <v-datatables-edit-btn :edit="edit" path="roles"></v-datatables-edit-btn>
         <v-datatables-delete-btn></v-datatables-delete-btn>
         <v-datatables-download-btn></v-datatables-download-btn>
     </div>

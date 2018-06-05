@@ -12,85 +12,25 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-log_name" class="col-form-label col-form-label-sm">Log Name</label>
+        <label for="__input__-name" class="col-form-label col-form-label-sm">Name</label>
     </div>
     <div class="col-sm-9">
-        <input type="text" id="__input__-log_name" name="log_name" placeholder="" data-vv-as="Log Name" data-vv-scope="__input__" class="form-control form-control-sm"
-            :class="{'is-invalid': errors.has('__input__.log_name')}" v-validate="'required'" v-model="__input__.log_name"
-            @focus="$validator.errors.removeById('res-__input__-log_name')">
-        <div class="invalid-feedback" v-text="errors.first('__input__.log_name')"></div>
+        <input type="text" id="__input__-name" name="name" placeholder="" data-vv-as="Name" data-vv-scope="__input__" class="form-control form-control-sm"
+            :class="{'is-invalid': errors.has('__input__.name')}" v-validate="'required'" v-model="__input__.name"
+            @focus="$validator.errors.removeById('res-__input__-name')">
+        <div class="invalid-feedback" v-text="errors.first('__input__.name')"></div>
     </div>
 </div>
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-description" class="col-form-label col-form-label-sm">Description</label>
+        <label for="__input__-guard_name" class="col-form-label col-form-label-sm">Guard Name</label>
     </div>
     <div class="col-sm-9">
-        <input type="text" id="__input__-description" name="description" placeholder="" data-vv-as="Description" data-vv-scope="__input__" class="form-control form-control-sm"
-            :class="{'is-invalid': errors.has('__input__.description')}" v-validate="'required'" v-model="__input__.description"
-            @focus="$validator.errors.removeById('res-__input__-description')">
-        <div class="invalid-feedback" v-text="errors.first('__input__.description')"></div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="__input__-subject_id" class="col-form-label col-form-label-sm">Subject ID</label>
-    </div>
-    <div class="col-sm-9">
-        <input type="text" id="__input__-subject_id" name="subject_id" placeholder="" data-vv-as="Subject ID" data-vv-scope="__input__" class="form-control form-control-sm"
-            :class="{'is-invalid': errors.has('__input__.subject_id')}" v-validate="'required'" v-model="__input__.subject_id"
-            @focus="$validator.errors.removeById('res-__input__-subject_id')">
-        <div class="invalid-feedback" v-text="errors.first('__input__.subject_id')"></div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="__input__-subject_type" class="col-form-label col-form-label-sm">Subject Type</label>
-    </div>
-    <div class="col-sm-9">
-        <input type="text" id="__input__-subject_type" name="subject_type" placeholder="" data-vv-as="Subject Type" data-vv-scope="__input__" class="form-control form-control-sm"
-            :class="{'is-invalid': errors.has('__input__.subject_type')}" v-validate="'required'" v-model="__input__.subject_type"
-            @focus="$validator.errors.removeById('res-__input__-subject_type')">
-        <div class="invalid-feedback" v-text="errors.first('__input__.subject_type')"></div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="__input__-causer_id" class="col-form-label col-form-label-sm">Causer ID</label>
-    </div>
-    <div class="col-sm-9">
-        <input type="text" id="__input__-causer_id" name="causer_id" placeholder="" data-vv-as="Causer ID" data-vv-scope="__input__" class="form-control form-control-sm"
-            :class="{'is-invalid': errors.has('__input__.causer_id')}" v-validate="'required'" v-model="__input__.causer_id"
-            @focus="$validator.errors.removeById('res-__input__-causer_id')">
-        <div class="invalid-feedback" v-text="errors.first('__input__.causer_id')"></div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="__input__-causer_type" class="col-form-label col-form-label-sm">Causer Type</label>
-    </div>
-    <div class="col-sm-9">
-        <input type="text" id="__input__-causer_type" name="causer_type" placeholder="" data-vv-as="Causer Type" data-vv-scope="__input__" class="form-control form-control-sm"
-            :class="{'is-invalid': errors.has('__input__.causer_type')}" v-validate="'required'" v-model="__input__.causer_type"
-            @focus="$validator.errors.removeById('res-__input__-causer_type')">
-        <div class="invalid-feedback" v-text="errors.first('__input__.causer_type')"></div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="__input__-properties" class="col-form-label col-form-label-sm">Properties</label>
-    </div>
-    <div class="col-sm-9">
-        <input type="text" id="__input__-properties" name="properties" placeholder="" data-vv-as="Properties" data-vv-scope="__input__" class="form-control form-control-sm"
-            :class="{'is-invalid': errors.has('__input__.properties')}" v-validate="'required'" v-model="__input__.properties"
-            @focus="$validator.errors.removeById('res-__input__-properties')">
-        <div class="invalid-feedback" v-text="errors.first('__input__.properties')"></div>
+        <input type="text" id="__input__-guard_name" name="guard_name" placeholder="" data-vv-as="Guard Name" data-vv-scope="__input__" class="form-control form-control-sm"
+            :class="{'is-invalid': errors.has('__input__.guard_name')}" v-validate="'required'" v-model="__input__.guard_name"
+            @focus="$validator.errors.removeById('res-__input__-guard_name')">
+        <div class="invalid-feedback" v-text="errors.first('__input__.guard_name')"></div>
     </div>
 </div>
 
@@ -132,10 +72,10 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Log Name</label>
+        <label for="__input__-status" class="col-form-label col-form-label-sm">Name</label>
     </div>
     <div class="col-sm-9">
-        <select class="form-control form-control-sm" v-model="__input__.log_name">
+        <select class="form-control form-control-sm" v-model="__input__.name">
             <option value="__value__">__name__</option>
         </select>
     </div>
@@ -143,65 +83,10 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Description</label>
+        <label for="__input__-status" class="col-form-label col-form-label-sm">Guard Name</label>
     </div>
     <div class="col-sm-9">
-        <select class="form-control form-control-sm" v-model="__input__.description">
-            <option value="__value__">__name__</option>
-        </select>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Subject ID</label>
-    </div>
-    <div class="col-sm-9">
-        <select class="form-control form-control-sm" v-model="__input__.subject_id">
-            <option value="__value__">__name__</option>
-        </select>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Subject Type</label>
-    </div>
-    <div class="col-sm-9">
-        <select class="form-control form-control-sm" v-model="__input__.subject_type">
-            <option value="__value__">__name__</option>
-        </select>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Causer ID</label>
-    </div>
-    <div class="col-sm-9">
-        <select class="form-control form-control-sm" v-model="__input__.causer_id">
-            <option value="__value__">__name__</option>
-        </select>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Causer Type</label>
-    </div>
-    <div class="col-sm-9">
-        <select class="form-control form-control-sm" v-model="__input__.causer_type">
-            <option value="__value__">__name__</option>
-        </select>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Properties</label>
-    </div>
-    <div class="col-sm-9">
-        <select class="form-control form-control-sm" v-model="__input__.properties">
+        <select class="form-control form-control-sm" v-model="__input__.guard_name">
             <option value="__value__">__name__</option>
         </select>
     </div>
@@ -248,14 +133,14 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="search-log_name" class="col-form-label col-form-label-sm">Log Name</label>
+        <label for="search-name" class="col-form-label col-form-label-sm">Name</label>
     </div>
     <div class="col-sm-9">
         <div class="input-group">
-            <input type="text" class="form-control form-control-sm" id="search-log_name" v-model="search.log_name.value">
+            <input type="text" class="form-control form-control-sm" id="search-name" v-model="search.name.value">
             <div class="input-group-prepend">
                 <div class="input-group-text">
-                    <input type="checkbox" v-model="search.log_name.regex">
+                    <input type="checkbox" v-model="search.name.regex">
                 </div>
             </div>
         </div>
@@ -264,94 +149,14 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="search-description" class="col-form-label col-form-label-sm">Description</label>
+        <label for="search-guard_name" class="col-form-label col-form-label-sm">Guard Name</label>
     </div>
     <div class="col-sm-9">
         <div class="input-group">
-            <input type="text" class="form-control form-control-sm" id="search-description" v-model="search.description.value">
+            <input type="text" class="form-control form-control-sm" id="search-guard_name" v-model="search.guard_name.value">
             <div class="input-group-prepend">
                 <div class="input-group-text">
-                    <input type="checkbox" v-model="search.description.regex">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="search-subject_id" class="col-form-label col-form-label-sm">Subject ID</label>
-    </div>
-    <div class="col-sm-9">
-        <div class="input-group">
-            <input type="text" class="form-control form-control-sm" id="search-subject_id" v-model="search.subject_id.value">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                    <input type="checkbox" v-model="search.subject_id.regex">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="search-subject_type" class="col-form-label col-form-label-sm">Subject Type</label>
-    </div>
-    <div class="col-sm-9">
-        <div class="input-group">
-            <input type="text" class="form-control form-control-sm" id="search-subject_type" v-model="search.subject_type.value">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                    <input type="checkbox" v-model="search.subject_type.regex">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="search-causer_id" class="col-form-label col-form-label-sm">Causer ID</label>
-    </div>
-    <div class="col-sm-9">
-        <div class="input-group">
-            <input type="text" class="form-control form-control-sm" id="search-causer_id" v-model="search.causer_id.value">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                    <input type="checkbox" v-model="search.causer_id.regex">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="search-causer_type" class="col-form-label col-form-label-sm">Causer Type</label>
-    </div>
-    <div class="col-sm-9">
-        <div class="input-group">
-            <input type="text" class="form-control form-control-sm" id="search-causer_type" v-model="search.causer_type.value">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                    <input type="checkbox" v-model="search.causer_type.regex">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="search-properties" class="col-form-label col-form-label-sm">Properties</label>
-    </div>
-    <div class="col-sm-9">
-        <div class="input-group">
-            <input type="text" class="form-control form-control-sm" id="search-properties" v-model="search.properties.value">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                    <input type="checkbox" v-model="search.properties.regex">
+                    <input type="checkbox" v-model="search.guard_name.regex">
                 </div>
             </div>
         </div>
@@ -408,11 +213,11 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="search-log_name" class="col-form-label col-form-label-sm">Log Name</label>
+        <label for="search-name" class="col-form-label col-form-label-sm">Name</label>
     </div>
     <div class="col-sm-9">
         <div class="input-group">
-            <select class="form-control form-control-sm" v-model="search.log_name.value">
+            <select class="form-control form-control-sm" v-model="search.name.value">
                 <option disabled value="">Not selected</option>
                 <option value="0">Off</option>
                 <option value="1">On</option>
@@ -423,86 +228,11 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="search-description" class="col-form-label col-form-label-sm">Description</label>
+        <label for="search-guard_name" class="col-form-label col-form-label-sm">Guard Name</label>
     </div>
     <div class="col-sm-9">
         <div class="input-group">
-            <select class="form-control form-control-sm" v-model="search.description.value">
-                <option disabled value="">Not selected</option>
-                <option value="0">Off</option>
-                <option value="1">On</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="search-subject_id" class="col-form-label col-form-label-sm">Subject ID</label>
-    </div>
-    <div class="col-sm-9">
-        <div class="input-group">
-            <select class="form-control form-control-sm" v-model="search.subject_id.value">
-                <option disabled value="">Not selected</option>
-                <option value="0">Off</option>
-                <option value="1">On</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="search-subject_type" class="col-form-label col-form-label-sm">Subject Type</label>
-    </div>
-    <div class="col-sm-9">
-        <div class="input-group">
-            <select class="form-control form-control-sm" v-model="search.subject_type.value">
-                <option disabled value="">Not selected</option>
-                <option value="0">Off</option>
-                <option value="1">On</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="search-causer_id" class="col-form-label col-form-label-sm">Causer ID</label>
-    </div>
-    <div class="col-sm-9">
-        <div class="input-group">
-            <select class="form-control form-control-sm" v-model="search.causer_id.value">
-                <option disabled value="">Not selected</option>
-                <option value="0">Off</option>
-                <option value="1">On</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="search-causer_type" class="col-form-label col-form-label-sm">Causer Type</label>
-    </div>
-    <div class="col-sm-9">
-        <div class="input-group">
-            <select class="form-control form-control-sm" v-model="search.causer_type.value">
-                <option disabled value="">Not selected</option>
-                <option value="0">Off</option>
-                <option value="1">On</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="search-properties" class="col-form-label col-form-label-sm">Properties</label>
-    </div>
-    <div class="col-sm-9">
-        <div class="input-group">
-            <select class="form-control form-control-sm" v-model="search.properties.value">
+            <select class="form-control form-control-sm" v-model="search.guard_name.value">
                 <option disabled value="">Not selected</option>
                 <option value="0">Off</option>
                 <option value="1">On</option>
@@ -546,32 +276,12 @@
 <dd v-text="show.id"></dd>
 <hr>
 
-<dt>Log Name</dt>
-<dd v-text="show.log_name"></dd>
+<dt>Name</dt>
+<dd v-text="show.name"></dd>
 <hr>
 
-<dt>Description</dt>
-<dd v-text="show.description"></dd>
-<hr>
-
-<dt>Subject ID</dt>
-<dd v-text="show.subject_id"></dd>
-<hr>
-
-<dt>Subject Type</dt>
-<dd v-text="show.subject_type"></dd>
-<hr>
-
-<dt>Causer ID</dt>
-<dd v-text="show.causer_id"></dd>
-<hr>
-
-<dt>Causer Type</dt>
-<dd v-text="show.causer_type"></dd>
-<hr>
-
-<dt>Properties</dt>
-<dd v-text="show.properties"></dd>
+<dt>Guard Name</dt>
+<dd v-text="show.guard_name"></dd>
 <hr>
 
 <dt>Created At</dt>
@@ -584,13 +294,8 @@
 
 ----------------------------------------------------------------------------------------------------
 'id' => null,
-'log_name' => null,
-'description' => null,
-'subject_id' => null,
-'subject_type' => null,
-'causer_id' => null,
-'causer_type' => null,
-'properties' => null,
+'name' => null,
+'guard_name' => null,
 'created_at' => null,
 'updated_at' => null,
 ----------------------------------------------------------------------------------------------------
@@ -601,45 +306,15 @@
     searchable: true
 },
 {
-    data: "log_name",
-    name: "log_name",
-    title: "Log Name",
+    data: "name",
+    name: "name",
+    title: "Name",
     searchable: true
 },
 {
-    data: "description",
-    name: "description",
-    title: "Description",
-    searchable: true
-},
-{
-    data: "subject_id",
-    name: "subject_id",
-    title: "Subject ID",
-    searchable: true
-},
-{
-    data: "subject_type",
-    name: "subject_type",
-    title: "Subject Type",
-    searchable: true
-},
-{
-    data: "causer_id",
-    name: "causer_id",
-    title: "Causer ID",
-    searchable: true
-},
-{
-    data: "causer_type",
-    name: "causer_type",
-    title: "Causer Type",
-    searchable: true
-},
-{
-    data: "properties",
-    name: "properties",
-    title: "Properties",
+    data: "guard_name",
+    name: "guard_name",
+    title: "Guard Name",
     searchable: true
 },
 {
@@ -656,24 +331,14 @@
 },
 ----------------------------------------------------------------------------------------------------
 id: { value: "", regex: false },
-log_name: { value: "", regex: false },
-description: { value: "", regex: false },
-subject_id: { value: "", regex: false },
-subject_type: { value: "", regex: false },
-causer_id: { value: "", regex: false },
-causer_type: { value: "", regex: false },
-properties: { value: "", regex: false },
+name: { value: "", regex: false },
+guard_name: { value: "", regex: false },
 created_at: { value: "", regex: false },
 updated_at: { value: "", regex: false },
 ----------------------------------------------------------------------------------------------------
 id: null,
-log_name: null,
-description: null,
-subject_id: null,
-subject_type: null,
-causer_id: null,
-causer_type: null,
-properties: null,
+name: null,
+guard_name: null,
 created_at: null,
 updated_at: null,
 ----------------------------------------------------------------------------------------------------

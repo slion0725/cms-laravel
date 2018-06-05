@@ -39,6 +39,9 @@ mix
   // activity_log
   .js("resources/assets/js/activity-log.index.js", "public/js")
   .sass("resources/assets/sass/activity-log.index.scss", "public/css")
+  // roles
+  .js("resources/assets/js/roles.index.js", "public/js")
+  .sass("resources/assets/sass/roles.index.scss", "public/css")
   // autoload
   // .autoload({
   //   jquery: ['$','jQuery'],

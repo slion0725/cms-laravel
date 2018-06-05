@@ -15,6 +15,10 @@ export default {
     edit: {
       type: Object,
       required: true
+    },
+    path: {
+      type: String,
+      required: true
     }
   },
   computed: mapGetters("datatables", ["selectRowsLength", "selectRows"]),
@@ -27,7 +31,7 @@ export default {
       let id = this.selectRows[0].id;
 
       axios
-        .get(`accounts/${id}/edit`)
+        .get(`${this.path}/${id}/edit`)
         .then(response => {
           Object.assign(this.edit, response.data.data);
         })

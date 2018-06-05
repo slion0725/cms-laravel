@@ -1,10 +1,5 @@
-id,ID,
-log_name,Log Name,
-description,Description,
-subject_id,Subject ID,
-subject_type,Subject Type,
-causer_id,Causer ID,
-causer_type,Causer Type,
-properties,Properties,
-created_at,Created At,
-updated_at,Updated At,
+id,ID
+name,Name
+guard_name,Guard Name
+created_at,Created At
+updated_at,Updated At
