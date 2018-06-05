@@ -48,13 +48,13 @@ mix
     "axios",
     "bootstrap",
     "datatables.net",
-    "datatables.net-bs4",
+    // "datatables.net-bs4",
     "datatables.net-colreorder",
-    "datatables.net-colreorder-bs4",
+    // "datatables.net-colreorder-bs4",
     "datatables.net-fixedcolumns",
-    "datatables.net-fixedcolumns-bs4",
+    // "datatables.net-fixedcolumns-bs4",
     "datatables.net-select",
-    "datatables.net-select-bs4",
+    // "datatables.net-select-bs4",
     "file-saver",
     "holderjs",
     "jquery",
@@ -63,17 +63,13 @@ mix
     "moment",
     "papaparse",
     "popper.js",
-
-    "vue",
-    "vuex",
+    "select2",
+    // "select2-bootstrap-theme",
+    // "spinkit",
     "vee-validate",
     "vee-validate/dist/locale/zh_TW",
-    "flatpickr",
-    "flatpickr/dist/plugins/rangePlugin",
-    "flatpickr/dist/l10n/zh",
-    "@ckeditor/ckeditor5-build-classic",
-    "select2",
-    "holderjs"
+    "vue",
+    "vuex"
   ]);
 
 if (mix.inProduction()) {
