@@ -1,0 +1,14 @@
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-$id" class="col-form-label col-form-label-sm">$name</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <select class="form-control form-control-sm" v-model="search.$id.value">
+                <option disabled value="">Not selected</option>
+                <option value="0">Off</option>
+                <option value="1">On</option>
+            </select>
+        </div>
+    </div>
+</div>

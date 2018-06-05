@@ -1,5 +1,5 @@
 <template>
-  <a href="#" class="btn-item" @click="show_emit" :class="{disabled:selectRowsLength != 1}">
+  <a href="javascript:;" class="btn-item" @click="show_emit" :class="{disabled:selectRowsLength != 1}">
       <i class="mdi mdi-view-list mr-1"></i>Show
   </a>
 </template>

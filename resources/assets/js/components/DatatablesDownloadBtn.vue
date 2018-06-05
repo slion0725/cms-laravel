@@ -1,5 +1,5 @@
 <template>
-  <a href="#" class="btn-item" @click="download" :class="{disabled:selectRowsLength == 0}">
+  <a href="javascript:;" class="btn-item" @click="download" :class="{disabled:selectRowsLength == 0}">
       <i class="mdi mdi-download mr-1"></i>Download
   </a>
 </template>

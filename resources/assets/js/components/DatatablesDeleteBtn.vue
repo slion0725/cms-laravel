@@ -1,5 +1,5 @@
 <template>
-  <a href="#" class="btn-item" id="del-btn" @click="delete_emit" :class="{disabled:selectRowsLength != 1}">
+  <a href="javascript:;" class="btn-item" id="del-btn" @click="delete_emit" :class="{disabled:selectRowsLength != 1}">
       <i class="mdi mdi-delete mr-1"></i>Del
   </a>
 </template>

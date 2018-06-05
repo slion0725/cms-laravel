@@ -1,5 +1,5 @@
 <template>
-  <a href="#" class="btn-item" @click="add_emit">
+  <a href="javascript:;" class="btn-item" @click="add_emit">
       <i class="mdi mdi-plus mr-1"></i>Add
   </a>
 </template>

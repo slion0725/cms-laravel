@@ -114,6 +114,10 @@ const mutations = {
       .draw();
   },
   [types.DOWNLOAD](state) {
+    if (state.selectRowsLength == 0) {
+      return false;
+    }
+
     let data = state.dt
       .rows({ selected: true })
       .data()

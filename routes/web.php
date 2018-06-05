@@ -42,7 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('accounts', 'AccountsController');
 
     Route::get('activity-log/datatables', 'ActivityLogsController@datatables')->name('activity-log.datatables');
-    Route::resource('activity-log', 'ActivityLogsController');
+    Route::resource('activity-log', 'ActivityLogsController')->only(['index', 'show']);
     
     // Route::get('accounts/datatables', 'AccountsController@datatables')->name('accounts.datatables')->middleware('role:admin');
     // Route::resource('accounts', 'AccountsController')->middleware('role:admin');

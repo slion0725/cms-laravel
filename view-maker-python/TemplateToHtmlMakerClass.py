@@ -29,7 +29,7 @@ class TemplateToHtmlMakerClass():
     def putPara(self):
         for item in self.currentPara:
             para = item.split(',')
-            self.output += self.currentHtml.substitute(id=para[0], name=para[1], data='$data', model='$model') + '\n'
+            self.output += self.currentHtml.substitute(id=para[0], name=para[1], validator='$validator') + '\n'
         
         self.output += '-' * 100 + '\n'
         self.saveFile()

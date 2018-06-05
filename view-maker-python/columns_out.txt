@@ -1,5 +1,237 @@
 <div class="form-group row">
     <div class="col-sm-3">
+        <label for="__input__-id" class="col-form-label col-form-label-sm">ID</label>
+    </div>
+    <div class="col-sm-9">
+        <input type="text" id="__input__-id" name="id" placeholder="" data-vv-as="ID" data-vv-scope="__input__" class="form-control form-control-sm"
+            :class="{'is-invalid': errors.has('__input__.id')}" v-validate="'required'" v-model="__input__.id"
+            @focus="$validator.errors.removeById('res-__input__-id')">
+        <div class="invalid-feedback" v-text="errors.first('__input__.id')"></div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-log_name" class="col-form-label col-form-label-sm">Log Name</label>
+    </div>
+    <div class="col-sm-9">
+        <input type="text" id="__input__-log_name" name="log_name" placeholder="" data-vv-as="Log Name" data-vv-scope="__input__" class="form-control form-control-sm"
+            :class="{'is-invalid': errors.has('__input__.log_name')}" v-validate="'required'" v-model="__input__.log_name"
+            @focus="$validator.errors.removeById('res-__input__-log_name')">
+        <div class="invalid-feedback" v-text="errors.first('__input__.log_name')"></div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-description" class="col-form-label col-form-label-sm">Description</label>
+    </div>
+    <div class="col-sm-9">
+        <input type="text" id="__input__-description" name="description" placeholder="" data-vv-as="Description" data-vv-scope="__input__" class="form-control form-control-sm"
+            :class="{'is-invalid': errors.has('__input__.description')}" v-validate="'required'" v-model="__input__.description"
+            @focus="$validator.errors.removeById('res-__input__-description')">
+        <div class="invalid-feedback" v-text="errors.first('__input__.description')"></div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-subject_id" class="col-form-label col-form-label-sm">Subject ID</label>
+    </div>
+    <div class="col-sm-9">
+        <input type="text" id="__input__-subject_id" name="subject_id" placeholder="" data-vv-as="Subject ID" data-vv-scope="__input__" class="form-control form-control-sm"
+            :class="{'is-invalid': errors.has('__input__.subject_id')}" v-validate="'required'" v-model="__input__.subject_id"
+            @focus="$validator.errors.removeById('res-__input__-subject_id')">
+        <div class="invalid-feedback" v-text="errors.first('__input__.subject_id')"></div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-subject_type" class="col-form-label col-form-label-sm">Subject Type</label>
+    </div>
+    <div class="col-sm-9">
+        <input type="text" id="__input__-subject_type" name="subject_type" placeholder="" data-vv-as="Subject Type" data-vv-scope="__input__" class="form-control form-control-sm"
+            :class="{'is-invalid': errors.has('__input__.subject_type')}" v-validate="'required'" v-model="__input__.subject_type"
+            @focus="$validator.errors.removeById('res-__input__-subject_type')">
+        <div class="invalid-feedback" v-text="errors.first('__input__.subject_type')"></div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-causer_id" class="col-form-label col-form-label-sm">Causer ID</label>
+    </div>
+    <div class="col-sm-9">
+        <input type="text" id="__input__-causer_id" name="causer_id" placeholder="" data-vv-as="Causer ID" data-vv-scope="__input__" class="form-control form-control-sm"
+            :class="{'is-invalid': errors.has('__input__.causer_id')}" v-validate="'required'" v-model="__input__.causer_id"
+            @focus="$validator.errors.removeById('res-__input__-causer_id')">
+        <div class="invalid-feedback" v-text="errors.first('__input__.causer_id')"></div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-causer_type" class="col-form-label col-form-label-sm">Causer Type</label>
+    </div>
+    <div class="col-sm-9">
+        <input type="text" id="__input__-causer_type" name="causer_type" placeholder="" data-vv-as="Causer Type" data-vv-scope="__input__" class="form-control form-control-sm"
+            :class="{'is-invalid': errors.has('__input__.causer_type')}" v-validate="'required'" v-model="__input__.causer_type"
+            @focus="$validator.errors.removeById('res-__input__-causer_type')">
+        <div class="invalid-feedback" v-text="errors.first('__input__.causer_type')"></div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-properties" class="col-form-label col-form-label-sm">Properties</label>
+    </div>
+    <div class="col-sm-9">
+        <input type="text" id="__input__-properties" name="properties" placeholder="" data-vv-as="Properties" data-vv-scope="__input__" class="form-control form-control-sm"
+            :class="{'is-invalid': errors.has('__input__.properties')}" v-validate="'required'" v-model="__input__.properties"
+            @focus="$validator.errors.removeById('res-__input__-properties')">
+        <div class="invalid-feedback" v-text="errors.first('__input__.properties')"></div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-created_at" class="col-form-label col-form-label-sm">Created At</label>
+    </div>
+    <div class="col-sm-9">
+        <input type="text" id="__input__-created_at" name="created_at" placeholder="" data-vv-as="Created At" data-vv-scope="__input__" class="form-control form-control-sm"
+            :class="{'is-invalid': errors.has('__input__.created_at')}" v-validate="'required'" v-model="__input__.created_at"
+            @focus="$validator.errors.removeById('res-__input__-created_at')">
+        <div class="invalid-feedback" v-text="errors.first('__input__.created_at')"></div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-updated_at" class="col-form-label col-form-label-sm">Updated At</label>
+    </div>
+    <div class="col-sm-9">
+        <input type="text" id="__input__-updated_at" name="updated_at" placeholder="" data-vv-as="Updated At" data-vv-scope="__input__" class="form-control form-control-sm"
+            :class="{'is-invalid': errors.has('__input__.updated_at')}" v-validate="'required'" v-model="__input__.updated_at"
+            @focus="$validator.errors.removeById('res-__input__-updated_at')">
+        <div class="invalid-feedback" v-text="errors.first('__input__.updated_at')"></div>
+    </div>
+</div>
+
+----------------------------------------------------------------------------------------------------
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-status" class="col-form-label col-form-label-sm">ID</label>
+    </div>
+    <div class="col-sm-9">
+        <select class="form-control form-control-sm" v-model="__input__.id">
+            <option value="__value__">__name__</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-status" class="col-form-label col-form-label-sm">Log Name</label>
+    </div>
+    <div class="col-sm-9">
+        <select class="form-control form-control-sm" v-model="__input__.log_name">
+            <option value="__value__">__name__</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-status" class="col-form-label col-form-label-sm">Description</label>
+    </div>
+    <div class="col-sm-9">
+        <select class="form-control form-control-sm" v-model="__input__.description">
+            <option value="__value__">__name__</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-status" class="col-form-label col-form-label-sm">Subject ID</label>
+    </div>
+    <div class="col-sm-9">
+        <select class="form-control form-control-sm" v-model="__input__.subject_id">
+            <option value="__value__">__name__</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-status" class="col-form-label col-form-label-sm">Subject Type</label>
+    </div>
+    <div class="col-sm-9">
+        <select class="form-control form-control-sm" v-model="__input__.subject_type">
+            <option value="__value__">__name__</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-status" class="col-form-label col-form-label-sm">Causer ID</label>
+    </div>
+    <div class="col-sm-9">
+        <select class="form-control form-control-sm" v-model="__input__.causer_id">
+            <option value="__value__">__name__</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-status" class="col-form-label col-form-label-sm">Causer Type</label>
+    </div>
+    <div class="col-sm-9">
+        <select class="form-control form-control-sm" v-model="__input__.causer_type">
+            <option value="__value__">__name__</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-status" class="col-form-label col-form-label-sm">Properties</label>
+    </div>
+    <div class="col-sm-9">
+        <select class="form-control form-control-sm" v-model="__input__.properties">
+            <option value="__value__">__name__</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-status" class="col-form-label col-form-label-sm">Created At</label>
+    </div>
+    <div class="col-sm-9">
+        <select class="form-control form-control-sm" v-model="__input__.created_at">
+            <option value="__value__">__name__</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="__input__-status" class="col-form-label col-form-label-sm">Updated At</label>
+    </div>
+    <div class="col-sm-9">
+        <select class="form-control form-control-sm" v-model="__input__.updated_at">
+            <option value="__value__">__name__</option>
+        </select>
+    </div>
+</div>
+
+----------------------------------------------------------------------------------------------------
+<div class="form-group row">
+    <div class="col-sm-3">
         <label for="search-id" class="col-form-label col-form-label-sm">ID</label>
     </div>
     <div class="col-sm-9">
@@ -154,6 +386,157 @@
                     <input type="checkbox" v-model="search.updated_at.regex">
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+----------------------------------------------------------------------------------------------------
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-id" class="col-form-label col-form-label-sm">ID</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <select class="form-control form-control-sm" v-model="search.id.value">
+                <option disabled value="">Not selected</option>
+                <option value="0">Off</option>
+                <option value="1">On</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-log_name" class="col-form-label col-form-label-sm">Log Name</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <select class="form-control form-control-sm" v-model="search.log_name.value">
+                <option disabled value="">Not selected</option>
+                <option value="0">Off</option>
+                <option value="1">On</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-description" class="col-form-label col-form-label-sm">Description</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <select class="form-control form-control-sm" v-model="search.description.value">
+                <option disabled value="">Not selected</option>
+                <option value="0">Off</option>
+                <option value="1">On</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-subject_id" class="col-form-label col-form-label-sm">Subject ID</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <select class="form-control form-control-sm" v-model="search.subject_id.value">
+                <option disabled value="">Not selected</option>
+                <option value="0">Off</option>
+                <option value="1">On</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-subject_type" class="col-form-label col-form-label-sm">Subject Type</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <select class="form-control form-control-sm" v-model="search.subject_type.value">
+                <option disabled value="">Not selected</option>
+                <option value="0">Off</option>
+                <option value="1">On</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-causer_id" class="col-form-label col-form-label-sm">Causer ID</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <select class="form-control form-control-sm" v-model="search.causer_id.value">
+                <option disabled value="">Not selected</option>
+                <option value="0">Off</option>
+                <option value="1">On</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-causer_type" class="col-form-label col-form-label-sm">Causer Type</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <select class="form-control form-control-sm" v-model="search.causer_type.value">
+                <option disabled value="">Not selected</option>
+                <option value="0">Off</option>
+                <option value="1">On</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-properties" class="col-form-label col-form-label-sm">Properties</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <select class="form-control form-control-sm" v-model="search.properties.value">
+                <option disabled value="">Not selected</option>
+                <option value="0">Off</option>
+                <option value="1">On</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-created_at" class="col-form-label col-form-label-sm">Created At</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <select class="form-control form-control-sm" v-model="search.created_at.value">
+                <option disabled value="">Not selected</option>
+                <option value="0">Off</option>
+                <option value="1">On</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-3">
+        <label for="search-updated_at" class="col-form-label col-form-label-sm">Updated At</label>
+    </div>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <select class="form-control form-control-sm" v-model="search.updated_at.value">
+                <option disabled value="">Not selected</option>
+                <option value="0">Off</option>
+                <option value="1">On</option>
+            </select>
         </div>
     </div>
 </div>

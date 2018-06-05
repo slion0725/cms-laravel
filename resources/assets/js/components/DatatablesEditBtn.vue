@@ -1,5 +1,5 @@
 <template>
-  <a href="#" class="btn-item" @click="edit_emit" :class="{disabled:selectRowsLength != 1}">
+  <a href="javascript:;" class="btn-item" @click="edit_emit" :class="{disabled:selectRowsLength != 1}">
       <i class="mdi mdi-pencil mr-1"></i>Edit
   </a>
 </template>
