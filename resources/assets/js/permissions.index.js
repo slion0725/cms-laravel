@@ -4,7 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 /**
  * style
  */
-// import "../scss/role.index.scss";
+// import "../scss/permissions.index.scss";
 /**
  * plugin
  */
@@ -31,23 +31,17 @@ const data = {
     name: { value: "", regex: false },
     guard_name: { value: "", regex: false },
     created_at: { value: "", regex: false },
-    updated_at: { value: "", regex: false }
+    updated_at: { value: "", regex: false },
   },
-  show: {
-    id: null,
-    name: null,
-    guard_name: null,
-    created_at: null,
-    updated_at: null
-  },
+  show: { id: null, name: null, email: null, status: null },
   add: {
-    id: null,
     name: null,
     guard_name: null,
     created_at: null,
     updated_at: null
   },
   edit: {
+    id: null,
     id: null,
     name: null,
     guard_name: null,
@@ -57,7 +51,7 @@ const data = {
   },
   datatablesSetting: {
     ajax: {
-      url: "roles/datatables",
+      url: "permissions/datatables",
       type: "GET"
     },
     columns: [
@@ -109,7 +103,7 @@ new Vue({
         }
 
         axios
-          .post(`roles`, this.add)
+          .post(`permissions`, this.add)
           .then(response => {
             this.$store.dispatch("datatables/draw");
 
@@ -143,7 +137,7 @@ new Vue({
         }
 
         axios
-          .post(`roles/${this.edit.id}`, this.edit)
+          .post(`permissions/${this.edit.id}`, this.edit)
           .then(response => {
             this.$store.dispatch("datatables/draw");
 

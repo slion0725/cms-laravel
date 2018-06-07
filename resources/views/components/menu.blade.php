@@ -24,9 +24,10 @@
                     </div>
                 </li>
 
+                @role('admin')
                 <li class="nav-item">
                     <a href="javascript:;" class="nav-link" data-toggle="collapse" data-target=".collapse-management">Management</a>
-                    <div class="collapse layer-color collapse-management{{in_array(Route::currentRouteName(),['accounts.index', 'activity-log.index']) ? ' show' : ''}}"
+                    <div class="collapse layer-color collapse-management{{in_array(Route::currentRouteName(),['accounts.index', 'roles.index', 'activity-log.index', 'permissions.index']) ? ' show' : ''}}"
                         data-parent=".collapse-parent">
                         <ul class="nav flex-column">
                             <li>
@@ -36,7 +37,10 @@
                                 <a href="javascript:;" class="nav-link">Assign Roles</a>
                             </li>
                             <li>
-                                <a href="javascript:;" class="nav-link">Roles</a>
+                                <a href="{{ route('permissions.index')}}" class="nav-link{{Route::currentRouteName() == 'permissions.index' ? ' active' : ''}}">Permissions</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('roles.index') }}" class="nav-link{{Route::currentRouteName() == 'roles.index' ? ' active' : ''}}" class="nav-link">Roles</a>
                             </li>
                             <li>
                                 <a href="{{ route('activity-log.index') }}" class="nav-link{{Route::currentRouteName() == 'activity-log.index' ? ' active' : ''}}">Activity Log</a>
@@ -44,6 +48,7 @@
                         </ul>
                     </div>
                 </li>
+                @endrole
 
             </ul>
         </div>

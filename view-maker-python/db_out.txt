@@ -1,4 +1,4 @@
-'roles',
+'permissions',
 'id',
 'name',
 'guard_name',

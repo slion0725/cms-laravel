@@ -42,6 +42,9 @@ mix
   // roles
   .js("resources/assets/js/roles.index.js", "public/js")
   .sass("resources/assets/sass/roles.index.scss", "public/css")
+  // permissions
+  .js("resources/assets/js/permissions.index.js", "public/js")
+  .sass("resources/assets/sass/permissions.index.scss", "public/css")
   // autoload
   // .autoload({
   //   jquery: ['$','jQuery'],

@@ -14,7 +14,13 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
+        // Reset cached roles and permissions
+        app()['cache']->forget('spatie.permission.cache');
+
+        // create roles
         Role::create(['name' => 'admin']);
+        
+        // assign roles
         $user = User::where('email', 'admin@email.com')->first();
         $user->assignRole('admin');
     }

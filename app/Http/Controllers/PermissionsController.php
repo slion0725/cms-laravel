@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\RoleCreateRequest;
-use App\Http\Requests\RoleUpdateRequest;
-use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use App\Http\Requests\PermissionCreateRequest;
+use App\Http\Requests\PermissionUpdateRequest;
 use DataTables;
 
-class RoleController extends Controller
+class PermissionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return view('role.index');
+        return view('permissions.index');
     }
 
     /**
@@ -27,7 +27,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('permission.add');
     }
 
     /**
@@ -36,9 +36,17 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RoleCreateRequest $request)
+    public function store(PermissionCreateRequest $request)
     {
-        //
+        $permission = Permission::create([
+            'name' => $request->name,
+            'guard_name' => $request->guard_name,
+        ]);
+
+        return response()->json([
+            'message' => 'Permission created.',
+            'data' => $permission
+        ]);
     }
 
     /**
@@ -49,10 +57,10 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $role = Role::find($id);
+        $permission = Permission::find($id);
 
         return response()->json([
-            'data' => $role,
+            'data' => $permission,
         ]);
     }
 
@@ -64,10 +72,10 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $role = Role::find($id);
+        $permission = Permission::find($id);
 
         return response()->json([
-            'data' => $role,
+            'data' => $permission,
         ]);
     }
 
@@ -78,9 +86,20 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PermissionUpdateRequest $request, $id)
     {
-        //
+        $permission = Permission::find($id);
+
+        $permission->name = $request->name;
+
+        $permission->guard_name = $request->guard_name;
+
+        $permission->save();
+
+        return response()->json([
+            'message' => 'Permission updated.',
+            'data' => $permission
+        ]);
     }
 
     /**
@@ -91,12 +110,17 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $permission = Permission::destroy($id);
+
+        return response()->json([
+            'message' => 'Permission deleted.',
+            'deleted' => $permission,
+        ]);
     }
 
     public function datatables()
     {
-        $model = Role::query();
-        return Datatables::eloquent($model)->make(true);
+        return Datatables::eloquent(Permission::query())
+            ->make(true);
     }
 }

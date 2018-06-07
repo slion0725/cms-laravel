@@ -78,6 +78,8 @@ class AccountsController extends Controller
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
 
+            $request->merge(['password' => bcrypt($request->password)]);
+
             $account = $this->repository->create($request->all());
 
             $response = [
@@ -221,8 +223,7 @@ class AccountsController extends Controller
 
     public function datatables()
     {
-        $model = Account::query();
-        return Datatables::eloquent($model)
+        return Datatables::eloquent(Account::query())
             ->setTransformer(new AccountTransformer)
             ->make(true);
     }

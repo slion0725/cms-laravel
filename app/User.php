@@ -26,7 +26,7 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
-    protected static $logAttributes = ['id', 'name', 'email', 'password', 'created_at', 'updated_at'];
+    protected static $logAttributes = ['id', 'name', 'email', 'created_at', 'updated_at'];
 
     /**
      * The attributes that should be hidden for arrays.

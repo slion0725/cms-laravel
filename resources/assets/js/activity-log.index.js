@@ -165,7 +165,7 @@ new Vue({
         axios
           .post(`accounts`, this.add)
           .then(response => {
-            this.$store.dispatch("draw");
+            this.$store.dispatch("datatables/draw");
 
             swal("Success!", "", "success");
 
@@ -199,7 +199,7 @@ new Vue({
         axios
           .post(`accounts/${this.edit.id}`, this.edit)
           .then(response => {
-            this.$store.dispatch("draw");
+            this.$store.dispatch("datatables/draw");
 
             swal("Success!", "", "success");
 

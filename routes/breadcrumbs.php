@@ -43,3 +43,8 @@ Breadcrumbs::for('roles.index', function ($trail) {
     $trail->parent('index');
     $trail->push('Roles', route('roles.index'));
 });
+
+Breadcrumbs::for('permissions.index', function ($trail) {
+    $trail->parent('index');
+    $trail->push('Permissions', route('permissions.index'));
+});

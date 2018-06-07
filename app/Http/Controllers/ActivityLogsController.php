@@ -206,7 +206,6 @@ class ActivityLogsController extends Controller
 
     public function datatables()
     {
-        $model = ActivityLog::query();
-        return Datatables::eloquent($model)->make(true);
+        return Datatables::eloquent(ActivityLog::query())->make(true);
     }
 }

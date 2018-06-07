@@ -13,6 +13,12 @@ import swal from "sweetalert2";
 axios.defaults.headers["Accept"] = "application/json";
 
 export default {
+  props: {
+    path: {
+      type: String,
+      required: true
+    }
+  },
   computed: mapGetters("datatables", ["selectRowsLength", "selectRows"]),
   methods: {
     delete_emit() {
@@ -35,7 +41,7 @@ export default {
       }).then(result => {
         if (result.value) {
           axios
-            .post(`accounts/${id}`, {
+            .post(`${this.path}/${id}`, {
               _method: "DELETE"
             })
             .then(response => {

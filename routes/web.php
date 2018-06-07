@@ -37,18 +37,23 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token?}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    // admin
     Route::get('accounts/datatables', 'AccountsController@datatables')->name('accounts.datatables');
     Route::resource('accounts', 'AccountsController');
 
-    Route::get('activity-log/datatables', 'ActivityLogsController@datatables')->name('activity-log.datatables');
+    Route::get('activity-log/datatables', 'ActivityLogsController@datatables');
     Route::resource('activity-log', 'ActivityLogsController')->only(['index', 'show']);
-    
-    Route::get('roles/datatables', 'RoleController@datatables')->name('roles.datatables');
-    Route::resource('roles', 'RoleController');
 
-    // Route::get('accounts/datatables', 'AccountsController@datatables')->name('accounts.datatables')->middleware('role:admin');
-    // Route::resource('accounts', 'AccountsController')->middleware('role:admin');
+    Route::get('roles/datatables', 'RolesController@datatables')->name('roles.datatables');
+    Route::resource('roles', 'RolesController');
+
+    Route::get('permissions/datatables', 'PermissionsController@datatables')->name('permissions.datatables');
+    Route::resource('permissions', 'PermissionsController');
+});
+
+Route::middleware(['auth'])->group(function () {
+
 });
 
 // league/glide + league/glide-laravel

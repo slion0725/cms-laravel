@@ -14,7 +14,7 @@
         <v-datatables-select-btn></v-datatables-select-btn>
         <v-datatables-search-btn></v-datatables-search-btn>
         <v-datatables-show-btn :show="show" path="activity-log"></v-datatables-show-btn>
-        <v-datatables-download-btn></v-datatables-download-btn>
+        <v-datatables-download-btn path="activity-log"></v-datatables-download-btn>
     </div>
     <v-datatables :setting="datatablesSetting"></v-datatables>
 </div>
