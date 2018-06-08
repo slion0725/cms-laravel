@@ -56,7 +56,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-
+    Route::put('profile/{id}', 'ProfileController@update')->name('profile.update');
 });
 
 // league/glide + league/glide-laravel

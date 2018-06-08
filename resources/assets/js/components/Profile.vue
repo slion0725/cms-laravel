@@ -1,5 +1,5 @@
 <script>
-// import { mapGetters, mapState } from "vuex";
+import $ from "jquery";
 import axios from "axios";
 import swal from "sweetalert2";
 axios.defaults.headers["Accept"] = "application/json";
@@ -10,28 +10,36 @@ export default {
       required: true
     }
   },
-  // computed: mapGetters("profile", ["profile"]),
   methods: {
     onSubmit(scope) {
       this.$validator.validateAll(scope).then(result => {
         if (!result) {
           return;
         }
-        
+
         axios
-          .post(`accounts/${this.profile.id}`, {...this.profile, _method: "PUT"})
+          .post(`profile/${this.profile.id}`, {
+            ...this.profile,
+            _method: "PUT"
+          })
           .then(response => {
             swal("Success!", "", "success");
+
+            $(".off-canvas").removeClass("off-canvas-open");
           })
           .catch(error => {
-            Object.keys(error.response.data.errors).forEach(e => {
-              this.$validator.errors.add({
-                field: e,
-                msg: error.response.data.errors[e][0],
-                scope: scope,
-                id: `res-${scope}-${e}`
+            if (error.response.data.errors) {
+              Object.keys(error.response.data.errors).forEach(e => {
+                this.$validator.errors.add({
+                  field: e,
+                  msg: error.response.data.errors[e][0],
+                  scope: scope,
+                  id: `res-${scope}-${e}`
+                });
               });
-            });
+            } else {
+              swal("Warning!", error.message, "warning");
+            }
           });
       });
     }

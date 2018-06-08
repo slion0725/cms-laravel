@@ -1774,28 +1774,17 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
 //
 //
 //
 //
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     profile_emit: function profile_emit() {
-      // axios
-      //   .get(`accounts/1/edit`)
-      //   .then(response => {
-      //     this.$store.dispatch("profile/profile", response.data.data);
-      //   })
-      //   .catch(error => {
-      //     console.log(error);
-      //   });
       __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".off-canvas").removeClass("off-canvas-open");
       __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#offcanvas-profile").toggleClass("off-canvas-open");
     }
@@ -1886,16 +1875,18 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sweetalert2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sweetalert2__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_sweetalert2__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-// import { mapGetters, mapState } from "vuex";
 
 
-__WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.headers["Accept"] = "application/json";
+
+__WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers["Accept"] = "application/json";
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     profile: {
@@ -1903,7 +1894,6 @@ __WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.headers["Accept"] = "appl
       required: true
     }
   },
-  // computed: mapGetters("profile", ["profile"]),
   methods: {
     onSubmit: function onSubmit(scope) {
       var _this = this;
@@ -1913,17 +1903,25 @@ __WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.headers["Accept"] = "appl
           return;
         }
 
-        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("accounts/" + _this.profile.id, _extends({}, _this.profile, { _method: "PUT" })).then(function (response) {
-          __WEBPACK_IMPORTED_MODULE_1_sweetalert2___default()("Success!", "", "success");
+        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post("profile/" + _this.profile.id, _extends({}, _this.profile, {
+          _method: "PUT"
+        })).then(function (response) {
+          __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default()("Success!", "", "success");
+
+          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".off-canvas").removeClass("off-canvas-open");
         }).catch(function (error) {
-          Object.keys(error.response.data.errors).forEach(function (e) {
-            _this.$validator.errors.add({
-              field: e,
-              msg: error.response.data.errors[e][0],
-              scope: scope,
-              id: "res-" + scope + "-" + e
+          if (error.response.data.errors) {
+            Object.keys(error.response.data.errors).forEach(function (e) {
+              _this.$validator.errors.add({
+                field: e,
+                msg: error.response.data.errors[e][0],
+                scope: scope,
+                id: "res-" + scope + "-" + e
+              });
             });
-          });
+          } else {
+            __WEBPACK_IMPORTED_MODULE_2_sweetalert2___default()("Warning!", error.message, "warning");
+          }
         });
       });
     }
