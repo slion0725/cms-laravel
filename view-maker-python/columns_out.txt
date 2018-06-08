@@ -12,49 +12,25 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-name" class="col-form-label col-form-label-sm">Name</label>
+        <label for="__input__-email" class="col-form-label col-form-label-sm">Email</label>
     </div>
     <div class="col-sm-9">
-        <input type="text" id="__input__-name" name="name" placeholder="" data-vv-as="Name" data-vv-scope="__input__" class="form-control form-control-sm"
-            :class="{'is-invalid': errors.has('__input__.name')}" v-validate="'required'" v-model="__input__.name"
-            @focus="$validator.errors.removeById('res-__input__-name')">
-        <div class="invalid-feedback" v-text="errors.first('__input__.name')"></div>
+        <input type="text" id="__input__-email" name="email" placeholder="" data-vv-as="Email" data-vv-scope="__input__" class="form-control form-control-sm"
+            :class="{'is-invalid': errors.has('__input__.email')}" v-validate="'required'" v-model="__input__.email"
+            @focus="$validator.errors.removeById('res-__input__-email')">
+        <div class="invalid-feedback" v-text="errors.first('__input__.email')"></div>
     </div>
 </div>
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-guard_name" class="col-form-label col-form-label-sm">Guard Name</label>
+        <label for="__input__-roles" class="col-form-label col-form-label-sm">Roles</label>
     </div>
     <div class="col-sm-9">
-        <input type="text" id="__input__-guard_name" name="guard_name" placeholder="" data-vv-as="Guard Name" data-vv-scope="__input__" class="form-control form-control-sm"
-            :class="{'is-invalid': errors.has('__input__.guard_name')}" v-validate="'required'" v-model="__input__.guard_name"
-            @focus="$validator.errors.removeById('res-__input__-guard_name')">
-        <div class="invalid-feedback" v-text="errors.first('__input__.guard_name')"></div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="__input__-created_at" class="col-form-label col-form-label-sm">Created At</label>
-    </div>
-    <div class="col-sm-9">
-        <input type="text" id="__input__-created_at" name="created_at" placeholder="" data-vv-as="Created At" data-vv-scope="__input__" class="form-control form-control-sm"
-            :class="{'is-invalid': errors.has('__input__.created_at')}" v-validate="'required'" v-model="__input__.created_at"
-            @focus="$validator.errors.removeById('res-__input__-created_at')">
-        <div class="invalid-feedback" v-text="errors.first('__input__.created_at')"></div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="__input__-updated_at" class="col-form-label col-form-label-sm">Updated At</label>
-    </div>
-    <div class="col-sm-9">
-        <input type="text" id="__input__-updated_at" name="updated_at" placeholder="" data-vv-as="Updated At" data-vv-scope="__input__" class="form-control form-control-sm"
-            :class="{'is-invalid': errors.has('__input__.updated_at')}" v-validate="'required'" v-model="__input__.updated_at"
-            @focus="$validator.errors.removeById('res-__input__-updated_at')">
-        <div class="invalid-feedback" v-text="errors.first('__input__.updated_at')"></div>
+        <input type="text" id="__input__-roles" name="roles" placeholder="" data-vv-as="Roles" data-vv-scope="__input__" class="form-control form-control-sm"
+            :class="{'is-invalid': errors.has('__input__.roles')}" v-validate="'required'" v-model="__input__.roles"
+            @focus="$validator.errors.removeById('res-__input__-roles')">
+        <div class="invalid-feedback" v-text="errors.first('__input__.roles')"></div>
     </div>
 </div>
 
@@ -72,10 +48,10 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Name</label>
+        <label for="__input__-status" class="col-form-label col-form-label-sm">Email</label>
     </div>
     <div class="col-sm-9">
-        <select class="form-control form-control-sm" v-model="__input__.name">
+        <select class="form-control form-control-sm" v-model="__input__.email">
             <option value="__value__">__name__</option>
         </select>
     </div>
@@ -83,32 +59,10 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Guard Name</label>
+        <label for="__input__-status" class="col-form-label col-form-label-sm">Roles</label>
     </div>
     <div class="col-sm-9">
-        <select class="form-control form-control-sm" v-model="__input__.guard_name">
-            <option value="__value__">__name__</option>
-        </select>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Created At</label>
-    </div>
-    <div class="col-sm-9">
-        <select class="form-control form-control-sm" v-model="__input__.created_at">
-            <option value="__value__">__name__</option>
-        </select>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Updated At</label>
-    </div>
-    <div class="col-sm-9">
-        <select class="form-control form-control-sm" v-model="__input__.updated_at">
+        <select class="form-control form-control-sm" v-model="__input__.roles">
             <option value="__value__">__name__</option>
         </select>
     </div>
@@ -133,14 +87,14 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="search-name" class="col-form-label col-form-label-sm">Name</label>
+        <label for="search-email" class="col-form-label col-form-label-sm">Email</label>
     </div>
     <div class="col-sm-9">
         <div class="input-group">
-            <input type="text" class="form-control form-control-sm" id="search-name" v-model="search.name.value">
+            <input type="text" class="form-control form-control-sm" id="search-email" v-model="search.email.value">
             <div class="input-group-prepend">
                 <div class="input-group-text">
-                    <input type="checkbox" v-model="search.name.regex">
+                    <input type="checkbox" v-model="search.email.regex">
                 </div>
             </div>
         </div>
@@ -149,46 +103,14 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="search-guard_name" class="col-form-label col-form-label-sm">Guard Name</label>
+        <label for="search-roles" class="col-form-label col-form-label-sm">Roles</label>
     </div>
     <div class="col-sm-9">
         <div class="input-group">
-            <input type="text" class="form-control form-control-sm" id="search-guard_name" v-model="search.guard_name.value">
+            <input type="text" class="form-control form-control-sm" id="search-roles" v-model="search.roles.value">
             <div class="input-group-prepend">
                 <div class="input-group-text">
-                    <input type="checkbox" v-model="search.guard_name.regex">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="search-created_at" class="col-form-label col-form-label-sm">Created At</label>
-    </div>
-    <div class="col-sm-9">
-        <div class="input-group">
-            <input type="text" class="form-control form-control-sm" id="search-created_at" v-model="search.created_at.value">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                    <input type="checkbox" v-model="search.created_at.regex">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="search-updated_at" class="col-form-label col-form-label-sm">Updated At</label>
-    </div>
-    <div class="col-sm-9">
-        <div class="input-group">
-            <input type="text" class="form-control form-control-sm" id="search-updated_at" v-model="search.updated_at.value">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                    <input type="checkbox" v-model="search.updated_at.regex">
+                    <input type="checkbox" v-model="search.roles.regex">
                 </div>
             </div>
         </div>
@@ -213,11 +135,11 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="search-name" class="col-form-label col-form-label-sm">Name</label>
+        <label for="search-email" class="col-form-label col-form-label-sm">Email</label>
     </div>
     <div class="col-sm-9">
         <div class="input-group">
-            <select class="form-control form-control-sm" v-model="search.name.value">
+            <select class="form-control form-control-sm" v-model="search.email.value">
                 <option disabled value="">Not selected</option>
                 <option value="0">Off</option>
                 <option value="1">On</option>
@@ -228,41 +150,11 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="search-guard_name" class="col-form-label col-form-label-sm">Guard Name</label>
+        <label for="search-roles" class="col-form-label col-form-label-sm">Roles</label>
     </div>
     <div class="col-sm-9">
         <div class="input-group">
-            <select class="form-control form-control-sm" v-model="search.guard_name.value">
-                <option disabled value="">Not selected</option>
-                <option value="0">Off</option>
-                <option value="1">On</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="search-created_at" class="col-form-label col-form-label-sm">Created At</label>
-    </div>
-    <div class="col-sm-9">
-        <div class="input-group">
-            <select class="form-control form-control-sm" v-model="search.created_at.value">
-                <option disabled value="">Not selected</option>
-                <option value="0">Off</option>
-                <option value="1">On</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col-sm-3">
-        <label for="search-updated_at" class="col-form-label col-form-label-sm">Updated At</label>
-    </div>
-    <div class="col-sm-9">
-        <div class="input-group">
-            <select class="form-control form-control-sm" v-model="search.updated_at.value">
+            <select class="form-control form-control-sm" v-model="search.roles.value">
                 <option disabled value="">Not selected</option>
                 <option value="0">Off</option>
                 <option value="1">On</option>
@@ -276,28 +168,18 @@
 <dd v-text="show.id"></dd>
 <hr>
 
-<dt>Name</dt>
-<dd v-text="show.name"></dd>
+<dt>Email</dt>
+<dd v-text="show.email"></dd>
 <hr>
 
-<dt>Guard Name</dt>
-<dd v-text="show.guard_name"></dd>
-<hr>
-
-<dt>Created At</dt>
-<dd v-text="show.created_at"></dd>
-<hr>
-
-<dt>Updated At</dt>
-<dd v-text="show.updated_at"></dd>
+<dt>Roles</dt>
+<dd v-text="show.roles"></dd>
 <hr>
 
 ----------------------------------------------------------------------------------------------------
 id: null,
-name: null,
-guard_name: null,
-created_at: null,
-updated_at: null,
+email: null,
+roles: null,
 ----------------------------------------------------------------------------------------------------
 {
     data: "id",
@@ -306,39 +188,23 @@ updated_at: null,
     searchable: true
 },
 {
-    data: "name",
-    name: "name",
-    title: "Name",
+    data: "email",
+    name: "email",
+    title: "Email",
     searchable: true
 },
 {
-    data: "guard_name",
-    name: "guard_name",
-    title: "Guard Name",
-    searchable: true
-},
-{
-    data: "created_at",
-    name: "created_at",
-    title: "Created At",
-    searchable: true
-},
-{
-    data: "updated_at",
-    name: "updated_at",
-    title: "Updated At",
+    data: "roles",
+    name: "roles",
+    title: "Roles",
     searchable: true
 },
 ----------------------------------------------------------------------------------------------------
 id: { value: "", regex: false },
-name: { value: "", regex: false },
-guard_name: { value: "", regex: false },
-created_at: { value: "", regex: false },
-updated_at: { value: "", regex: false },
+email: { value: "", regex: false },
+roles: { value: "", regex: false },
 ----------------------------------------------------------------------------------------------------
 id: null,
-name: null,
-guard_name: null,
-created_at: null,
-updated_at: null,
+email: null,
+roles: null,
 ----------------------------------------------------------------------------------------------------

@@ -50,6 +50,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('permissions/datatables', 'PermissionsController@datatables')->name('permissions.datatables');
     Route::resource('permissions', 'PermissionsController');
+
+    Route::get('assign-roles/datatables', 'AssignRolesController@datatables')->name('assign-roles.datatables');
+    Route::resource('assign-roles', 'AssignRolesController');
 });
 
 Route::middleware(['auth'])->group(function () {

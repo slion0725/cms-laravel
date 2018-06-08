@@ -3,7 +3,7 @@
         <label for="__input__-$id" class="col-form-label col-form-label-sm">$name</label>
     </div>
     <div class="col-sm-9">
-        <input type="text" id="__input__-$id" name="$id" placeholder="" data-vv-as="$name" data-vv-scope="__input__" class="form-control form-control-sm"
+        <input type="text" id="__input__-$id" name="$id" data-vv-as="$name" data-vv-scope="__input__" class="form-control form-control-sm"
             :class="{'is-invalid': errors.has('__input__.$id')}" v-validate="'required'" v-model="__input__.$id"
             @focus="$validator.errors.removeById('res-__input__-$id')">
         <div class="invalid-feedback" v-text="errors.first('__input__.$id')"></div>

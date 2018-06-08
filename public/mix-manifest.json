@@ -11,20 +11,16 @@
     "/css/activity-log.index.css": "/css/activity-log.index.css",
     "/css/roles.index.css": "/css/roles.index.css",
     "/css/permissions.index.css": "/css/permissions.index.css",
+    "/css/assign-roles.index.css": "/css/assign-roles.index.css",
     "/js/roles.index.js": "/js/roles.index.js",
     "/js/permissions.index.js": "/js/permissions.index.js",
     "/js/dashboard.index.js": "/js/dashboard.index.js",
+    "/js/assign-roles.index.js": "/js/assign-roles.index.js",
     "/js/activity-log.index.js": "/js/activity-log.index.js",
     "/js/accounts.index.js": "/js/accounts.index.js",
     "/js/register.js": "/js/register.js",
     "/js/password.reset.js": "/js/password.reset.js",
     "/js/password.request.js": "/js/password.request.js",
     "/js/login.js": "/js/login.js",
-    "/js/manifest.js": "/js/manifest.js",
-    "/3.d06e42bf270ef7f1f7b7.hot-update.js": "/3.d06e42bf270ef7f1f7b7.hot-update.js",
-    "/3.48222c600cf3efc44914.hot-update.js": "/3.48222c600cf3efc44914.hot-update.js",
-    "/3.2829a92e6e2677280146.hot-update.js": "/3.2829a92e6e2677280146.hot-update.js",
-    "/3.823a7339e23e35561e6a.hot-update.js": "/3.823a7339e23e35561e6a.hot-update.js",
-    "/3.6933c522340209dc671a.hot-update.js": "/3.6933c522340209dc671a.hot-update.js",
-    "/3.4d8ec38b3f159e6d019f.hot-update.js": "/3.4d8ec38b3f159e6d019f.hot-update.js"
+    "/js/manifest.js": "/js/manifest.js"
 }
