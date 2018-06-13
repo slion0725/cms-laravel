@@ -11,6 +11,8 @@ use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Repositories\ProductRepository;
 use App\Validators\ProductValidator;
+use App\Entities\Product;
+use App\Transformers\ProductTransformer;
 use DataTables;
 
 /**
@@ -201,5 +203,12 @@ class ProductsController extends Controller
         }
 
         return redirect()->back()->with('message', 'Product deleted.');
+    }
+
+    public function datatables()
+    {
+        return Datatables::eloquent(Product::query())
+            ->setTransformer(new ProductTransformer)
+            ->make(true);
     }
 }

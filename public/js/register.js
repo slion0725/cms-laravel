@@ -1,2 +1,79 @@
-webpackJsonp([9],{4:function(t,e,n){t.exports=n("Q8wl")},Q8wl:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var a=n("7t+N"),i=(n.n(a),n("Zgw8"),n("K3J8")),s=(n.n(i),n("J1Hg"));n.n(s);new(n("d2yW").a)({el:"#app",methods:{onSubmit:function(){var t=this;this.$validator.validate().then(function(e){e&&t.$refs.register.submit()})}}})},d2yW:function(t,e,n){"use strict";var a=n("I3G/"),i=n.n(a),s=n("sUu7");i.a.use(s.default),e.a=i.a}},[4]);
-//# sourceMappingURL=register.js.map
+webpackJsonp([9],{
+
+/***/ 259:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(260);
+
+
+/***/ }),
+
+/***/ 260:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_popper_js__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_bootstrap__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_bootstrap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_bootstrap__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_holderjs__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_holderjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_holderjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__plugins_vue__ = __webpack_require__(7);
+if (true) {
+  console.log("Looks like we are in development mode!");
+}
+/**
+ * style
+ */
+// import "../scss/register.scss";
+/**
+ * plugin
+ */
+
+
+
+
+
+/**
+ * script
+ */
+new __WEBPACK_IMPORTED_MODULE_4__plugins_vue__["a" /* default */]({
+  el: "#app",
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this = this;
+
+      this.$validator.validate().then(function (result) {
+        if (!result) {
+          return;
+        }
+        _this.$refs.register.submit();
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 7:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vee_validate__ = __webpack_require__(53);
+
+
+// import zhTW from "vee-validate/dist/locale/zh_TW";
+
+// Validator.localize("zh-Tw", zhTW);
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vee_validate__["default"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_vue___default.a);
+
+/***/ })
+
+},[259]);

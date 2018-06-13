@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-all" placeholder="" v-model="search.all">
+                        <input type="text" class="form-control form-control-sm" id="search-all" v-model="search.all">
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-id" placeholder="" v-model="search.id.value">
+                        <input type="text" class="form-control form-control-sm" id="search-id" v-model="search.id.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <input type="checkbox" v-model="search.id.regex">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-name" placeholder="" v-model="search.name.value">
+                        <input type="text" class="form-control form-control-sm" id="search-name" v-model="search.name.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <input type="checkbox" v-model="search.name.regex">
@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-email" placeholder="" v-model="search.email.value">
+                        <input type="text" class="form-control form-control-sm" id="search-email" v-model="search.email.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <input type="checkbox" v-model="search.email.regex">

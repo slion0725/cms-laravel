@@ -2,9 +2,9 @@
 
 @section('off-canvas-right')
     @include('products.search')
-    {{-- @include('products.show')
+    @include('products.show')
     @include('products.add')
-    @include('products.edit') --}}
+    @include('products.edit')
 @endsection
 
 @section('content')

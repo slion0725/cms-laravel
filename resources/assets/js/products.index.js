@@ -31,17 +31,27 @@ const data = {
     name: { value: "", regex: false },
     title: { value: "", regex: false },
     price: { value: "", regex: false },
-    manual: { value: "", regex: false },
-    image: { value: "", regex: false },
     event_start: { value: "", regex: false },
     event_end: { value: "", regex: false },
-    description: { value: "", regex: false },
-    spec: { value: "", regex: false },
     status: { value: "", regex: false },
     created_at: { value: "", regex: false },
     updated_at: { value: "", regex: false }
   },
-  show: { id: null, name: null, email: null, status: null },
+  show: {
+    id: null,
+    name: null,
+    title: null,
+    price: null,
+    manual: null,
+    image: null,
+    event_start: null,
+    event_end: null,
+    description: null,
+    spec: null,
+    status: null,
+    created_at: null,
+    updated_at: null
+  },
   add: {
     name: null,
     title: null,
@@ -103,18 +113,6 @@ const data = {
         searchable: true
       },
       {
-        data: "manual",
-        name: "manual",
-        title: "Manual",
-        searchable: true
-      },
-      {
-        data: "image",
-        name: "image",
-        title: "Image",
-        searchable: true
-      },
-      {
         data: "event_start",
         name: "event_start",
         title: "Event Start",
@@ -124,18 +122,6 @@ const data = {
         data: "event_end",
         name: "event_end",
         title: "Event End",
-        searchable: true
-      },
-      {
-        data: "description",
-        name: "description",
-        title: "Description",
-        searchable: true
-      },
-      {
-        data: "spec",
-        name: "spec",
-        title: "Spec",
         searchable: true
       },
       {

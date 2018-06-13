@@ -10,163 +10,152 @@
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-all" placeholder="" v-model="search.all">
+                        <input type="text" class="form-control form-control-sm" id="search-all" v-model="search.all">
                     </div>
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="__input__-id" class="col-form-label col-form-label-sm">ID</label>
+                    <label for="search-id" class="col-form-label col-form-label-sm">ID</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="text" id="__input__-id" name="id" data-vv-as="ID" data-vv-scope="__input__" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('__input__.id')}" v-validate="'required'" v-model="__input__.id" @focus="$validator.errors.removeById('res-__input__-id')">
-                    <div class="invalid-feedback" v-text="errors.first('__input__.id')"></div>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="search-id" v-model="search.id.value">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" v-model="search.id.regex">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="__input__-name" class="col-form-label col-form-label-sm">Name</label>
+                    <label for="search-name" class="col-form-label col-form-label-sm">Name</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="text" id="__input__-name" name="name" data-vv-as="Name" data-vv-scope="__input__" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('__input__.name')}" v-validate="'required'" v-model="__input__.name"
-                        @focus="$validator.errors.removeById('res-__input__-name')">
-                    <div class="invalid-feedback" v-text="errors.first('__input__.name')"></div>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="search-name" v-model="search.name.value">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" v-model="search.name.regex">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="__input__-title" class="col-form-label col-form-label-sm">Title</label>
+                    <label for="search-title" class="col-form-label col-form-label-sm">Title</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="text" id="__input__-title" name="title" data-vv-as="Title" data-vv-scope="__input__" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('__input__.title')}" v-validate="'required'" v-model="__input__.title"
-                        @focus="$validator.errors.removeById('res-__input__-title')">
-                    <div class="invalid-feedback" v-text="errors.first('__input__.title')"></div>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="search-title" v-model="search.title.value">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" v-model="search.title.regex">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="__input__-price" class="col-form-label col-form-label-sm">Price</label>
+                    <label for="search-price" class="col-form-label col-form-label-sm">Price</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="text" id="__input__-price" name="price" data-vv-as="Price" data-vv-scope="__input__" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('__input__.price')}" v-validate="'required'" v-model="__input__.price"
-                        @focus="$validator.errors.removeById('res-__input__-price')">
-                    <div class="invalid-feedback" v-text="errors.first('__input__.price')"></div>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="search-price" v-model="search.price.value">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" v-model="search.price.regex">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="__input__-manual" class="col-form-label col-form-label-sm">Manual</label>
+                    <label for="search-event_start" class="col-form-label col-form-label-sm">Event Start</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="text" id="__input__-manual" name="manual" data-vv-as="Manual" data-vv-scope="__input__" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('__input__.manual')}" v-validate="'required'" v-model="__input__.manual"
-                        @focus="$validator.errors.removeById('res-__input__-manual')">
-                    <div class="invalid-feedback" v-text="errors.first('__input__.manual')"></div>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="search-event_start" v-model="search.event_start.value">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" v-model="search.event_start.regex">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="__input__-image" class="col-form-label col-form-label-sm">Image</label>
+                    <label for="search-event_end" class="col-form-label col-form-label-sm">Event End</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="text" id="__input__-image" name="image" data-vv-as="Image" data-vv-scope="__input__" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('__input__.image')}" v-validate="'required'" v-model="__input__.image"
-                        @focus="$validator.errors.removeById('res-__input__-image')">
-                    <div class="invalid-feedback" v-text="errors.first('__input__.image')"></div>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="search-event_end" v-model="search.event_end.value">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" v-model="search.event_end.regex">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="__input__-event_start" class="col-form-label col-form-label-sm">Event Start</label>
+                    <label for="search-status" class="col-form-label col-form-label-sm">Status</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="text" id="__input__-event_start" name="event_start" data-vv-as="Event Start" data-vv-scope="__input__" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('__input__.event_start')}" v-validate="'required'" v-model="__input__.event_start"
-                        @focus="$validator.errors.removeById('res-__input__-event_start')">
-                    <div class="invalid-feedback" v-text="errors.first('__input__.event_start')"></div>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="search-status" v-model="search.status.value">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" v-model="search.status.regex">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="__input__-event_end" class="col-form-label col-form-label-sm">Event End</label>
+                    <label for="search-created_at" class="col-form-label col-form-label-sm">Created At</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="text" id="__input__-event_end" name="event_end" data-vv-as="Event End" data-vv-scope="__input__" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('__input__.event_end')}" v-validate="'required'" v-model="__input__.event_end"
-                        @focus="$validator.errors.removeById('res-__input__-event_end')">
-                    <div class="invalid-feedback" v-text="errors.first('__input__.event_end')"></div>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="search-created_at" v-model="search.created_at.value">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" v-model="search.created_at.regex">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="__input__-description" class="col-form-label col-form-label-sm">Description</label>
+                    <label for="search-updated_at" class="col-form-label col-form-label-sm">Updated At</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="text" id="__input__-description" name="description" data-vv-as="Description" data-vv-scope="__input__" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('__input__.description')}" v-validate="'required'" v-model="__input__.description"
-                        @focus="$validator.errors.removeById('res-__input__-description')">
-                    <div class="invalid-feedback" v-text="errors.first('__input__.description')"></div>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="col-sm-3">
-                    <label for="__input__-spec" class="col-form-label col-form-label-sm">Spec</label>
-                </div>
-                <div class="col-sm-9">
-                    <input type="text" id="__input__-spec" name="spec" data-vv-as="Spec" data-vv-scope="__input__" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('__input__.spec')}" v-validate="'required'" v-model="__input__.spec"
-                        @focus="$validator.errors.removeById('res-__input__-spec')">
-                    <div class="invalid-feedback" v-text="errors.first('__input__.spec')"></div>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="col-sm-3">
-                    <label for="__input__-status" class="col-form-label col-form-label-sm">Status</label>
-                </div>
-                <div class="col-sm-9">
-                    <input type="text" id="__input__-status" name="status" data-vv-as="Status" data-vv-scope="__input__" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('__input__.status')}" v-validate="'required'" v-model="__input__.status"
-                        @focus="$validator.errors.removeById('res-__input__-status')">
-                    <div class="invalid-feedback" v-text="errors.first('__input__.status')"></div>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="col-sm-3">
-                    <label for="__input__-created_at" class="col-form-label col-form-label-sm">Created At</label>
-                </div>
-                <div class="col-sm-9">
-                    <input type="text" id="__input__-created_at" name="created_at" data-vv-as="Created At" data-vv-scope="__input__" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('__input__.created_at')}" v-validate="'required'" v-model="__input__.created_at"
-                        @focus="$validator.errors.removeById('res-__input__-created_at')">
-                    <div class="invalid-feedback" v-text="errors.first('__input__.created_at')"></div>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="col-sm-3">
-                    <label for="__input__-updated_at" class="col-form-label col-form-label-sm">Updated At</label>
-                </div>
-                <div class="col-sm-9">
-                    <input type="text" id="__input__-updated_at" name="updated_at" data-vv-as="Updated At" data-vv-scope="__input__" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('__input__.updated_at')}" v-validate="'required'" v-model="__input__.updated_at"
-                        @focus="$validator.errors.removeById('res-__input__-updated_at')">
-                    <div class="invalid-feedback" v-text="errors.first('__input__.updated_at')"></div>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="search-updated_at" v-model="search.updated_at.value">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" v-model="search.updated_at.regex">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
