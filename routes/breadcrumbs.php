@@ -53,3 +53,8 @@ Breadcrumbs::for('assign-roles.index', function ($trail) {
     $trail->parent('index');
     $trail->push('Assign Roles', route('assign-roles.index'));
 });
+
+Breadcrumbs::for('products.index', function ($trail) {
+    $trail->parent('index');
+    $trail->push('Products', route('products.index'));
+});

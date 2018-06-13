@@ -40,7 +40,7 @@ class RolesController extends Controller
     {
         $role = Role::create([
             'name' => $request->name,
-            'guard_name' => $request->guard_name,
+            // 'guard_name' => $request->guard_name,
         ]);
 
         return response()->json([
@@ -92,7 +92,7 @@ class RolesController extends Controller
 
         $role->name = $request->name;
 
-        $role->guard_name = $request->guard_name;
+        // $role->guard_name = $request->guard_name;
 
         $role->save();
 

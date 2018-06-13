@@ -48,6 +48,9 @@ mix
   // assign-roles
   .js("resources/assets/js/assign-roles.index.js", "public/js")
   .sass("resources/assets/sass/assign-roles.index.scss", "public/css")
+  // products
+  .js("resources/assets/js/products.index.js", "public/js")
+  .sass("resources/assets/sass/products.index.scss", "public/css")
   // autoload
   // .autoload({
   //   jquery: ['$','jQuery'],

@@ -25,13 +25,12 @@ class RoleUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:roles,name|max:255',
             'name' => [
                 'required',
                 'max:255',
                 Rule::unique('roles')->ignore($this->id),
             ],
-            'guard_name' => 'required|max:255',
+            // 'guard_name' => 'required|max:255',
         ];
     }
 }

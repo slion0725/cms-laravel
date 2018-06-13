@@ -7,8 +7,8 @@
             <ul class="nav flex-column collapse-parent">
 
                 <li class="nav-item">
-                    <a href="javascript:;" class="nav-link" data-toggle="collapse" data-target=".collapse-list">List</a>
-                    <div class="collapse layer-color collapse-list{{in_array(Route::currentRouteName(),['dashboard.index']) ? ' show' : ''}}"
+                    <a href="javascript:;" class="nav-link" data-toggle="collapse" data-target=".collapse-marking">Marking</a>
+                    <div class="collapse layer-color collapse-marking{{in_array(Route::currentRouteName(), ['dashboard.index', 'products.index']) ? ' show' : ''}}"
                         data-parent=".collapse-parent">
                         <ul class="nav flex-column">
                             <li>
@@ -18,7 +18,7 @@
                                 <a href="javascript:;" class="nav-link">Finder</a>
                             </li>
                             <li>
-                                <a href="javascript:;" class="nav-link">Product</a>
+                                <a href="{{ route('products.index') }}" class="nav-link{{Route::currentRouteName() == 'products.index' ? ' active' : ''}}">Product</a>
                             </li>
                         </ul>
                     </div>
@@ -27,7 +27,7 @@
                 @role('admin')
                 <li class="nav-item">
                     <a href="javascript:;" class="nav-link" data-toggle="collapse" data-target=".collapse-management">Management</a>
-                    <div class="collapse layer-color collapse-management{{in_array(Route::currentRouteName(),['accounts.index', 'assign-roles.index', 'roles.index', 'activity-log.index', 'permissions.index']) ? ' show' : ''}}"
+                    <div class="collapse layer-color collapse-management{{in_array(Route::currentRouteName(), ['accounts.index', 'assign-roles.index', 'roles.index', 'activity-log.index', 'permissions.index']) ? ' show' : ''}}"
                         data-parent=".collapse-parent">
                         <ul class="nav flex-column">
                             <li>

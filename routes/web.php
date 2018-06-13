@@ -57,6 +57,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::put('profile/{id}', 'ProfileController@update')->name('profile.update');
+
+    Route::get('products/datatables', 'ProductsController@datatables')->name('products.datatables');
+    Route::resource('products', 'ProductsController');
 });
 
 // league/glide + league/glide-laravel

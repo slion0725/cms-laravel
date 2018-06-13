@@ -16,18 +16,6 @@
                 </div>
             </div>
             
-            <div class="form-group row">
-                <div class="col-sm-3">
-                    <label for="add-guard_name" class="col-form-label col-form-label-sm">Guard Name</label>
-                </div>
-                <div class="col-sm-9">
-                    <input type="text" id="add-guard_name" name="guard_name" placeholder="" data-vv-as="Guard Name" data-vv-scope="add" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('add.guard_name')}" v-validate="'required'" v-model="add.guard_name"
-                        @focus="$validator.errors.removeById('res-add-guard_name')">
-                    <div class="invalid-feedback" v-text="errors.first('add.guard_name')"></div>
-                </div>
-            </div>
-            
         </div>
         <div class="card-footer">
             <a href="javascript:;" class="text-secondary mr-4 btn-offcanvas-close">Close</a>

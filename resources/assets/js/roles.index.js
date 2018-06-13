@@ -43,14 +43,12 @@ const data = {
   add: {
     id: null,
     name: null,
-    guard_name: null,
     created_at: null,
     updated_at: null
   },
   edit: {
     id: null,
     name: null,
-    guard_name: null,
     created_at: null,
     updated_at: null,
     _method: "PUT"
@@ -123,16 +121,18 @@ new Vue({
             });
           })
           .catch(error => {
-            Object.keys(error.response.data.errors).forEach(e => {
-              this.$validator.errors.add({
-                field: e,
-                msg: error.response.data.errors[e][0],
-                scope: scope,
-                id: `res-${scope}-${e}`
+            if (error.response.data.errors) {
+              Object.keys(error.response.data.errors).forEach(e => {
+                this.$validator.errors.add({
+                  field: e,
+                  msg: error.response.data.errors[e][0],
+                  scope: scope,
+                  id: `res-${scope}-${e}`
+                });
               });
-            });
-
-            // swal("Warning!", error.response.data.message, "warning");
+            } else {
+              swal("Warning!", error.message, "warning");
+            }
           });
       });
     },
@@ -157,16 +157,18 @@ new Vue({
             });
           })
           .catch(error => {
-            Object.keys(error.response.data.errors).forEach(e => {
-              this.$validator.errors.add({
-                field: e,
-                msg: error.response.data.errors[e][0],
-                scope: scope,
-                id: `res-${scope}-${e}`
+            if (error.response.data.errors) {
+              Object.keys(error.response.data.errors).forEach(e => {
+                this.$validator.errors.add({
+                  field: e,
+                  msg: error.response.data.errors[e][0],
+                  scope: scope,
+                  id: `res-${scope}-${e}`
+                });
               });
-            });
-
-            // swal("Warning!", error.response.data.message, "warning");
+            } else {
+              swal("Warning!", error.message, "warning");
+            }
           });
       });
     }

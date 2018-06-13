@@ -22,18 +22,6 @@
                     <div class="invalid-feedback" v-text="errors.first('edit.name')"></div>
                 </div>
             </div>
-            
-            <div class="form-group row">
-                <div class="col-sm-3">
-                    <label for="edit-guard_name" class="col-form-label col-form-label-sm">Guard Name</label>
-                </div>
-                <div class="col-sm-9">
-                    <input type="text" id="edit-guard_name" name="guard_name" placeholder="" data-vv-as="Guard Name" data-vv-scope="edit" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('edit.guard_name')}" v-validate="'required'" v-model="edit.guard_name"
-                        @focus="$validator.errors.removeById('res-edit-guard_name')">
-                    <div class="invalid-feedback" v-text="errors.first('edit.guard_name')"></div>
-                </div>
-            </div>
 
         </div>
         <div class="card-footer">

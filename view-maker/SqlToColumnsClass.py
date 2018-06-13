@@ -16,7 +16,7 @@ class SqlToColumnsClass():
         del(sqlList[::2])
 
         for item in sqlList:
-            self.output += '\'{0}\',\n'.format(item)
+            self.output += '{0},{1}\n'.format(item, item.replace('_', ' ').title())
 
         self.saveFile()
 

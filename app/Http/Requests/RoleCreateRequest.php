@@ -25,7 +25,7 @@ class RoleCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:roles,name|max:255',
-            'guard_name' => 'required|max:255',
+            // 'guard_name' => 'required|max:255',
         ];
     }
 }

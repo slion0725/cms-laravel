@@ -40,7 +40,6 @@ class PermissionsController extends Controller
     {
         $permission = Permission::create([
             'name' => $request->name,
-            'guard_name' => $request->guard_name,
         ]);
 
         return response()->json([
@@ -91,8 +90,6 @@ class PermissionsController extends Controller
         $permission = Permission::find($id);
 
         $permission->name = $request->name;
-
-        $permission->guard_name = $request->guard_name;
 
         $permission->save();
 

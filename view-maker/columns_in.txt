@@ -1,0 +1,13 @@
+id,ID
+name,Name
+title,Title
+price,Price
+manual,Manual
+image,Image
+event_start,Event Start
+event_end,Event End
+description,Description
+spec,Spec
+status,Status
+created_at,Created At
+updated_at,Updated At
