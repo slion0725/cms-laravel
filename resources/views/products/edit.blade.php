@@ -128,9 +128,10 @@
                     <label for="edit-status" class="col-form-label col-form-label-sm">Status</label>
                 </div>
                 <div class="col-sm-9">
-                    <input type="text" id="edit-status" name="status" data-vv-as="Status" data-vv-scope="edit" class="form-control form-control-sm"
-                        :class="{'is-invalid': errors.has('edit.status')}" v-validate="'required'" v-model="edit.status" @focus="$validator.errors.removeById('res-edit-status')">
-                    <div class="invalid-feedback" v-text="errors.first('edit.status')"></div>
+                    <select class="form-control form-control-sm" v-model="edit.status">
+                        <option value="0">Off</option>
+                        <option value="1">On</option>
+                    </select>
                 </div>
             </div>
 

@@ -118,7 +118,7 @@
 ----------------------------------------------------------------------------------------------------
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">ID</label>
+        <label for="__input__-id" class="col-form-label col-form-label-sm">ID</label>
     </div>
     <div class="col-sm-9">
         <select class="form-control form-control-sm" v-model="__input__.id">
@@ -129,7 +129,7 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Name</label>
+        <label for="__input__-name" class="col-form-label col-form-label-sm">Name</label>
     </div>
     <div class="col-sm-9">
         <select class="form-control form-control-sm" v-model="__input__.name">
@@ -140,7 +140,7 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Title</label>
+        <label for="__input__-title" class="col-form-label col-form-label-sm">Title</label>
     </div>
     <div class="col-sm-9">
         <select class="form-control form-control-sm" v-model="__input__.title">
@@ -151,7 +151,7 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Price</label>
+        <label for="__input__-price" class="col-form-label col-form-label-sm">Price</label>
     </div>
     <div class="col-sm-9">
         <select class="form-control form-control-sm" v-model="__input__.price">
@@ -162,7 +162,7 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Manual</label>
+        <label for="__input__-manual" class="col-form-label col-form-label-sm">Manual</label>
     </div>
     <div class="col-sm-9">
         <select class="form-control form-control-sm" v-model="__input__.manual">
@@ -173,7 +173,7 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Image</label>
+        <label for="__input__-image" class="col-form-label col-form-label-sm">Image</label>
     </div>
     <div class="col-sm-9">
         <select class="form-control form-control-sm" v-model="__input__.image">
@@ -184,7 +184,7 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Event Start</label>
+        <label for="__input__-event_start" class="col-form-label col-form-label-sm">Event Start</label>
     </div>
     <div class="col-sm-9">
         <select class="form-control form-control-sm" v-model="__input__.event_start">
@@ -195,7 +195,7 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Event End</label>
+        <label for="__input__-event_end" class="col-form-label col-form-label-sm">Event End</label>
     </div>
     <div class="col-sm-9">
         <select class="form-control form-control-sm" v-model="__input__.event_end">
@@ -206,7 +206,7 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Description</label>
+        <label for="__input__-description" class="col-form-label col-form-label-sm">Description</label>
     </div>
     <div class="col-sm-9">
         <select class="form-control form-control-sm" v-model="__input__.description">
@@ -217,7 +217,7 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Spec</label>
+        <label for="__input__-spec" class="col-form-label col-form-label-sm">Spec</label>
     </div>
     <div class="col-sm-9">
         <select class="form-control form-control-sm" v-model="__input__.spec">
@@ -239,7 +239,7 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Created At</label>
+        <label for="__input__-created_at" class="col-form-label col-form-label-sm">Created At</label>
     </div>
     <div class="col-sm-9">
         <select class="form-control form-control-sm" v-model="__input__.created_at">
@@ -250,7 +250,7 @@
 
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">Updated At</label>
+        <label for="__input__-updated_at" class="col-form-label col-form-label-sm">Updated At</label>
     </div>
     <div class="col-sm-9">
         <select class="form-control form-control-sm" v-model="__input__.updated_at">

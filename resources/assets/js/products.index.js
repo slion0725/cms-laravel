@@ -19,6 +19,9 @@ import Vue from "../plugins/vue";
 import "./components";
 import store from "./components/store";
 import { mapGetters, mapActions } from "vuex";
+import ckeditor5 from "@ckeditor/ckeditor5-build-classic";
+import Quill from "quill";
+import flatpickr from "flatpickr";
 /**
  * script
  */
@@ -62,7 +65,7 @@ const data = {
     event_end: null,
     description: null,
     spec: null,
-    status: null,
+    status: 0,
     created_at: null,
     updated_at: null
   },
@@ -77,7 +80,7 @@ const data = {
     event_end: null,
     description: null,
     spec: null,
-    status: null,
+    status: 0,
     created_at: null,
     updated_at: null,
     _method: "PUT"
@@ -151,6 +154,29 @@ new Vue({
   store,
   data: _.cloneDeep(data),
   computed: { ...mapGetters("datatables", ["selectRowsLength"]) },
+  mounted() {
+    ckeditor5
+      .create(document.querySelector("#add-description"), {})
+      .then(editor => {
+        editor.model.document.on("change", () => {
+          this.add.description = editor.getData();
+        });
+      })
+      .catch(err => {
+        console.error(err.stack);
+      });
+
+    let addspec = new Quill("#add-spec", {
+      modules: {
+        toolbar: true
+      },
+      theme: "snow"
+    });
+
+    addspec.on("text-change", () => {
+      this.add.spec = addspec.root.innerHTML;
+    });
+  },
   methods: {
     ...mapActions("datatables", ["search_emit", "search_clear"]),
     add_onSubmit(scope) {
@@ -224,6 +250,9 @@ new Vue({
             }
           });
       });
+    },
+    addSpecChange(event) {
+      this.add.spec = $event.html;
     }
   }
 });
@@ -232,3 +261,23 @@ new Vue({
 import { offCanvas, navtabsScroll } from "./components/layout";
 offCanvas();
 navtabsScroll();
+
+import { Mandarin } from "flatpickr/dist/l10n/zh.js";
+import rangePlugin from "flatpickr/dist/plugins/rangePlugin.js";
+
+flatpickr("#add-event_start", {
+  locale: Mandarin,
+  time_24hr: true,
+  dateFormat: "Y-m-d",
+  plugins: [
+    new rangePlugin({
+      input: "#add-event_end"
+    })
+  ],
+  onChange(selectedDates, dateStr, instance) {
+    const selectedUTCDates = selectedDates.map(date => date.fp_toUTC());
+    console.log(selectedUTCDates[0])
+    console.log(selectedUTCDates[1])
+  }
+});
+$("#add-event_start, #add-event_end").css({ backgroundColor: "#fff" });

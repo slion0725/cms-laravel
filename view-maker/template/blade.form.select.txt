@@ -1,6 +1,6 @@
 <div class="form-group row">
     <div class="col-sm-3">
-        <label for="__input__-status" class="col-form-label col-form-label-sm">$name</label>
+        <label for="__input__-$id" class="col-form-label col-form-label-sm">$name</label>
     </div>
     <div class="col-sm-9">
         <select class="form-control form-control-sm" v-model="__input__.$id">
