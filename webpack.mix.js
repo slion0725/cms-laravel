@@ -78,6 +78,7 @@ mix
     "select2",
     // "select2-bootstrap-theme",
     // "spinkit",
+    "sweetalert2",
     "vee-validate",
     "vee-validate/dist/locale/zh_TW",
     "vue",
