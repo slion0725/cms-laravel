@@ -6,22 +6,22 @@
         <div class="card-body align-self-stretch">
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="search-all" class="col-form-label col-form-label-sm">All</label>
+                    <label class="col-form-label col-form-label-sm" for="search-all">All</label>
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-all" v-model="search.all">
+                        <input class="form-control form-control-sm" id="search-all" type="text" v-model="search.all">
                     </div>
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="search-id" class="col-form-label col-form-label-sm">ID</label>
+                    <label class="col-form-label col-form-label-sm" for="search-id">ID</label>
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-id" v-model="search.id.value">
+                        <input class="form-control form-control-sm" id="search-id" type="text" v-model="search.id.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <input type="checkbox" v-model="search.id.regex">
@@ -33,11 +33,11 @@
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="search-name" class="col-form-label col-form-label-sm">Name</label>
+                    <label class="col-form-label col-form-label-sm" for="search-name">Name</label>
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-name" v-model="search.name.value">
+                        <input class="form-control form-control-sm" id="search-name" type="text" v-model="search.name.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <input type="checkbox" v-model="search.name.regex">
@@ -49,11 +49,11 @@
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="search-title" class="col-form-label col-form-label-sm">Title</label>
+                    <label class="col-form-label col-form-label-sm" for="search-title">Title</label>
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-title" v-model="search.title.value">
+                        <input class="form-control form-control-sm" id="search-title" type="text" v-model="search.title.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <input type="checkbox" v-model="search.title.regex">
@@ -65,11 +65,11 @@
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="search-price" class="col-form-label col-form-label-sm">Price</label>
+                    <label class="col-form-label col-form-label-sm" for="search-price">Price</label>
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-price" v-model="search.price.value">
+                        <input class="form-control form-control-sm" id="search-price" type="text" v-model="search.price.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <input type="checkbox" v-model="search.price.regex">
@@ -81,11 +81,11 @@
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="search-event_start" class="col-form-label col-form-label-sm">Event Start</label>
+                    <label class="col-form-label col-form-label-sm" for="search-event_start">Event Start</label>
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-event_start" v-model="search.event_start.value">
+                        <input class="form-control form-control-sm" id="search-event_start" type="text" v-model="search.event_start.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <input type="checkbox" v-model="search.event_start.regex">
@@ -97,11 +97,11 @@
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="search-event_end" class="col-form-label col-form-label-sm">Event End</label>
+                    <label class="col-form-label col-form-label-sm" for="search-event_end">Event End</label>
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-event_end" v-model="search.event_end.value">
+                        <input class="form-control form-control-sm" id="search-event_end" type="text" v-model="search.event_end.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <input type="checkbox" v-model="search.event_end.regex">
@@ -113,11 +113,11 @@
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="search-status" class="col-form-label col-form-label-sm">Status</label>
+                    <label class="col-form-label col-form-label-sm" for="search-status">Status</label>
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-status" v-model="search.status.value">
+                        <input class="form-control form-control-sm" id="search-status" type="text" v-model="search.status.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <input type="checkbox" v-model="search.status.regex">
@@ -129,11 +129,11 @@
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="search-created_at" class="col-form-label col-form-label-sm">Created At</label>
+                    <label class="col-form-label col-form-label-sm" for="search-created_at">Created At</label>
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-created_at" v-model="search.created_at.value">
+                        <input class="form-control form-control-sm" id="search-created_at" type="text" v-model="search.created_at.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <input type="checkbox" v-model="search.created_at.regex">
@@ -145,11 +145,11 @@
 
             <div class="form-group row">
                 <div class="col-sm-3">
-                    <label for="search-updated_at" class="col-form-label col-form-label-sm">Updated At</label>
+                    <label class="col-form-label col-form-label-sm" for="search-updated_at">Updated At</label>
                 </div>
                 <div class="col-sm-9">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="search-updated_at" v-model="search.updated_at.value">
+                        <input class="form-control form-control-sm" id="search-updated_at" type="text" v-model="search.updated_at.value">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <input type="checkbox" v-model="search.updated_at.regex">
@@ -161,9 +161,9 @@
 
         </div>
         <div class="card-footer">
-            <a href="javascript:;" class="text-secondary mr-4 btn-offcanvas-close">Close</a>
-            <a href="javascript:;" class="text-primary mr-4" @click="search_emit(search)">Search</a>
-            <a href="javascript:;" class="text-info mr-4" @click="search_clear(search)">Clear</a>
+            <a class="text-secondary mr-4 btn-offcanvas-close" href="javascript:;">Close</a>
+            <a class="text-primary mr-4" href="javascript:;" @click="search_emit(search)">Search</a>
+            <a class="text-info mr-4" href="javascript:;" @click="search_clear(search)">Clear</a>
         </div>
     </div>
 </div>

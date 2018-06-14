@@ -60,7 +60,7 @@
             </dl>
         </div>
         <div class="card-footer">
-            <a href="javascript:;" class="text-secondary mr-4 btn-offcanvas-close">Close</a>
+            <a class="text-secondary mr-4 btn-offcanvas-close" href="javascript:;">Close</a>
         </div>
     </div>
 </div>

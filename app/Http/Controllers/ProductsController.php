@@ -75,6 +75,8 @@ class ProductsController extends Controller
      */
     public function store(ProductCreateRequest $request)
     {
+        dd($request->all());
+
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);

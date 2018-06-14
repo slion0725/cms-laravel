@@ -1105,7 +1105,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_quill__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_flatpickr__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_flatpickr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_flatpickr_dist_plugins_rangePlugin_js__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_flatpickr_dist_plugins_rangePlugin_js__ = __webpack_require__(282);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_flatpickr_dist_plugins_rangePlugin_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_flatpickr_dist_plugins_rangePlugin_js__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -1134,6 +1134,7 @@ if (true) {
  * script
  */
 __WEBPACK_IMPORTED_MODULE_5_axios___default.a.defaults.headers["Accept"] = "application/json";
+__WEBPACK_IMPORTED_MODULE_5_axios___default.a.defaults.headers["Content-Type"] = "multipart/form-data";
 
 var data = {
   search: {
@@ -1149,48 +1150,44 @@ var data = {
     updated_at: { value: "", regex: false }
   },
   show: {
-    id: null,
-    name: null,
-    title: null,
-    price: null,
-    manual: null,
-    image: null,
-    event_start: null,
-    event_end: null,
-    description: null,
-    spec: null,
-    status: null,
-    created_at: null,
-    updated_at: null
+    id: "",
+    name: "",
+    title: "",
+    price: "",
+    status: 0,
+    manual: "",
+    image: "",
+    event_start: "",
+    event_end: "",
+    description: "",
+    spec: "",
+    created_at: "",
+    updated_at: ""
   },
   add: {
-    name: null,
-    title: null,
-    price: null,
-    manual: null,
-    image: null,
-    event_start: null,
-    event_end: null,
-    description: null,
-    spec: null,
+    name: "",
+    title: "",
+    price: "",
     status: 0,
-    created_at: null,
-    updated_at: null
+    manual: "",
+    image: "",
+    event_start: "",
+    event_end: "",
+    description: "",
+    spec: ""
   },
   edit: {
-    id: null,
-    name: null,
-    title: null,
-    price: null,
-    manual: null,
-    image: null,
-    event_start: null,
-    event_end: null,
-    description: null,
-    spec: null,
+    id: "",
+    name: "",
+    title: "",
+    price: "",
     status: 0,
-    created_at: null,
-    updated_at: null,
+    manual: "",
+    image: "",
+    event_start: "",
+    event_end: "",
+    description: "",
+    spec: "",
     _method: "PUT"
   },
   datatablesSetting: {
@@ -1261,7 +1258,15 @@ var app = new __WEBPACK_IMPORTED_MODULE_7__plugins_vue__["a" /* default */]({
           return;
         }
 
-        __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post("products", _this.add).then(function (response) {
+        var formData = new FormData();
+
+        __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.map(_this.add, function (item, key) {
+          formData.append(key, item);
+        });
+
+        console.dir(formData);
+
+        __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post("products", formData).then(function (response) {
           _this.$store.dispatch("datatables/draw");
 
           __WEBPACK_IMPORTED_MODULE_6_sweetalert2___default()("Success!", "", "success");
@@ -1333,7 +1338,7 @@ var app = new __WEBPACK_IMPORTED_MODULE_7__plugins_vue__["a" /* default */]({
           this[data[0]][data[1]] = event.target.files[0];
         }
       } else {
-        this[data[0]][data[1]] = null;
+        this[data[0]][data[1]] = "";
       }
     }
   })
@@ -15063,7 +15068,7 @@ module.exports = __webpack_require__(63);
 
 /***/ }),
 
-/***/ 283:
+/***/ 282:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* flatpickr v4.5.0, @license MIT */

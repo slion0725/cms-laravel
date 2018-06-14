@@ -23,6 +23,7 @@ import { mapGetters, mapActions } from "vuex";
  * script
  */
 axios.defaults.headers["Accept"] = "application/json";
+axios.defaults.headers["Content-Type"] = "multipart/form-data";
 
 const data = {
   search: {
@@ -38,48 +39,44 @@ const data = {
     updated_at: { value: "", regex: false }
   },
   show: {
-    id: null,
-    name: null,
-    title: null,
-    price: null,
-    manual: null,
-    image: null,
-    event_start: null,
-    event_end: null,
-    description: null,
-    spec: null,
-    status: null,
-    created_at: null,
-    updated_at: null
+    id: "",
+    name: "",
+    title: "",
+    price: "",
+    status: 0,
+    manual: "",
+    image: "",
+    event_start: "",
+    event_end: "",
+    description: "",
+    spec: "",
+    created_at: "",
+    updated_at: ""
   },
   add: {
-    name: null,
-    title: null,
-    price: null,
-    manual: null,
-    image: null,
-    event_start: null,
-    event_end: null,
-    description: null,
-    spec: null,
+    name: "",
+    title: "",
+    price: "",
     status: 0,
-    created_at: null,
-    updated_at: null
+    manual: "",
+    image: "",
+    event_start: "",
+    event_end: "",
+    description: "",
+    spec: ""
   },
   edit: {
-    id: null,
-    name: null,
-    title: null,
-    price: null,
-    manual: null,
-    image: null,
-    event_start: null,
-    event_end: null,
-    description: null,
-    spec: null,
+    id: "",
+    name: "",
+    title: "",
+    price: "",
     status: 0,
-    created_at: null,
-    updated_at: null,
+    manual: "",
+    image: "",
+    event_start: "",
+    event_end: "",
+    description: "",
+    spec: "",
     _method: "PUT"
   },
   datatablesSetting: {
@@ -159,8 +156,16 @@ var app = new Vue({
           return;
         }
 
+        let formData = new FormData();
+
+        _.map(this.add, (item, key) => {
+          formData.append(key, item);
+        });
+
+        console.dir(formData);
+
         axios
-          .post(`products`, this.add)
+          .post(`products`, formData)
           .then(response => {
             this.$store.dispatch("datatables/draw");
 
@@ -233,7 +238,7 @@ var app = new Vue({
           this[data[0]][data[1]] = event.target.files[0];
         }
       } else {
-        this[data[0]][data[1]] = null;
+        this[data[0]][data[1]] = "";
       }
     }
   }
