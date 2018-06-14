@@ -1274,8 +1274,9 @@ var app = new __WEBPACK_IMPORTED_MODULE_7__plugins_vue__["a" /* default */]({
           __WEBPACK_IMPORTED_MODULE_6_sweetalert2___default()("Success!", "", "success");
 
           _this.$refs["add-manual"].value = "";
-
           _this.$refs["add-image"].value = "";
+          _this.$refs["add-event_start"].value = "";
+          _this.$refs["add-event_end"].value = "";
 
           _this.add = __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.cloneDeep(data.add);
 

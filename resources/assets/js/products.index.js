@@ -174,8 +174,9 @@ var app = new Vue({
             swal("Success!", "", "success");
 
             this.$refs["add-manual"].value = "";
-            
             this.$refs["add-image"].value = "";
+            this.$refs["add-event_start"].value = "";
+            this.$refs["add-event_end"].value = "";
 
             this.add = _.cloneDeep(data.add);
 

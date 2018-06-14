@@ -14,6 +14,7 @@ use App\Validators\ProductValidator;
 use App\Entities\Product;
 use App\Transformers\ProductTransformer;
 use DataTables;
+use Storage;
 
 /**
  * Class ProductsController.
@@ -75,6 +76,14 @@ class ProductsController extends Controller
      */
     public function store(ProductCreateRequest $request)
     {
+        if($request->hasFile('manual')){
+            dd($request->manual);
+        }
+
+        if($request->hasFile('image')){
+            dd($request->image);
+        }
+
         dd($request->all());
 
         try {

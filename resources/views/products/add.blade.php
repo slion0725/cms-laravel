@@ -110,7 +110,7 @@
                         <div class="col-sm-9">
                             <input class="form-control form-control-sm" id="add-event_end" name="event_end" data-vv-as="Event End" data-vv-scope="add"
                                 type="text" :class="{'is-invalid': errors.has('add.event_end')}" v-validate="'required|date_format:YYYY-MM-DD|after:$add-event_start'"
-                                v-model="add.event_end" @focus="$validator.errors.removeById('res-add-event_end')">
+                                ref="add-event_end" v-model="add.event_end" @focus="$validator.errors.removeById('res-add-event_end')">
                             <div class="invalid-feedback" v-text="errors.first('add.event_end')"></div>
                         </div>
                     </div>
