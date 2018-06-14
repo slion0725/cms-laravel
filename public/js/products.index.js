@@ -1264,12 +1264,18 @@ var app = new __WEBPACK_IMPORTED_MODULE_7__plugins_vue__["a" /* default */]({
           formData.append(key, item);
         });
 
-        console.dir(formData);
+        __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.map(_this.add.image, function (item, key) {
+          formData.append("image[" + key + "]", item);
+        });
 
         __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post("products", formData).then(function (response) {
           _this.$store.dispatch("datatables/draw");
 
           __WEBPACK_IMPORTED_MODULE_6_sweetalert2___default()("Success!", "", "success");
+
+          _this.$refs["add-manual"].value = "";
+
+          _this.$refs["add-image"].value = "";
 
           _this.add = __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.cloneDeep(data.add);
 

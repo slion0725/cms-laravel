@@ -162,7 +162,9 @@ var app = new Vue({
           formData.append(key, item);
         });
 
-        console.dir(formData);
+        _.map(this.add.image, (item, key) => {
+          formData.append(`image[${key}]`, item);
+        });
 
         axios
           .post(`products`, formData)
@@ -170,6 +172,10 @@ var app = new Vue({
             this.$store.dispatch("datatables/draw");
 
             swal("Success!", "", "success");
+
+            this.$refs["add-manual"].value = "";
+            
+            this.$refs["add-image"].value = "";
 
             this.add = _.cloneDeep(data.add);
 

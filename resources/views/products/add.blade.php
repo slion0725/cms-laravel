@@ -72,7 +72,7 @@
                         <div class="col-sm-9">
                             <input class="form-control-file" id="add-manual" name="manual" data-vv-scope="add" type="file" v-validate="'mimes:application/pdf'"
                                 :class="{'is-invalid': errors.has('add.manual')}" @focus="$validator.errors.removeById('res-add-manual')"
-                                @change="processFile($event, ['add', 'manual'])">
+                                ref="add-manual" @change="processFile($event, ['add', 'manual'])">
                             <div class="invalid-feedback" v-text="errors.first('add.manual')"></div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                         <div class="col-sm-9">
                             <input class="form-control-file" id="add-image" name="image" data-vv-scope="add" type="file" multiple v-validate="'image|length:0,6'"
                                 :class="{'is-invalid': errors.has('add.image')}" @focus="$validator.errors.removeById('res-add-image')"
-                                @change="processFile($event, ['add', 'image'], true)">
+                                ref="add-image" @change="processFile($event, ['add', 'image'], true)">
                             <div class="invalid-feedback" v-text="errors.first('add.image')"></div>
                         </div>
                     </div>
