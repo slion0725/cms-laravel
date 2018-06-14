@@ -91,8 +91,8 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="add-event_start" name="event_start" data-vv-as="Event Start" data-vv-scope="add" class="form-control form-control-sm"
-                                :class="{'is-invalid': errors.has('add.event_start')}" v-validate="'required'" v-model="add.event_start"
-                                @focus="$validator.errors.removeById('res-add-event_start')">
+                                :class="{'is-invalid': errors.has('add.event_start')}" v-validate="'required|date_format:YYYY-MM-DD'"
+                                ref="add-event_start" v-model="add.event_start" @focus="$validator.errors.removeById('res-add-event_start')">
                             <div class="invalid-feedback" v-text="errors.first('add.event_start')"></div>
                         </div>
                     </div>
@@ -103,8 +103,8 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" id="add-event_end" name="event_end" data-vv-as="Event End" data-vv-scope="add" class="form-control form-control-sm"
-                                :class="{'is-invalid': errors.has('add.event_end')}" v-validate="'required'" v-model="add.event_end"
-                                @focus="$validator.errors.removeById('res-add-event_end')">
+                                :class="{'is-invalid': errors.has('add.event_end')}" v-validate="'required|date_format:YYYY-MM-DD|after:$add-event_start'"
+                                v-model="add.event_end" @focus="$validator.errors.removeById('res-add-event_end')">
                             <div class="invalid-feedback" v-text="errors.first('add.event_end')"></div>
                         </div>
                     </div>
