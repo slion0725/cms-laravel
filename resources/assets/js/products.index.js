@@ -227,9 +227,9 @@ var app = new Vue({
     },
     processFile(event, data, multiple = false) {
       if (event.target.files.length > 0) {
-        if(multiple){
+        if (multiple) {
           this[data[0]][data[1]] = event.target.files;
-        }else{
+        } else {
           this[data[0]][data[1]] = event.target.files[0];
         }
       } else {

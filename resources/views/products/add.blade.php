@@ -44,7 +44,7 @@
                             <label for="add-price" class="col-form-label col-form-label-sm">Price</label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="text" id="add-price" name="price" data-vv-as="Price" data-vv-scope="add" class="form-control form-control-sm"
+                            <input type="number" step="0.01" id="add-price" name="price" data-vv-as="Price" data-vv-scope="add" class="form-control form-control-sm"
                                 :class="{'is-invalid': errors.has('add.price')}" v-validate="'required'" v-model="add.price"
                                 @focus="$validator.errors.removeById('res-add-price')">
                             <div class="invalid-feedback" v-text="errors.first('add.price')"></div>
