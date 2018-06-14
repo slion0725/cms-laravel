@@ -19,9 +19,6 @@ import Vue from "../plugins/vue";
 import "./components";
 import store from "./components/store";
 import { mapGetters, mapActions } from "vuex";
-import ckeditor5 from "@ckeditor/ckeditor5-build-classic";
-import Quill from "quill";
-import flatpickr from "flatpickr";
 /**
  * script
  */
@@ -149,34 +146,11 @@ const data = {
   }
 };
 
-new Vue({
+var app = new Vue({
   el: "#app",
   store,
   data: _.cloneDeep(data),
   computed: { ...mapGetters("datatables", ["selectRowsLength"]) },
-  mounted() {
-    ckeditor5
-      .create(document.querySelector("#add-description"), {})
-      .then(editor => {
-        editor.model.document.on("change", () => {
-          this.add.description = editor.getData();
-        });
-      })
-      .catch(err => {
-        console.error(err.stack);
-      });
-
-    let addspec = new Quill("#add-spec", {
-      modules: {
-        toolbar: true
-      },
-      theme: "snow"
-    });
-
-    addspec.on("text-change", () => {
-      this.add.spec = addspec.root.innerHTML;
-    });
-  },
   methods: {
     ...mapActions("datatables", ["search_emit", "search_clear"]),
     add_onSubmit(scope) {
@@ -251,8 +225,16 @@ new Vue({
           });
       });
     },
-    addSpecChange(event) {
-      this.add.spec = $event.html;
+    processFile(event, data, multiple = false) {
+      if (event.target.files.length > 0) {
+        if(multiple){
+          this[data[0]][data[1]] = event.target.files;
+        }else{
+          this[data[0]][data[1]] = event.target.files[0];
+        }
+      } else {
+        this[data[0]][data[1]] = null;
+      }
     }
   }
 });
@@ -262,11 +244,35 @@ import { offCanvas, navtabsScroll } from "./components/layout";
 offCanvas();
 navtabsScroll();
 
-import { Mandarin } from "flatpickr/dist/l10n/zh.js";
-import rangePlugin from "flatpickr/dist/plugins/rangePlugin.js";
+import ckeditor5 from "@ckeditor/ckeditor5-build-classic";
+ckeditor5
+  .create(document.querySelector("#add-description"), {})
+  .then(editor => {
+    editor.model.document.on("change", () => {
+      app.add.description = editor.getData();
+    });
+  })
+  .catch(err => {
+    console.error(err.stack);
+  });
 
+import Quill from "quill";
+let addspec = new Quill("#add-spec", {
+  modules: {
+    toolbar: true
+  },
+  theme: "snow"
+});
+
+addspec.on("text-change", () => {
+  app.add.spec = addspec.root.innerHTML;
+});
+
+import flatpickr from "flatpickr";
+// import { Mandarin } from "flatpickr/dist/l10n/zh.js";
+import rangePlugin from "flatpickr/dist/plugins/rangePlugin.js";
 flatpickr("#add-event_start", {
-  locale: Mandarin,
+  // locale: Mandarin,
   time_24hr: true,
   dateFormat: "Y-m-d",
   plugins: [
@@ -275,9 +281,11 @@ flatpickr("#add-event_start", {
     })
   ],
   onChange(selectedDates, dateStr, instance) {
-    const selectedUTCDates = selectedDates.map(date => date.fp_toUTC());
-    console.log(selectedUTCDates[0])
-    console.log(selectedUTCDates[1])
+    let selectedUTCDates = selectedDates.map(date =>
+      instance.formatDate(date, instance.config.dateFormat)
+    );
+    app.add.event_start = selectedUTCDates[0];
+    app.add.event_end = selectedUTCDates[1];
   }
 });
 $("#add-event_start, #add-event_end").css({ backgroundColor: "#fff" });

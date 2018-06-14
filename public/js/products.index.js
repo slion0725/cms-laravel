@@ -1098,17 +1098,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_store__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_vuex__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ckeditor_ckeditor5_build_classic__ = __webpack_require__(279);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ckeditor_ckeditor5_build_classic___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__ckeditor_ckeditor5_build_classic__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_quill__ = __webpack_require__(280);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_quill__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_flatpickr__ = __webpack_require__(376);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_flatpickr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_layout__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_flatpickr_dist_l10n_zh_js__ = __webpack_require__(377);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_flatpickr_dist_l10n_zh_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_flatpickr_dist_l10n_zh_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_flatpickr_dist_plugins_rangePlugin_js__ = __webpack_require__(378);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_flatpickr_dist_plugins_rangePlugin_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_flatpickr_dist_plugins_rangePlugin_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_layout__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ckeditor_ckeditor5_build_classic__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ckeditor_ckeditor5_build_classic___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__ckeditor_ckeditor5_build_classic__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_quill__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_quill__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_flatpickr__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_flatpickr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_flatpickr__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_flatpickr_dist_plugins_rangePlugin_js__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_flatpickr_dist_plugins_rangePlugin_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_flatpickr_dist_plugins_rangePlugin_js__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 if (true) {
@@ -1121,9 +1119,6 @@ if (true) {
 /**
  * plugin
  */
-
-
-
 
 
 
@@ -1252,36 +1247,48 @@ var data = {
   }
 };
 
-new __WEBPACK_IMPORTED_MODULE_7__plugins_vue__["a" /* default */]({
+var app = new __WEBPACK_IMPORTED_MODULE_7__plugins_vue__["a" /* default */]({
   el: "#app",
   store: __WEBPACK_IMPORTED_MODULE_9__components_store__["a" /* default */],
   data: __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.cloneDeep(data),
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_10_vuex__["mapGetters"])("datatables", ["selectRowsLength"])),
-  mounted: function mounted() {
-    var _this = this;
-
-    __WEBPACK_IMPORTED_MODULE_11__ckeditor_ckeditor5_build_classic___default.a.create(document.querySelector("#add-description"), {}).then(function (editor) {
-      editor.model.document.on("change", function () {
-        _this.add.description = editor.getData();
-      });
-    }).catch(function (err) {
-      console.error(err.stack);
-    });
-
-    var addspec = new __WEBPACK_IMPORTED_MODULE_12_quill___default.a("#add-spec", {
-      modules: {
-        toolbar: true
-      },
-      theme: "snow"
-    });
-
-    addspec.on("text-change", function () {
-      _this.add.spec = addspec.root.innerHTML;
-    });
-  },
-
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_10_vuex__["mapActions"])("datatables", ["search_emit", "search_clear"]), {
     add_onSubmit: function add_onSubmit(scope) {
+      var _this = this;
+
+      this.$validator.validateAll(scope).then(function (result) {
+        if (!result) {
+          return;
+        }
+
+        __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post("products", _this.add).then(function (response) {
+          _this.$store.dispatch("datatables/draw");
+
+          __WEBPACK_IMPORTED_MODULE_6_sweetalert2___default()("Success!", "", "success");
+
+          _this.add = __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.cloneDeep(data.add);
+
+          _this.$nextTick(function () {
+            _this.$validator.reset({ scope: scope });
+            _this.$validator.errors.clear(scope);
+          });
+        }).catch(function (error) {
+          if (error.response.data.errors) {
+            Object.keys(error.response.data.errors).forEach(function (e) {
+              _this.$validator.errors.add({
+                field: e,
+                msg: error.response.data.errors[e][0],
+                scope: scope,
+                id: "res-" + scope + "-" + e
+              });
+            });
+          } else {
+            __WEBPACK_IMPORTED_MODULE_6_sweetalert2___default()("Warning!", error.message, "warning");
+          }
+        });
+      });
+    },
+    edit_onSubmit: function edit_onSubmit(scope) {
       var _this2 = this;
 
       this.$validator.validateAll(scope).then(function (result) {
@@ -1289,12 +1296,12 @@ new __WEBPACK_IMPORTED_MODULE_7__plugins_vue__["a" /* default */]({
           return;
         }
 
-        __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post("products", _this2.add).then(function (response) {
+        __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post("products/" + _this2.edit.id, _this2.edit).then(function (response) {
           _this2.$store.dispatch("datatables/draw");
 
           __WEBPACK_IMPORTED_MODULE_6_sweetalert2___default()("Success!", "", "success");
 
-          _this2.add = __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.cloneDeep(data.add);
+          _this2.edit = __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.cloneDeep(data.edit);
 
           _this2.$nextTick(function () {
             _this2.$validator.reset({ scope: scope });
@@ -1316,68 +1323,64 @@ new __WEBPACK_IMPORTED_MODULE_7__plugins_vue__["a" /* default */]({
         });
       });
     },
-    edit_onSubmit: function edit_onSubmit(scope) {
-      var _this3 = this;
+    processFile: function processFile(event, data) {
+      var multiple = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-      this.$validator.validateAll(scope).then(function (result) {
-        if (!result) {
-          return;
+      if (event.target.files.length > 0) {
+        if (multiple) {
+          this[data[0]][data[1]] = event.target.files;
+        } else {
+          this[data[0]][data[1]] = event.target.files[0];
         }
-
-        __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post("products/" + _this3.edit.id, _this3.edit).then(function (response) {
-          _this3.$store.dispatch("datatables/draw");
-
-          __WEBPACK_IMPORTED_MODULE_6_sweetalert2___default()("Success!", "", "success");
-
-          _this3.edit = __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.cloneDeep(data.edit);
-
-          _this3.$nextTick(function () {
-            _this3.$validator.reset({ scope: scope });
-            _this3.$validator.errors.clear(scope);
-          });
-        }).catch(function (error) {
-          if (error.response.data.errors) {
-            Object.keys(error.response.data.errors).forEach(function (e) {
-              _this3.$validator.errors.add({
-                field: e,
-                msg: error.response.data.errors[e][0],
-                scope: scope,
-                id: "res-" + scope + "-" + e
-              });
-            });
-          } else {
-            __WEBPACK_IMPORTED_MODULE_6_sweetalert2___default()("Warning!", error.message, "warning");
-          }
-        });
-      });
-    },
-    addSpecChange: function addSpecChange(event) {
-      this.add.spec = $event.html;
+      } else {
+        this[data[0]][data[1]] = null;
+      }
     }
   })
 });
 
 // layout
 
-Object(__WEBPACK_IMPORTED_MODULE_14__components_layout__["b" /* offCanvas */])();
-Object(__WEBPACK_IMPORTED_MODULE_14__components_layout__["a" /* navtabsScroll */])();
+Object(__WEBPACK_IMPORTED_MODULE_11__components_layout__["b" /* offCanvas */])();
+Object(__WEBPACK_IMPORTED_MODULE_11__components_layout__["a" /* navtabsScroll */])();
 
 
+__WEBPACK_IMPORTED_MODULE_12__ckeditor_ckeditor5_build_classic___default.a.create(document.querySelector("#add-description"), {}).then(function (editor) {
+  editor.model.document.on("change", function () {
+    app.add.description = editor.getData();
+  });
+}).catch(function (err) {
+  console.error(err.stack);
+});
 
 
-__WEBPACK_IMPORTED_MODULE_13_flatpickr___default()("#add-event_start", {
-  locale: __WEBPACK_IMPORTED_MODULE_15_flatpickr_dist_l10n_zh_js__["Mandarin"],
+var addspec = new __WEBPACK_IMPORTED_MODULE_13_quill___default.a("#add-spec", {
+  modules: {
+    toolbar: true
+  },
+  theme: "snow"
+});
+
+addspec.on("text-change", function () {
+  app.add.spec = addspec.root.innerHTML;
+});
+
+
+// import { Mandarin } from "flatpickr/dist/l10n/zh.js";
+
+__WEBPACK_IMPORTED_MODULE_14_flatpickr___default()("#add-event_start", {
+  // locale: Mandarin,
   time_24hr: true,
   dateFormat: "Y-m-d",
-  plugins: [new __WEBPACK_IMPORTED_MODULE_16_flatpickr_dist_plugins_rangePlugin_js___default.a({
+  plugins: [new __WEBPACK_IMPORTED_MODULE_15_flatpickr_dist_plugins_rangePlugin_js___default.a({
     input: "#add-event_end"
   })],
   onChange: function onChange(selectedDates, dateStr, instance) {
     var selectedUTCDates = selectedDates.map(function (date) {
-      return date.fp_toUTC();
+      return instance.formatDate(date, instance.config.dateFormat);
     });
-    console.log(selectedUTCDates[0]);
-    console.log(selectedUTCDates[1]);
+    app.add.event_start = selectedUTCDates[0];
+    app.add.event_end = selectedUTCDates[1];
   }
 });
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#add-event_start, #add-event_end").css({ backgroundColor: "#fff" });
@@ -12918,395 +12921,7 @@ module.exports = __webpack_require__(63);
 
 /***/ }),
 
-/***/ 29:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "a",
-    {
-      staticClass: "btn-item",
-      attrs: { href: "javascript:;" },
-      on: { click: _vm.add_emit }
-    },
-    [_c("i", { staticClass: "mdi mdi-plus mr-1" }), _vm._v("Add\n")]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6597a2be", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 30:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(31)
-/* template */
-var __vue_template__ = __webpack_require__(32)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/DatatablesEditBtn.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-14e00bbc", Component.options)
-  } else {
-    hotAPI.reload("data-v-14e00bbc", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 31:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
-//
-//
-//
-//
-//
-//
-
-
-
-
-__WEBPACK_IMPORTED_MODULE_2_axios___default.a.defaults.headers["Accept"] = "application/json";
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    edit: {
-      type: Object,
-      required: true
-    },
-    path: {
-      type: String,
-      required: true
-    }
-  },
-  computed: Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["mapGetters"])("datatables", ["selectRowsLength", "selectRows"]),
-  methods: {
-    edit_emit: function edit_emit() {
-      var _this = this;
-
-      if (this.selectRowsLength != 1) {
-        return;
-      }
-
-      var id = this.selectRows[0].id;
-
-      __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(this.path + "/" + id + "/edit").then(function (response) {
-        Object.assign(_this.edit, response.data.data);
-      }).catch(function (error) {
-        console.log(error);
-      });
-
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".off-canvas").removeClass("off-canvas-open");
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#offcanvas-edit").toggleClass("off-canvas-open");
-    }
-  }
-});
-
-/***/ }),
-
-/***/ 32:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "a",
-    {
-      staticClass: "btn-item",
-      class: { disabled: _vm.selectRowsLength != 1 },
-      attrs: { href: "javascript:;" },
-      on: { click: _vm.edit_emit }
-    },
-    [_c("i", { staticClass: "mdi mdi-pencil mr-1" }), _vm._v("Edit\n")]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-14e00bbc", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 33:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(34)
-/* template */
-var __vue_template__ = __webpack_require__(35)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/DatatablesDeleteBtn.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2317887b", Component.options)
-  } else {
-    hotAPI.reload("data-v-2317887b", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 34:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_sweetalert2__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_sweetalert2__);
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-
-__WEBPACK_IMPORTED_MODULE_2_axios___default.a.defaults.headers["Accept"] = "application/json";
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    path: {
-      type: String,
-      required: true
-    }
-  },
-  computed: Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["mapGetters"])("datatables", ["selectRowsLength", "selectRows"]),
-  methods: {
-    delete_emit: function delete_emit() {
-      var _this = this;
-
-      if (this.selectRowsLength != 1) {
-        return;
-      }
-
-      var id = this.selectRows[0].id;
-
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".off-canvas").removeClass("off-canvas-open");
-
-      __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default()({
-        title: "ID : " + id + " - Are you sure?",
-        text: "You won't be able to revert this!",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then(function (result) {
-        if (result.value) {
-          __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post(_this.path + "/" + id, {
-            _method: "DELETE"
-          }).then(function (response) {
-            _this.$store.dispatch("datatables/draw");
-            __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default()("Deleted!", "Your file has been deleted.", "success");
-          }).catch(function (error) {
-            __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default()("Warning!", error.response.data.message, "warning");
-          });
-        }
-      });
-    }
-  }
-});
-
-/***/ }),
-
-/***/ 35:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "a",
-    {
-      staticClass: "btn-item",
-      class: { disabled: _vm.selectRowsLength != 1 },
-      attrs: { href: "javascript:;", id: "del-btn" },
-      on: { click: _vm.delete_emit }
-    },
-    [_c("i", { staticClass: "mdi mdi-delete mr-1" }), _vm._v("Del\n")]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-2317887b", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 36:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(37)
-/* template */
-var __vue_template__ = __webpack_require__(38)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/DatatablesDownloadBtn.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-67bdc304", Component.options)
-  } else {
-    hotAPI.reload("data-v-67bdc304", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 37:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(3);
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  computed: Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["mapGetters"])("datatables", ["selectRowsLength"]),
-  methods: Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["mapActions"])("datatables", ["download"])
-});
-
-/***/ }),
-
-/***/ 376:
+/***/ 281:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* flatpickr v4.5.0, @license MIT */
@@ -15448,47 +15063,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 377:
-/***/ (function(module, exports, __webpack_require__) {
-
-/* flatpickr v4.5.0, @license MIT */
-(function (global, factory) {
-     true ? factory(exports) :
-    typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (factory((global.zh = {})));
-}(this, (function (exports) { 'use strict';
-
-    var fp = typeof window !== "undefined" && window.flatpickr !== undefined ? window.flatpickr : {
-      l10ns: {}
-    };
-    var Mandarin = {
-      weekdays: {
-        shorthand: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
-        longhand: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
-      },
-      months: {
-        shorthand: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
-        longhand: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
-      },
-      rangeSeparator: " 至 ",
-      weekAbbreviation: "周",
-      scrollTitle: "滚动切换",
-      toggleTitle: "点击切换 12/24 小时时制"
-    };
-    fp.l10ns.zh = Mandarin;
-    var zh = fp.l10ns;
-
-    exports.Mandarin = Mandarin;
-    exports.default = zh;
-
-    Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
-
-
-/***/ }),
-
-/***/ 378:
+/***/ 283:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* flatpickr v4.5.0, @license MIT */
@@ -15639,6 +15214,394 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 })));
 
+
+/***/ }),
+
+/***/ 29:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "a",
+    {
+      staticClass: "btn-item",
+      attrs: { href: "javascript:;" },
+      on: { click: _vm.add_emit }
+    },
+    [_c("i", { staticClass: "mdi mdi-plus mr-1" }), _vm._v("Add\n")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6597a2be", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 30:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(31)
+/* template */
+var __vue_template__ = __webpack_require__(32)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DatatablesEditBtn.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-14e00bbc", Component.options)
+  } else {
+    hotAPI.reload("data-v-14e00bbc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 31:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+//
+//
+//
+//
+//
+//
+
+
+
+
+__WEBPACK_IMPORTED_MODULE_2_axios___default.a.defaults.headers["Accept"] = "application/json";
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    edit: {
+      type: Object,
+      required: true
+    },
+    path: {
+      type: String,
+      required: true
+    }
+  },
+  computed: Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["mapGetters"])("datatables", ["selectRowsLength", "selectRows"]),
+  methods: {
+    edit_emit: function edit_emit() {
+      var _this = this;
+
+      if (this.selectRowsLength != 1) {
+        return;
+      }
+
+      var id = this.selectRows[0].id;
+
+      __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(this.path + "/" + id + "/edit").then(function (response) {
+        Object.assign(_this.edit, response.data.data);
+      }).catch(function (error) {
+        console.log(error);
+      });
+
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".off-canvas").removeClass("off-canvas-open");
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#offcanvas-edit").toggleClass("off-canvas-open");
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 32:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "a",
+    {
+      staticClass: "btn-item",
+      class: { disabled: _vm.selectRowsLength != 1 },
+      attrs: { href: "javascript:;" },
+      on: { click: _vm.edit_emit }
+    },
+    [_c("i", { staticClass: "mdi mdi-pencil mr-1" }), _vm._v("Edit\n")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-14e00bbc", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 33:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(34)
+/* template */
+var __vue_template__ = __webpack_require__(35)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DatatablesDeleteBtn.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2317887b", Component.options)
+  } else {
+    hotAPI.reload("data-v-2317887b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 34:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_sweetalert2__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_sweetalert2__);
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+__WEBPACK_IMPORTED_MODULE_2_axios___default.a.defaults.headers["Accept"] = "application/json";
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    path: {
+      type: String,
+      required: true
+    }
+  },
+  computed: Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["mapGetters"])("datatables", ["selectRowsLength", "selectRows"]),
+  methods: {
+    delete_emit: function delete_emit() {
+      var _this = this;
+
+      if (this.selectRowsLength != 1) {
+        return;
+      }
+
+      var id = this.selectRows[0].id;
+
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".off-canvas").removeClass("off-canvas-open");
+
+      __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default()({
+        title: "ID : " + id + " - Are you sure?",
+        text: "You won't be able to revert this!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(function (result) {
+        if (result.value) {
+          __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post(_this.path + "/" + id, {
+            _method: "DELETE"
+          }).then(function (response) {
+            _this.$store.dispatch("datatables/draw");
+            __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default()("Deleted!", "Your file has been deleted.", "success");
+          }).catch(function (error) {
+            __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default()("Warning!", error.response.data.message, "warning");
+          });
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 35:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "a",
+    {
+      staticClass: "btn-item",
+      class: { disabled: _vm.selectRowsLength != 1 },
+      attrs: { href: "javascript:;", id: "del-btn" },
+      on: { click: _vm.delete_emit }
+    },
+    [_c("i", { staticClass: "mdi mdi-delete mr-1" }), _vm._v("Del\n")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2317887b", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 36:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(37)
+/* template */
+var __vue_template__ = __webpack_require__(38)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DatatablesDownloadBtn.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-67bdc304", Component.options)
+  } else {
+    hotAPI.reload("data-v-67bdc304", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 37:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(3);
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["mapGetters"])("datatables", ["selectRowsLength"]),
+  methods: Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["mapActions"])("datatables", ["download"])
+});
 
 /***/ }),
 

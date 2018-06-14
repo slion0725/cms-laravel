@@ -7,9 +7,10 @@
             <nav>
                 <div class="nav nav-tabs d-flex flex-nowrap">
                     <a class="nav-item nav-link text-nowrap active" href="#navtab-add-tab1" data-toggle="tab">General</a>
-                    <a class="nav-item nav-link text-nowrap" href="#navtab-add-tab2" data-toggle="tab">Event</a>
-                    <a class="nav-item nav-link text-nowrap" href="#navtab-add-tab3" data-toggle="tab">Description</a>
-                    <a class="nav-item nav-link text-nowrap" href="#navtab-add-tab4" data-toggle="tab">Spec</a>
+                    <a class="nav-item nav-link text-nowrap" href="#navtab-add-tab2" data-toggle="tab">Files</a>
+                    <a class="nav-item nav-link text-nowrap" href="#navtab-add-tab3" data-toggle="tab">Event Date</a>
+                    <a class="nav-item nav-link text-nowrap" href="#navtab-add-tab4" data-toggle="tab">Description</a>
+                    <a class="nav-item nav-link text-nowrap" href="#navtab-add-tab5" data-toggle="tab">Spec</a>
                 </div>
             </nav>
 
@@ -52,30 +53,6 @@
 
                     <div class="form-group row">
                         <div class="col-sm-3">
-                            <label for="add-manual" class="col-form-label col-form-label-sm">Manual</label>
-                        </div>
-                        <div class="col-sm-9">
-                            <input type="text" id="add-manual" name="manual" data-vv-as="Manual" data-vv-scope="add" class="form-control form-control-sm"
-                                :class="{'is-invalid': errors.has('add.manual')}" v-validate="'required'" v-model="add.manual"
-                                @focus="$validator.errors.removeById('res-add-manual')">
-                            <div class="invalid-feedback" v-text="errors.first('add.manual')"></div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-sm-3">
-                            <label for="add-image" class="col-form-label col-form-label-sm">Image</label>
-                        </div>
-                        <div class="col-sm-9">
-                            <input type="text" id="add-image" name="image" data-vv-as="Image" data-vv-scope="add" class="form-control form-control-sm"
-                                :class="{'is-invalid': errors.has('add.image')}" v-validate="'required'" v-model="add.image"
-                                @focus="$validator.errors.removeById('res-add-image')">
-                            <div class="invalid-feedback" v-text="errors.first('add.image')"></div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-sm-3">
                             <label for="add-status" class="col-form-label col-form-label-sm">Status</label>
                         </div>
                         <div class="col-sm-9">
@@ -88,6 +65,26 @@
                 </div>
 
                 <div class="tab-pane pt-2" id="navtab-add-tab2">
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            <label for="add-manual" class="col-form-label col-form-label-sm">Manual</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="file" id="add-manual" name="manual" class="form-control-file" @change="processFile($event, ['add', 'manual'])">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            <label for="add-image" class="col-form-label col-form-label-sm">Image (multiple)</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="file" id="add-image" name="image" class="form-control-file" multiple @change="processFile($event, ['add', 'image'], true)">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane pt-2" id="navtab-add-tab3">
                     <div class="form-group row">
                         <div class="col-sm-3">
                             <label for="add-event_start" class="col-form-label col-form-label-sm">Event Start</label>
@@ -113,12 +110,12 @@
                     </div>
                 </div>
 
-                <div class="tab-pane pt-2" id="navtab-add-tab3">
+                <div class="tab-pane pt-2" id="navtab-add-tab4">
                     <label for="add-description" class="col-form-label col-form-label-sm">Description</label>
                     <textarea id="add-description" name="description" v-model="add.description"></textarea>
                 </div>
 
-                <div class="tab-pane pt-2" id="navtab-add-tab4">
+                <div class="tab-pane pt-2" id="navtab-add-tab5">
                     <label for="add-spec" class="col-form-label col-form-label-sm">Spec</label>
                     <div id="add-spec"></div>
                 </div>
