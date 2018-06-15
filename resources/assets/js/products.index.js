@@ -170,6 +170,12 @@ var app = new Vue({
           delete response.data.data.updated_at;
 
           Object.assign(this.edit, response.data.data);
+
+          edit_event.setDate([this.edit.event_start, this.edit.event_end])
+
+          edit_description.setData(this.edit.description);
+
+          edit_spec.root.innerHTML = this.edit.spec;
         })
         .catch(error => {
           console.log(error);
@@ -305,13 +311,25 @@ navtabsScroll();
 import ckeditor5 from "@ckeditor/ckeditor5-build-classic";
 
 let add_description;
-
 ckeditor5
   .create(document.querySelector("#add-description"), {})
   .then(editor => {
     add_description = editor;
     editor.model.document.on("change", () => {
       app.add.description = editor.getData();
+    });
+  })
+  .catch(err => {
+    console.error(err.stack);
+  });
+
+let edit_description;
+ckeditor5
+  .create(document.querySelector("#edit-description"), {})
+  .then(editor => {
+    edit_description = editor;
+    editor.model.document.on("change", () => {
+      app.edit.description = editor.getData();
     });
   })
   .catch(err => {
@@ -329,6 +347,17 @@ let add_spec = new Quill("#add-spec", {
 
 add_spec.on("text-change", () => {
   app.add.spec = add_spec.root.innerHTML;
+});
+
+let edit_spec = new Quill("#edit-spec", {
+  modules: {
+    toolbar: true
+  },
+  theme: "snow"
+});
+
+edit_spec.on("text-change", () => {
+  app.edit.spec = edit_spec.root.innerHTML;
 });
 
 import flatpickr from "flatpickr";
@@ -354,3 +383,23 @@ let add_event = flatpickr("#add-event_start", {
   }
 });
 $("#add-event_start, #add-event_end").css({ backgroundColor: "#fff" });
+
+let edit_event = flatpickr("#edit-event_start", {
+  // locale: Mandarin,
+  time_24hr: true,
+  enableTime: true,
+  dateFormat: "Y-m-d H:i:S",
+  plugins: [
+    new rangePlugin({
+      input: "#edit-event_end"
+    })
+  ],
+  onChange(selectedDates, dateStr, instance) {
+    let selectedUTCDates = selectedDates.map(date =>
+      instance.formatDate(date, instance.config.dateFormat)
+    );
+    app.add.event_start = selectedUTCDates[0];
+    app.add.event_end = selectedUTCDates[1];
+  }
+});
+$("#edit-event_start, #edit-event_end").css({ backgroundColor: "#fff" });

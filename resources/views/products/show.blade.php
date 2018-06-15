@@ -22,11 +22,15 @@
                 <hr>
 
                 <dt>Manual</dt>
-                <dd v-text="show.manual"></dd>
+                <dd v-show="show.manual">
+                    <a :href="'{{ asset('/') }}' + show.manual">Download</a>
+                </dd>
                 <hr>
 
                 <dt>Image</dt>
-                <dd v-text="show.image"></dd>
+                <dd v-show="show.image">
+                    <img :src="'{{ asset('/') }}' + show.image" width="100%">
+                </dd>
                 <hr>
 
                 <dt>Event Start</dt>
@@ -38,15 +42,15 @@
                 <hr>
 
                 <dt>Description</dt>
-                <dd v-text="show.description"></dd>
+                <dd v-html="show.description"></dd>
                 <hr>
 
                 <dt>Spec</dt>
-                <dd v-text="show.spec"></dd>
+                <dd v-html="show.spec"></dd>
                 <hr>
 
                 <dt>Status</dt>
-                <dd v-text="show.status"></dd>
+                <dd v-text="show.status == 1 ? 'On' : 'Off'"></dd>
                 <hr>
 
                 <dt>Created At</dt>
