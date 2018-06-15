@@ -17,3 +17,6 @@ Vue.component(
 );
 Vue.component("v-profile-btn", require("./ProfileBtn.vue"));
 Vue.component("v-profile", require("./Profile.vue"));
+
+Vue.component("v-datatables-add-test-btn", require("./DatatablesAddTestBtn.vue"));
+Vue.component("v-datatables-edit-test-btn", require("./DatatablesEditTestBtn.vue"));

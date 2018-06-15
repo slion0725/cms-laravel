@@ -42,7 +42,7 @@ class ProductsController extends Controller
     public function __construct(ProductRepository $repository, ProductValidator $validator)
     {
         $this->repository = $repository;
-        $this->validator  = $validator;
+        $this->validator = $validator;
     }
 
     /**
@@ -76,25 +76,33 @@ class ProductsController extends Controller
      */
     public function store(ProductCreateRequest $request)
     {
-        if($request->hasFile('manual')){
-            dd($request->manual);
-        }
-
-        if($request->hasFile('image')){
-            dd($request->image);
-        }
-
-        dd($request->all());
-
         try {
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
+            $req = $request->except('image', 'manual', 'images');
 
-            $product = $this->repository->create($request->all());
+            if ($request->hasFile('image')) {
+                $image = $request->image->store('products/image', 'public');
+                $req = array_add($req, 'image', $image);
+            }
+
+            if ($request->hasFile('images')) {
+                foreach ($request->images as $images) {
+                    $images->store('products/images', 'public');
+                }
+            }
+
+            if ($request->hasFile('manual')) {
+                $manual = $request->manual->store('products/manual', 'public');
+                $req = array_add($req, 'manual', $manual);
+            }
+
+            $this->validator->with($req)->passesOrFail(ValidatorInterface::RULE_CREATE);
+
+            $product = $this->repository->create($req);
 
             $response = [
                 'message' => 'Product created.',
-                'data'    => $product->toArray(),
+                'data' => $product->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -106,7 +114,7 @@ class ProductsController extends Controller
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
-                    'error'   => true,
+                    'error' => true,
                     'message' => $e->getMessageBag()
                 ]);
             }
@@ -146,6 +154,13 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product = $this->repository->find($id);
+        
+        if (request()->wantsJson()) {
+
+            return response()->json([
+                'data' => $product,
+            ]);
+        }
 
         return view('products.edit', compact('product'));
     }
@@ -170,7 +185,7 @@ class ProductsController extends Controller
 
             $response = [
                 'message' => 'Product updated.',
-                'data'    => $product->toArray(),
+                'data' => $product->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -184,7 +199,7 @@ class ProductsController extends Controller
             if ($request->wantsJson()) {
 
                 return response()->json([
-                    'error'   => true,
+                    'error' => true,
                     'message' => $e->getMessageBag()
                 ]);
             }

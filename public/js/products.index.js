@@ -20,6 +20,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component("v-datatables-download-btn
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component("v-profile-btn", __webpack_require__(39));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component("v-profile", __webpack_require__(42));
 
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component("v-datatables-add-test-btn", __webpack_require__(382));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component("v-datatables-edit-test-btn", __webpack_require__(379));
+
 /***/ }),
 
 /***/ 11:
@@ -1155,8 +1158,8 @@ var data = {
     title: "",
     price: "",
     status: 0,
-    manual: "",
     image: "",
+    manual: "",
     event_start: "",
     event_end: "",
     description: "",
@@ -1169,8 +1172,9 @@ var data = {
     title: "",
     price: "",
     status: 0,
-    manual: "",
     image: "",
+    images: "",
+    manual: "",
     event_start: "",
     event_end: "",
     description: "",
@@ -1182,13 +1186,13 @@ var data = {
     title: "",
     price: "",
     status: 0,
-    manual: "",
     image: "",
+    images: "",
+    manual: "",
     event_start: "",
     event_end: "",
     description: "",
-    spec: "",
-    _method: "PUT"
+    spec: ""
   },
   datatablesSetting: {
     ajax: {
@@ -1248,46 +1252,86 @@ var app = new __WEBPACK_IMPORTED_MODULE_7__plugins_vue__["a" /* default */]({
   el: "#app",
   store: __WEBPACK_IMPORTED_MODULE_9__components_store__["a" /* default */],
   data: __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.cloneDeep(data),
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_10_vuex__["mapGetters"])("datatables", ["selectRowsLength"])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_10_vuex__["mapGetters"])("datatables", ["selectRows"])),
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_10_vuex__["mapActions"])("datatables", ["search_emit", "search_clear"]), {
-    add_onSubmit: function add_onSubmit(scope) {
+    add_form: function add_form() {
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".off-canvas").removeClass("off-canvas-open");
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#offcanvas-add").toggleClass("off-canvas-open");
+    },
+    edit_form: function edit_form() {
       var _this = this;
+
+      var id = this.selectRows[0].id;
+
+      __WEBPACK_IMPORTED_MODULE_5_axios___default.a.get("products/" + id + "/edit").then(function (response) {
+        delete response.data.data.image;
+
+        delete response.data.data.manual;
+
+        delete response.data.data.created_at;
+
+        delete response.data.data.updated_at;
+
+        Object.assign(_this.edit, response.data.data);
+      }).catch(function (error) {
+        console.log(error);
+      });
+
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(".off-canvas").removeClass("off-canvas-open");
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#offcanvas-edit").toggleClass("off-canvas-open");
+    },
+    add_onSubmit: function add_onSubmit(scope) {
+      var _this2 = this;
 
       this.$validator.validateAll(scope).then(function (result) {
         if (!result) {
           return;
         }
 
+        // formdata
         var formData = new FormData();
 
-        __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.map(_this.add, function (item, key) {
+        // append
+        __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.map(_this2.add, function (item, key) {
           formData.append(key, item);
         });
 
-        __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.map(_this.add.image, function (item, key) {
-          formData.append("image[" + key + "]", item);
+        // multiple files
+        __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.map(_this2.add.images, function (item, key) {
+          formData.append("images[" + key + "]", item);
         });
 
+        // console
+        // for (let item of formData.entries()) {
+        //   console.log(item[0], item[1]);
+        // }
+
+        // ajax
         __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post("products", formData).then(function (response) {
-          _this.$store.dispatch("datatables/draw");
+          _this2.$store.dispatch("datatables/draw");
 
           __WEBPACK_IMPORTED_MODULE_6_sweetalert2___default()("Success!", "", "success");
 
-          _this.$refs["add-manual"].value = "";
-          _this.$refs["add-image"].value = "";
-          _this.$refs["add-event_start"].value = "";
-          _this.$refs["add-event_end"].value = "";
+          // reset
+          _this2.$refs["add-manual"].value = "";
+          _this2.$refs["add-image"].value = "";
+          _this2.$refs["add-images"].value = "";
+          _this2.$refs["add-event_start"].value = "";
+          _this2.$refs["add-event_end"].value = "";
+          add_event.clear();
+          add_description.setData("");
+          add_spec.setContents([]);
+          _this2.add = __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.cloneDeep(data.add);
 
-          _this.add = __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.cloneDeep(data.add);
-
-          _this.$nextTick(function () {
-            _this.$validator.reset({ scope: scope });
-            _this.$validator.errors.clear(scope);
+          // error reset
+          _this2.$nextTick(function () {
+            _this2.$validator.reset({ scope: scope });
+            _this2.$validator.errors.clear(scope);
           });
         }).catch(function (error) {
           if (error.response.data.errors) {
             Object.keys(error.response.data.errors).forEach(function (e) {
-              _this.$validator.errors.add({
+              _this2.$validator.errors.add({
                 field: e,
                 msg: error.response.data.errors[e][0],
                 scope: scope,
@@ -1301,28 +1345,32 @@ var app = new __WEBPACK_IMPORTED_MODULE_7__plugins_vue__["a" /* default */]({
       });
     },
     edit_onSubmit: function edit_onSubmit(scope) {
-      var _this2 = this;
+      var _this3 = this;
 
       this.$validator.validateAll(scope).then(function (result) {
         if (!result) {
           return;
         }
 
-        __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post("products/" + _this2.edit.id, _this2.edit).then(function (response) {
-          _this2.$store.dispatch("datatables/draw");
+        var formData = new FormData();
+
+        formData.append("_method", "PUT");
+
+        __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post("products/" + _this3.edit.id, _this3.edit).then(function (response) {
+          _this3.$store.dispatch("datatables/draw");
 
           __WEBPACK_IMPORTED_MODULE_6_sweetalert2___default()("Success!", "", "success");
 
-          _this2.edit = __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.cloneDeep(data.edit);
+          _this3.edit = __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.cloneDeep(data.edit);
 
-          _this2.$nextTick(function () {
-            _this2.$validator.reset({ scope: scope });
-            _this2.$validator.errors.clear(scope);
+          _this3.$nextTick(function () {
+            _this3.$validator.reset({ scope: scope });
+            _this3.$validator.errors.clear(scope);
           });
         }).catch(function (error) {
           if (error.response.data.errors) {
             Object.keys(error.response.data.errors).forEach(function (e) {
-              _this2.$validator.errors.add({
+              _this3.$validator.errors.add({
                 field: e,
                 msg: error.response.data.errors[e][0],
                 scope: scope,
@@ -1357,7 +1405,11 @@ Object(__WEBPACK_IMPORTED_MODULE_11__components_layout__["b" /* offCanvas */])()
 Object(__WEBPACK_IMPORTED_MODULE_11__components_layout__["a" /* navtabsScroll */])();
 
 
+
+var add_description = void 0;
+
 __WEBPACK_IMPORTED_MODULE_12__ckeditor_ckeditor5_build_classic___default.a.create(document.querySelector("#add-description"), {}).then(function (editor) {
+  add_description = editor;
   editor.model.document.on("change", function () {
     app.add.description = editor.getData();
   });
@@ -1366,24 +1418,27 @@ __WEBPACK_IMPORTED_MODULE_12__ckeditor_ckeditor5_build_classic___default.a.creat
 });
 
 
-var addspec = new __WEBPACK_IMPORTED_MODULE_13_quill___default.a("#add-spec", {
+
+var add_spec = new __WEBPACK_IMPORTED_MODULE_13_quill___default.a("#add-spec", {
   modules: {
     toolbar: true
   },
   theme: "snow"
 });
 
-addspec.on("text-change", function () {
-  app.add.spec = addspec.root.innerHTML;
+add_spec.on("text-change", function () {
+  app.add.spec = add_spec.root.innerHTML;
 });
 
 
 // import { Mandarin } from "flatpickr/dist/l10n/zh.js";
 
-__WEBPACK_IMPORTED_MODULE_14_flatpickr___default()("#add-event_start", {
+
+var add_event = __WEBPACK_IMPORTED_MODULE_14_flatpickr___default()("#add-event_start", {
   // locale: Mandarin,
   time_24hr: true,
-  dateFormat: "Y-m-d",
+  enableTime: true,
+  dateFormat: "Y-m-d H:i:S",
   plugins: [new __WEBPACK_IMPORTED_MODULE_15_flatpickr_dist_plugins_rangePlugin_js___default.a({
     input: "#add-event_end"
   })],
@@ -15617,6 +15672,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
+/***/ 379:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(380)
+/* template */
+var __vue_template__ = __webpack_require__(381)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DatatablesEditTestBtn.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-01f05a6c", Component.options)
+  } else {
+    hotAPI.reload("data-v-01f05a6c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
 /***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15642,6 +15745,169 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-67bdc304", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 380:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
+//
+//
+//
+
+
+
+__WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers["Accept"] = "application/json";
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapGetters"])("datatables", ["selectRowsLength"]),
+  methods: {
+    open: function open() {
+      if (this.selectRowsLength != 1) {
+        return;
+      }
+
+      this.$emit("open");
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 381:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "a",
+    {
+      staticClass: "btn-item",
+      class: { disabled: _vm.selectRowsLength != 1 },
+      attrs: { href: "javascript:;" },
+      on: { click: _vm.open }
+    },
+    [_c("i", { staticClass: "mdi mdi-pencil mr-1" }), _vm._v("Edit\n")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-01f05a6c", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 382:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(383)
+/* template */
+var __vue_template__ = __webpack_require__(384)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DatatablesAddTestBtn.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5915fb2f", Component.options)
+  } else {
+    hotAPI.reload("data-v-5915fb2f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 383:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    open: function open() {
+      this.$emit("open");
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 384:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "a",
+    {
+      staticClass: "btn-item",
+      attrs: { href: "javascript:;" },
+      on: { click: _vm.open }
+    },
+    [_c("i", { staticClass: "mdi mdi-plus mr-1" }), _vm._v("Add\n")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5915fb2f", module.exports)
   }
 }
 

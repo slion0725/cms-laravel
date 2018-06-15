@@ -16,8 +16,10 @@
         <v-datatables-select-btn></v-datatables-select-btn>
         <v-datatables-search-btn></v-datatables-search-btn>
         <v-datatables-show-btn :show="show" path="products"></v-datatables-show-btn>
-        <v-datatables-add-btn :add="add"></v-datatables-add-btn>
-        <v-datatables-edit-btn :edit="edit" path="products"></v-datatables-edit-btn>
+
+        <v-datatables-add-test-btn @open="add_form"></v-datatables-add-test-btn>
+        <v-datatables-edit-test-btn @open="edit_form"></v-datatables-edit-test-btn>
+
         <v-datatables-delete-btn path="products"></v-datatables-delete-btn>
         <v-datatables-download-btn></v-datatables-download-btn>
     </div>

@@ -44,8 +44,8 @@ const data = {
     title: "",
     price: "",
     status: 0,
-    manual: "",
     image: "",
+    manual: "",
     event_start: "",
     event_end: "",
     description: "",
@@ -58,8 +58,9 @@ const data = {
     title: "",
     price: "",
     status: 0,
-    manual: "",
     image: "",
+    images: "",
+    manual: "",
     event_start: "",
     event_end: "",
     description: "",
@@ -71,13 +72,13 @@ const data = {
     title: "",
     price: "",
     status: 0,
-    manual: "",
     image: "",
+    images: "",
+    manual: "",
     event_start: "",
     event_end: "",
     description: "",
-    spec: "",
-    _method: "PUT"
+    spec: ""
   },
   datatablesSetting: {
     ajax: {
@@ -147,25 +148,61 @@ var app = new Vue({
   el: "#app",
   store,
   data: _.cloneDeep(data),
-  computed: { ...mapGetters("datatables", ["selectRowsLength"]) },
+  computed: { ...mapGetters("datatables", ["selectRows"]) },
   methods: {
     ...mapActions("datatables", ["search_emit", "search_clear"]),
+    add_form() {
+      $(".off-canvas").removeClass("off-canvas-open");
+      $("#offcanvas-add").toggleClass("off-canvas-open");
+    },
+    edit_form() {
+      let id = this.selectRows[0].id;
+
+      axios
+        .get(`products/${id}/edit`)
+        .then(response => {
+          delete response.data.data.image;
+
+          delete response.data.data.manual;
+
+          delete response.data.data.created_at;
+
+          delete response.data.data.updated_at;
+
+          Object.assign(this.edit, response.data.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+
+      $(".off-canvas").removeClass("off-canvas-open");
+      $("#offcanvas-edit").toggleClass("off-canvas-open");
+    },
     add_onSubmit(scope) {
       this.$validator.validateAll(scope).then(result => {
         if (!result) {
           return;
         }
 
+        // formdata
         let formData = new FormData();
 
+        // append
         _.map(this.add, (item, key) => {
           formData.append(key, item);
         });
 
-        _.map(this.add.image, (item, key) => {
-          formData.append(`image[${key}]`, item);
+        // multiple files
+        _.map(this.add.images, (item, key) => {
+          formData.append(`images[${key}]`, item);
         });
 
+        // console
+        // for (let item of formData.entries()) {
+        //   console.log(item[0], item[1]);
+        // }
+
+        // ajax
         axios
           .post(`products`, formData)
           .then(response => {
@@ -173,13 +210,18 @@ var app = new Vue({
 
             swal("Success!", "", "success");
 
+            // reset
             this.$refs["add-manual"].value = "";
             this.$refs["add-image"].value = "";
+            this.$refs["add-images"].value = "";
             this.$refs["add-event_start"].value = "";
             this.$refs["add-event_end"].value = "";
-
+            add_event.clear();
+            add_description.setData("");
+            add_spec.setContents([]);
             this.add = _.cloneDeep(data.add);
 
+            // error reset
             this.$nextTick(() => {
               this.$validator.reset({ scope: scope });
               this.$validator.errors.clear(scope);
@@ -206,6 +248,10 @@ var app = new Vue({
         if (!result) {
           return;
         }
+
+        let formData = new FormData();
+
+        formData.append("_method", "PUT");
 
         axios
           .post(`products/${this.edit.id}`, this.edit)
@@ -257,9 +303,13 @@ offCanvas();
 navtabsScroll();
 
 import ckeditor5 from "@ckeditor/ckeditor5-build-classic";
+
+let add_description;
+
 ckeditor5
   .create(document.querySelector("#add-description"), {})
   .then(editor => {
+    add_description = editor;
     editor.model.document.on("change", () => {
       app.add.description = editor.getData();
     });
@@ -269,24 +319,27 @@ ckeditor5
   });
 
 import Quill from "quill";
-let addspec = new Quill("#add-spec", {
+
+let add_spec = new Quill("#add-spec", {
   modules: {
     toolbar: true
   },
   theme: "snow"
 });
 
-addspec.on("text-change", () => {
-  app.add.spec = addspec.root.innerHTML;
+add_spec.on("text-change", () => {
+  app.add.spec = add_spec.root.innerHTML;
 });
 
 import flatpickr from "flatpickr";
 // import { Mandarin } from "flatpickr/dist/l10n/zh.js";
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin.js";
-flatpickr("#add-event_start", {
+
+let add_event = flatpickr("#add-event_start", {
   // locale: Mandarin,
   time_24hr: true,
-  dateFormat: "Y-m-d",
+  enableTime: true,
+  dateFormat: "Y-m-d H:i:S",
   plugins: [
     new rangePlugin({
       input: "#add-event_end"

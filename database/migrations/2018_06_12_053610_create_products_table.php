@@ -17,11 +17,11 @@ class CreateProductsTable extends Migration
 	{
 		Schema::create('products', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('name')->nullable();
+			$table->string('name');
 			$table->string('title');
 			$table->float('price', 8, 2);
-			$table->string('manual');
-			$table->string('image');
+			$table->string('image')->nullable();
+			$table->string('manual')->nullable();
 			$table->timestamp('event_start')->useCurrent();
 			$table->timestamp('event_end')->useCurrent();
 			$table->text('description');

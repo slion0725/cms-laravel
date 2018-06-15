@@ -28,10 +28,11 @@ class ProductCreateRequest extends FormRequest
             'title' => 'required|max:255',
             'price' => 'required|max:255',
             'status' => 'required|boolean',
+            'image' => 'nullable|image',
+            'images.*' => 'nullable|image',
             'manual' => 'nullable|mimes:pdf',
-            'image.*' => 'nullable|image',
-            'event_start' => 'required|date_format:Y-m-d',
-            'event_end' => 'required|date_format:Y-m-d|after_or_equal:event_start',
+            'event_start' => 'required|date_format:Y-m-d H:i:s',
+            'event_end' => 'required|date_format:Y-m-d H:i:s|after_or_equal:event_start',
             'description' => 'nullable',
             'spec' => 'nullable'
         ];

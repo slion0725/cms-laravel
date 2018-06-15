@@ -67,6 +67,29 @@
                 <div class="tab-pane pt-2" id="navtab-add-tab2">
                     <div class="form-group row">
                         <div class="col-sm-3">
+                            <label class="col-form-label col-form-label-sm" for="add-image">Image (single)</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input class="form-control-file" id="add-image" name="image" data-vv-scope="add" type="file" v-validate="'image'" :class="{'is-invalid': errors.has('add.image')}"
+                                @focus="$validator.errors.removeById('res-add-image')" ref="add-image" @change="processFile($event, ['add', 'image'])">
+                            <div class="invalid-feedback" v-text="errors.first('add.image')"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            <label class="col-form-label col-form-label-sm" for="add-images">Images (multiple)</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input class="form-control-file" id="add-images" name="images" data-vv-scope="add" type="file" multiple v-validate="'image|length:0,6'"
+                                :class="{'is-invalid': errors.has('add.images')}" @focus="$validator.errors.removeById('res-add-images')"
+                                ref="add-images" @change="processFile($event, ['add', 'images'], true)">
+                            <div class="invalid-feedback" v-text="errors.first('add.images')"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="col-sm-3">
                             <label class="col-form-label col-form-label-sm" for="add-manual">Manual (pdf)</label>
                         </div>
                         <div class="col-sm-9">
@@ -74,18 +97,6 @@
                                 :class="{'is-invalid': errors.has('add.manual')}" @focus="$validator.errors.removeById('res-add-manual')"
                                 ref="add-manual" @change="processFile($event, ['add', 'manual'])">
                             <div class="invalid-feedback" v-text="errors.first('add.manual')"></div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-sm-3">
-                            <label class="col-form-label col-form-label-sm" for="add-image">Image (multiple,max:6)</label>
-                        </div>
-                        <div class="col-sm-9">
-                            <input class="form-control-file" id="add-image" name="image" data-vv-scope="add" type="file" multiple v-validate="'image|length:0,6'"
-                                :class="{'is-invalid': errors.has('add.image')}" @focus="$validator.errors.removeById('res-add-image')"
-                                ref="add-image" @change="processFile($event, ['add', 'image'], true)">
-                            <div class="invalid-feedback" v-text="errors.first('add.image')"></div>
                         </div>
                     </div>
                 </div>
@@ -97,7 +108,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input class="form-control form-control-sm" id="add-event_start" name="event_start" data-vv-as="Event Start" data-vv-scope="add"
-                                type="text" :class="{'is-invalid': errors.has('add.event_start')}" v-validate="'required|date_format:YYYY-MM-DD'"
+                                type="text" :class="{'is-invalid': errors.has('add.event_start')}" v-validate="'required|date_format:YYYY-MM-DD HH:mm:ss'"
                                 ref="add-event_start" v-model="add.event_start" @focus="$validator.errors.removeById('res-add-event_start')">
                             <div class="invalid-feedback" v-text="errors.first('add.event_start')"></div>
                         </div>
@@ -109,7 +120,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input class="form-control form-control-sm" id="add-event_end" name="event_end" data-vv-as="Event End" data-vv-scope="add"
-                                type="text" :class="{'is-invalid': errors.has('add.event_end')}" v-validate="'required|date_format:YYYY-MM-DD|after:$add-event_start'"
+                                type="text" :class="{'is-invalid': errors.has('add.event_end')}" v-validate="'required|date_format:YYYY-MM-DD HH:mm:ss|after:$add-event_start'"
                                 ref="add-event_end" v-model="add.event_end" @focus="$validator.errors.removeById('res-add-event_end')">
                             <div class="invalid-feedback" v-text="errors.first('add.event_end')"></div>
                         </div>
