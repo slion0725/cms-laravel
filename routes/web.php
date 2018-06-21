@@ -63,7 +63,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // league/glide + league/glide-laravel
-// Route::get('i/{path}', function (League\Glide\Server $server, $path, Illuminate\Http\Request $request) {
-//     $server->outputImage($path, $request->all());
-//     exit;
-// })->where('path', '.*');
+Route::get('i/{path}', function (League\Glide\Server $server, $path, Illuminate\Http\Request $request) {
+    $server->outputImage($path, $request->all());
+    exit;
+})->where('path', '.*');
