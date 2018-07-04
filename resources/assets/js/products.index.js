@@ -23,7 +23,6 @@ import { mapGetters, mapActions } from "vuex";
  * script
  */
 axios.defaults.headers["Accept"] = "application/json";
-axios.defaults.headers["Content-Type"] = "multipart/form-data";
 
 const data = {
   search: {
@@ -171,7 +170,7 @@ var app = new Vue({
 
           Object.assign(this.edit, response.data.data);
 
-          edit_event.setDate([this.edit.event_start, this.edit.event_end])
+          edit_event.setDate([this.edit.event_start, this.edit.event_end]);
 
           edit_description.setData(this.edit.description);
 

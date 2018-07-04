@@ -24,8 +24,8 @@ class CreateProductsTable extends Migration
 			$table->string('manual')->nullable();
 			$table->timestamp('event_start')->useCurrent();
 			$table->timestamp('event_end')->useCurrent();
-			$table->text('description');
-			$table->text('spec');
+			$table->text('description')->nullable();
+			$table->text('spec')->nullable();
 			$table->smallInteger('status')->default(1);
             $table->timestamps();
 		});

@@ -22,13 +22,13 @@ class Account extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'status'];
+    protected $fillable = ['name', 'email', 'password', 'status', 'avater'];
 
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    protected static $logAttributes = ['id', 'name', 'email', 'password', 'status', 'created_at', 'updated_at'];
+    protected static $logAttributes = ['id', 'name', 'email', 'password', 'status', 'avater', 'created_at', 'updated_at'];
 
     protected $table = 'users';
 }

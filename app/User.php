@@ -23,10 +23,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avater'
     ];
 
-    protected static $logAttributes = ['id', 'name', 'email', 'created_at', 'updated_at'];
+    protected static $logAttributes = ['id', 'name', 'email', 'avater', 'created_at', 'updated_at'];
 
     /**
      * The attributes that should be hidden for arrays.
