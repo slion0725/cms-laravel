@@ -59,9 +59,9 @@ export default {
         }
 
         // console
-        // for (let item of formData.entries()) {
-        //   console.log(item[0], item[1]);
-        // }
+        for (let item of formData.entries()) {
+          console.log(item[0], item[1]);
+        }
 
         formData.append("_method", "PUT");
 

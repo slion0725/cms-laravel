@@ -21,6 +21,12 @@
                 <dd v-text="show.status == 1 ? 'On' : 'Off'"></dd>
                 <hr>
 
+                <dt>Avater</dt>
+                <dd v-if="show.avater">
+                    <img :src="'{{ asset('/storage') }}/' + show.avater" width="100%">
+                </dd>
+                <hr>
+
                 <dt>Created At</dt>
                 <dd v-text="show.created_at"></dd>
                 <hr>

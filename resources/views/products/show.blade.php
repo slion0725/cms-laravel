@@ -22,13 +22,13 @@
                 <hr>
 
                 <dt>Manual</dt>
-                <dd v-show="show.manual">
+                <dd v-if="show.manual">
                     <a :href="'{{ asset('/storage') }}/' + show.manual">Download</a>
                 </dd>
                 <hr>
 
                 <dt>Image</dt>
-                <dd v-show="show.image">
+                <dd v-if="show.image">
                     <img :src="'{{ asset('/storage') }}/' + show.image" width="100%">
                 </dd>
                 <hr>

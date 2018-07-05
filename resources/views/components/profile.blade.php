@@ -5,6 +5,11 @@
                 Profile
             </div>
             <div class="card-body align-self-stretch">
+
+                <div class="text-center pb-3">
+                    <img data-src="holder.js/150x150?auto=yes&theme=sky&text=36p" src="{{ Auth::user()->avater ? asset('/storage') . '/' . Auth::user()->avater : '#' }}" class="rounded-circle" width="36%">
+                </div>
+
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label class="col-form-label col-form-label-sm" for="profile-name">Name</label>
@@ -30,7 +35,7 @@
                         <label class="col-form-label col-form-label-sm" for="profile-password">Password</label>
                     </div>
                     <div class="col-sm-9">
-                        <input class="form-control form-control-sm" id="profile-password" name="password" data-vv-as="password" data-vv-scope="profile" type="password" :class="{'is-invalid': errors.has('profile.password')}" v-validate="'min:6|max:20|confirmed:profile-password_confirmation'" @focus="$validator.errors.removeById('res-profile-password')" ref="profile-password">
+                        <input class="form-control form-control-sm" id="profile-password" name="password" data-vv-as="password" data-vv-scope="profile" type="password" :class="{'is-invalid': errors.has('profile.password')}" v-validate="'min:6|max:20|confirmed:profile-password_confirmation'" @focus="$validator.errors.removeById('res-profile-password')" ref="profile-password" v-model="password">
                         <div class="invalid-feedback" v-text="errors.first('profile.password')"></div>
                     </div>
                 </div>
@@ -40,7 +45,7 @@
                         <label class="col-form-label col-form-label-sm" for="profile-password_confirmation">Password Confirmation</label>
                     </div>
                     <div class="col-sm-9">
-                        <input class="form-control form-control-sm" id="profile-password_confirmation" name="profile-password_confirmation" type="password" ref="profile-password_confirmation">
+                        <input class="form-control form-control-sm" id="profile-password_confirmation" name="profile-password_confirmation" type="password" ref="profile-password_confirmation" v-model="password_confirmation">
                     </div>
                 </div>
 
